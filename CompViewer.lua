@@ -80,14 +80,11 @@ local function drawBox(col, row, wid, hgt, f, b, opt)
 	local al = {0x2500, 0x2550}
 	gpu.setForeground(f)
 	gpu.setBackground(b)
-	term.setCursor(col, row)
-	print(unicode.char(ul[opt])..string.rep(unicode.char(al[opt]), wid - 2)..unicode.char(ur[opt]))
+	gpu.set(col, row, unicode.char(ul[opt])..string.rep(unicode.char(al[opt]), wid - 2)..unicode.char(ur[opt]))
 	for a = 1, hgt - 2 do
-		term.setCursor(col, row + a)
-		print(unicode.char(sl[opt])..string.rep(unicode.char(0x0020), wid - 2)..unicode.char(sl[opt]))
+		gpu.set(col, row + a, unicode.char(sl[opt])..string.rep(unicode.char(0x0020), wid - 2)..unicode.char(sl[opt]))
 	end
-	term.setCursor(col, row + hgt - 2)
-	print(unicode.char(ll[opt])..string.rep(unicode.char(al[opt]), wid - 2)..unicode.char(lr[opt]))
+	gpu.set(col, row + hgt - 2, unicode.char(ll[opt])..string.rep(unicode.char(al[opt]), wid - 2)..unicode.char(lr[opt]))
 	term.setCursor(col, row)
 end
 	
@@ -96,14 +93,14 @@ local function hiLiteXY(col, row, menuSel)
 	term.setCursorBlink(false)
 	gpu.setForeground(theme.promptHighlight)
 	gpu.setBackground(theme.prompt)
-	component.gpu.set(col, row, menuSel)
+	gpu.set(col, row, menuSel)
 end
 
 local function writeXY(col, row, menuSel)
 	term.setCursorBlink(false)
 	gpu.setForeground(theme.textColor)
 	gpu.setBackground(theme.background)
-	component.gpu.set(col, row, menuSel)
+	gpu.set(col, row, menuSel)
 end	
 
 local function centerText(row, msg)
@@ -159,12 +156,20 @@ local function printCompXY(menuSel)
 		local tmpString = "filesystem."..fileFirst
 		if tmpList[b] == fileFirst then
 			if fileCount < 0 then
-				writeXY((w - listWid)/2, b + 6, fileFirst)
+				if (math.fmod(b, 2) == 0) then
+					writeXY((w - listWid)/2, b + 6, fileFirst)
+				else
+					hiLiteXY((w - listWid)/2, b + 6, fileFirst)
+				end
 			end
 			fileCount = fileCount + 1
 		end
 		if fileCount < 0 then
-			writeXY((w - listWid)/2, b + 6, tmpList[b])
+			if (math.fmod(b, 2) == 0) then
+				writeXY((w - listWid)/2, b + 6, tmpList[b])
+			else
+				hiLiteXY((w - listWid)/2, b + 6, tmpList[b])
+			end
 		end
 	end
 	term.setCursor((w - 24)/2, h - 3)
