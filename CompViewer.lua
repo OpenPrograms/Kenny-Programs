@@ -157,28 +157,27 @@ local function printCompXY(menuSel)
 		if tmpList[b] == fileFirst then
 			if fileCount < 0 then
 				if (math.fmod(b, 2) == 0) then
-					writeXY((w - listWid)/2, b + 6, fileFirst)
+					writeXY((w - listWid)/2, b + 6, fileFirst..string.rep(string.char(32), listWid - string.len(fileFirst)))
 				else
-					hiLiteXY((w - listWid)/2, b + 6, fileFirst)
+					hiLiteXY((w - listWid)/2, b + 6, fileFirst..string.rep(string.char(32), listWid - string.len(fileFirst)))
 				end
 			end
 			fileCount = fileCount + 1
 		end
 		if fileCount < 0 then
 			if (math.fmod(b, 2) == 0) then
-				writeXY((w - listWid)/2, b + 6, tmpList[b])
+				writeXY((w - listWid)/2, b + 6, tmpList[b]..string.rep(string.char(32), listWid - string.len(tmpList[b])))
 			else
-				hiLiteXY((w - listWid)/2, b + 6, tmpList[b])
+				hiLiteXY((w - listWid)/2, b + 6, tmpList[b]..string.rep(string.char(32), listWid - string.len(tmpList[b])))
 			end
 		end
 	end
+	gpu.setForeground(theme.textColor)
+	gpu.setBackground(theme.background)
 	term.setCursor((w - 24)/2, h - 3)
 	centerText(h - 3, "Press ENTER to continue")
 	term.setCursor(w/2 + (string.len("Press ENTER to continue")/2) + 2, h - 3)
-	term.setCursorBlink(false)
-	term.setCursorBlink(false)
 	local key = term.read()
-	term.setCursorBlink(false)
 	fileCount = -1
 	gpu.setForeground(theme.textColor)
 	gpu.setBackground(theme.background)
