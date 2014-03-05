@@ -16,6 +16,7 @@ local menuLen = 1
 local menuWid = 0
 
 local compList = {}
+local compList1 = {}
 local compLen = 1
 
 local col = 1
@@ -25,13 +26,9 @@ local w, h = gpu.getResolution()
 local offset = 0
 local running = true
 
-local fileCount = -1
-local fileFirst = ""
-
 local function isAdvanced()
 	return (gpu.getDepth() > 1)
 end
-
 
 for address, name in component.list() do
 	menuList[menuLen] = name
@@ -46,40 +43,43 @@ for address, name in component.list() do
 	menuLen = menuLen + 1
 end
 
-for len = 1, compLen - 1 do
-	sPos = string.find(compList[len], ".", 1, true)
-	if (string.sub(compList[len], 1, sPos - 1) == "filesystem") then
-		fileFirst = string.sub(compList[len], sPos + 1, string.len(compList[len]))
-	end
+function table_count(tt, item)
+  local count
+  count = 0
+  for ii,xx in pairs(tt) do
+    if item == xx then count = count + 1 end
+  end
+  return count
 end
 
-
-menuList[menuLen] = "Exit"
-
-for a = 1, menuLen - 1 do
-	for b = 1, menuLen - 1 do
-		if menuList[b] > menuList[a] then
-			local tmp = menuList[a]
-			menuList[a] = menuList[b]
-			menuList[b] = tmp
+function table_unique(tt)
+	local newtable = {}
+	for ii,xx in ipairs(tt) do
+		if table_count(newtable, xx) == 0 then
+			newtable[#newtable+1] = xx
 		end
 	end
+	return newtable
 end
 
-
+table.sort(menuList)
+menuList[menuLen] = "Exit"
 
 col = (w - menuWid - 4) / 2 
 
+local function setColors(fore, back)
+	gpu.setForeground(fore)
+	gpu.setBackground(back)
+end
 
-local function drawBox(col, row, wid, hgt, f, b, opt)
+local function drawBox(col, row, wid, hgt, fore, back, opt)
 	local ul = {0x250C, 0x2554}
 	local ur = {0x2510, 0x2557}
 	local ll = {0x2514, 0x255A}
 	local lr = {0x2518, 0x255D}
 	local sl = {0x2502, 0x2551}
 	local al = {0x2500, 0x2550}
-	gpu.setForeground(f)
-	gpu.setBackground(b)
+	setColors(fore, back)
 	gpu.set(col, row, unicode.char(ul[opt])..string.rep(unicode.char(al[opt]), wid - 2)..unicode.char(ur[opt]))
 	for a = 1, hgt - 2 do
 		gpu.set(col, row + a, unicode.char(sl[opt])..string.rep(unicode.char(0x0020), wid - 2)..unicode.char(sl[opt]))
@@ -88,18 +88,15 @@ local function drawBox(col, row, wid, hgt, f, b, opt)
 	term.setCursor(col, row)
 end
 	
-	
 local function hiLiteXY(col, row, menuSel)
 	term.setCursorBlink(false)
-	gpu.setForeground(theme.promptHighlight)
-	gpu.setBackground(theme.prompt)
+	setColors(theme.promptHighlight, theme.prompt)
 	gpu.set(col, row, menuSel)
 end
 
 local function writeXY(col, row, menuSel)
 	term.setCursorBlink(false)
-	gpu.setForeground(theme.textColor)
-	gpu.setBackground(theme.background)
+	setColors(theme.textColor, theme.background)
 	gpu.set(col, row, menuSel)
 end	
 
@@ -133,7 +130,7 @@ local function printCompXY(menuSel)
 	local w, h = gpu.getResolution()
 	local sPos = 0
 	local listWid = 0
-
+	
 	for len = 1, compLen - 1 do
 		sPos = string.find(compList[len], ".", 1, true)
 		if (string.sub(compList[len], 1, sPos - 1) == menuSel) then
@@ -144,43 +141,37 @@ local function printCompXY(menuSel)
 			tLen = tLen + 1
 		end
 	end
-	
+
+	table.sort(tmpList)
+	tmpList = table_unique(tmpList)
+
 	local oSet = (h - #tmpList) / 2
-	
-	gpu.setForeground(theme.textColor)
-	gpu.setBackground(theme.background)
+	local topBar = "List for "..menuSel
+	local tbLen = string.len(topBar)
+	local boxWid = 0
+	if tbLen > listWid then
+		boxWid = tbLen
+	else
+		boxWid = listWid
+	end
+	setColors(theme.textColor, theme.background)
 	term.clear()
 	drawBox(2, 3, w - 2, h - 3, theme.textColor, theme.background, 2)
-	centerText(4, "List for "..menuSel)
-	for b = 1, tLen - 1 do
-		local tmpString = "filesystem."..fileFirst
-		if tmpList[b] == fileFirst then
-			if fileCount < 0 then
-				if (math.fmod(b, 2) == 0) then
-					writeXY((w - listWid)/2, b + 6, fileFirst..string.rep(string.char(32), listWid - string.len(fileFirst)))
-				else
-					hiLiteXY((w - listWid)/2, b + 6, fileFirst..string.rep(string.char(32), listWid - string.len(fileFirst)))
-				end
-			end
-			fileCount = fileCount + 1
-		end
-		if fileCount < 0 then
-			if (math.fmod(b, 2) == 0) then
-				writeXY((w - listWid)/2, b + 6, tmpList[b]..string.rep(string.char(32), listWid - string.len(tmpList[b])))
-			else
-				hiLiteXY((w - listWid)/2, b + 6, tmpList[b]..string.rep(string.char(32), listWid - string.len(tmpList[b])))
-			end
+	drawBox(((w - tbLen)/2) - 2, ((h - #tmpList)/2) - 5, (boxWid) + 4, #tmpList + 7, theme.textColor, theme.background, 2)
+	setColors(theme.introText, theme.introBackground)
+	centerText(((h - #tmpList)/2) - 3, topBar)
+	for b = 1, #tmpList do
+		if (math.fmod(b, 2) == 0) then
+			writeXY(((w - tbLen)/2), ((h - #tmpList)/2) + b - 2, tmpList[b]..string.rep(string.char(32), listWid - string.len(tmpList[b])))
+		else
+			hiLiteXY(((w - tbLen)/2), ((h - #tmpList)/2) + b - 2, tmpList[b]..string.rep(string.char(32), listWid - string.len(tmpList[b])))
 		end
 	end
-	gpu.setForeground(theme.textColor)
-	gpu.setBackground(theme.background)
+	setColors(theme.textColor, theme.background)
 	term.setCursor((w - 24)/2, h - 3)
 	centerText(h - 3, "Press ENTER to continue")
 	term.setCursor(w/2 + (string.len("Press ENTER to continue")/2) + 2, h - 3)
 	local key = term.read()
-	fileCount = -1
-	gpu.setForeground(theme.textColor)
-	gpu.setBackground(theme.background)
 	term.clear()
 end
 
@@ -199,7 +190,6 @@ local normalTheme = {				-- Water Theme
   prompt = 0xFFFFFF,
   promptHighlight = 0x000000,
   }
-
 	
 local function up()
 	writeXY(col, currRow + offset, string.char(32)..menuList[currRow]..string.rep(string.char(32), menuWid - string.len(menuList[currRow]) + 1 ))
@@ -271,8 +261,7 @@ end
 
 if isAdvanced() then
 	theme = defaultTheme
-	gpu.setForeground(theme.textColor)
-	gpu.setBackground(theme.background)
+	setColors(theme.textColor, theme.background)
 else
 	term.setCursor(1,1)
 	print("Regretfully you need at least a tier 2 screen to use the Component Viewer")
@@ -305,10 +294,7 @@ while running do
   end
 end
 
-
-gpu.setForeground(0xFFFFFF)
-gpu.setBackground(0x000000)
+setColors(0xFFFFFF, 0x000000)
 term.clear()
-term.setCursorBlink(false)
 
 
