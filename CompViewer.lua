@@ -8,6 +8,7 @@ local text = require("text")
 local unicode = require("unicode")
 local sides = require("sides")
 local colors=require("colors")
+local ks=require("ks")
 
 local gpu = component.gpu
 
@@ -35,9 +36,10 @@ local compLen = 1
 local col = 1
 local currRow = 1
 
-local w, h = gpu.getResolution()
 local offset = 0
 local running = true
+
+
 
 for address, name in component.list() do
 	menuList[menuLen] = name
@@ -52,28 +54,18 @@ for address, name in component.list() do
 	menuLen = menuLen + 1
 end
 
-function table_count(tt, item)
-  local count
-  count = 0
-  for ii,xx in pairs(tt) do
-    if item == xx then count = count + 1 end
-  end
-  return count
-end
-
-function table_unique(tt)
-	local newtable = {}
-	for ii,xx in ipairs(tt) do
-		if table_count(newtable, xx) == 0 then
-			newtable[#newtable+1] = xx
-		end
-	end
-	return newtable
-end
-
 table.sort(menuList)
 menuList[menuLen] = "Exit"
 
+local w, h = gpu.getResolution()
+local tmpW, tmpH = gpu.getResolution()
+
+if (w < 160 and h < 50) then
+	tmpW, tmpH = gpu.getResolution()
+	gpu.setResolution(160,50)
+end
+
+local w, h = gpu.getResolution()
 col = (w - menuWid - 4) / 2 
 
 local function getCh()
@@ -139,6 +131,12 @@ local function printXY(col, row, menuSel)
 	gpu.set(col, row, menuSel)
 end	
 
+local function printDocXY(col, row, menuSel)
+	setCursor(col, row)
+	print(menuSel)
+end
+
+
 local function centerText(row, msg)
 	local w, h = getSize()
 	local len = string.len(msg)
@@ -146,7 +144,7 @@ local function centerText(row, msg)
 end
 
 local function intro()
-	local w, h = getSize()
+	local w, h = gpu.getResolution()
 	local len = string.len(OC_1)
 	local helpLen = string.len(help)
 	
@@ -182,7 +180,7 @@ local function printCompXY(menuSel)
 	end
 
 	table.sort(tmpList)
-	tmpList = table_unique(tmpList)
+	tmpList = ks.table_unique(tmpList)
 
 	local topBar = "List for "..menuSel
 	local tbLen = string.len(topBar)
@@ -382,6 +380,7 @@ local function down()
 end
 
 offset = (h - #menuList) / 2
+
 local function printBuf()
 	if (isAdvanced()) then
 		drawBox(col - 2, offset - 1, menuWid + 6, #menuList + 5, theme.textColor, theme.background, 2)
@@ -426,7 +425,7 @@ else
 end
 
 term.clear()
-local w, h = getSize()
+local w, h = gpu.getResolution()
 
 if (isAdvanced()) then
 	intro()
@@ -449,6 +448,7 @@ while running do
   end
 end
 
+gpu.setResolution(tmpW, tmpH)
 setColors(0xFFFFFF, 0x000000)
 term.clear()
 
