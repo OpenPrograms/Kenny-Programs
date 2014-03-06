@@ -323,6 +323,8 @@ local function printCompXY(menuSel)
 			printXY(20, 24, "for the channel with the specified color.")
 			printXY(10, 24, "setBundledOutput(side: number, color: number, value: number): number"..spaces(5).."Like setOutput, but for bundled output,")
 			printXY(20, 24, "setting the value for the channel with the specified color.")
+		else
+			printXY(15, 7, "Currently no documentation for this")
 		end
 		local key = getCh()
 	end
