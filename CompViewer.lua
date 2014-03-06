@@ -11,6 +11,15 @@ local colors=require("colors")
 
 local gpu = component.gpu
 
+local OC_1 = " ***  ****  ***** *   *  ****  ***  *   * ****  *   * ***** ***** ****   ****"
+local OC_2 = "*   * *   * *     **  * *     *   * * * * *   * *   *   *   *     *   * *    "
+local OC_3 = "*   * ****  ***   * * * *     *   * *   * ****  *   *   *   ***   ****   *** "
+local OC_4 = "*   * *     *     *  ** *     *   * *   * *     *   *   *   *     *  *      *"
+local OC_5 = " ***  *     ***** *   *  ****  ***  *   * *      ***    *   ***** *   * **** "
+
+local menuHint = "List function calls for the "
+local help = "[UP/DN] - Arrow through the menu          [Enter/Left/Right] - Select current menu item"
+
 local menuList = {}
 local menuLen = 1
 local menuWid = 0
@@ -26,10 +35,6 @@ local w, h = gpu.getResolution()
 local offset = 0
 local running = true
 
-local function isAdvanced()
-	return (gpu.getDepth() > 1)
-end
-
 for address, name in component.list() do
 	menuList[menuLen] = name
 	if (string.len(menuList[menuLen]) > menuWid) then
@@ -37,7 +42,7 @@ for address, name in component.list() do
 	end
 
 	for k, v in pairs(component.proxy(address)) do
-		compList[compLen] = name.."."..k
+		compList1[compLen] = name.."."..k
 		compLen = compLen + 1
 	end
 	menuLen = menuLen + 1
@@ -67,9 +72,29 @@ menuList[menuLen] = "Exit"
 
 col = (w - menuWid - 4) / 2 
 
+local function isAdvanced()
+	return (gpu.getDepth() > 1)
+end
+
 local function setColors(fore, back)
 	gpu.setForeground(fore)
 	gpu.setBackground(back)
+end
+
+local function setCursor(col, row)
+	term.getCursor(col, row)
+end
+
+local function getSize()
+	return gpu.getResolution()
+end
+
+local function spaces(cnt)
+	return string.rep(string.char(32), cnt)
+end
+
+local function extraChars(letter, cnt)
+	return string.rep(unicode.char(letter), cnt)
 end
 
 local function drawBox(col, row, wid, hgt, fore, back, opt)
@@ -80,45 +105,36 @@ local function drawBox(col, row, wid, hgt, fore, back, opt)
 	local sl = {0x2502, 0x2551}
 	local al = {0x2500, 0x2550}
 	setColors(fore, back)
-	gpu.set(col, row, unicode.char(ul[opt])..string.rep(unicode.char(al[opt]), wid - 2)..unicode.char(ur[opt]))
+	gpu.set(col, row, unicode.char(ul[opt])..extraChars(al[opt], wid - 2)..unicode.char(ur[opt]))
 	for a = 1, hgt - 2 do
-		gpu.set(col, row + a, unicode.char(sl[opt])..string.rep(unicode.char(0x0020), wid - 2)..unicode.char(sl[opt]))
+		gpu.set(col, row + a, unicode.char(sl[opt])..spaces(wid - 2)..unicode.char(sl[opt]))
 	end
-	gpu.set(col, row + hgt - 2, unicode.char(ll[opt])..string.rep(unicode.char(al[opt]), wid - 2)..unicode.char(lr[opt]))
-	term.setCursor(col, row)
+	gpu.set(col, row + hgt - 2, unicode.char(ll[opt])..extraChars(al[opt], wid - 2)..unicode.char(lr[opt]))
+	setCursor(col, row)
 end
 	
-local function hiLiteXY(col, row, menuSel)
-	term.setCursorBlink(false)
-	setColors(theme.promptHighlight, theme.prompt)
-	gpu.set(col, row, menuSel)
-end
-
-local function writeXY(col, row, menuSel)
-	term.setCursorBlink(false)
-	setColors(theme.textColor, theme.background)
+local function printXY(col, row, menuSel)
 	gpu.set(col, row, menuSel)
 end	
 
 local function centerText(row, msg)
-	local w, h = gpu.getResolution()
+	local w, h = getSize()
 	local len = string.len(msg)
-	component.gpu.set((w - len)/2, row, msg)
+	gpu.set((w - len)/2, row, msg)
 end
 
 local function intro()
-	local w, h = gpu.getResolution()
-	local len = string.len(" ***  ****  ***** *   *  ****  ***  *   * ****  *   * ***** ***** ****   ****")
-	local help = "[UP/DN] - Arrow through the menu          [Enter/Left/Right] - Select current menu item"
+	local w, h = getSize()
+	local len = string.len(OC_1)
 	local helpLen = string.len(help)
 	
 	drawBox(2, 3, w - 2, h - 3, theme.textColor, theme.background, 2)
 	drawBox((w - len)/2 - 2, 5, len + 4, 10, theme.introText, theme.introBackground, 1)
-	centerText(6, " ***  ****  ***** *   *  ****  ***  *   * ****  *   * ***** ***** ****   ****")
-	centerText(7, "*   * *   * *     **  * *     *   * * * * *   * *   *   *   *     *   * *    ")
-	centerText(8, "*   * ****  ***   * * * *     *   * *   * ****  *   *   *   ***   ****   *** ")
-	centerText(9, "*   * *     *     *  ** *     *   * *   * *     *   *   *   *     *  *      *")
-	centerText(10, " ***  *     ***** *   *  ****  ***  *   * *      ***    *   ***** *   * **** ")
+	centerText(6, OC_1)
+	centerText(7, OC_2)
+	centerText(8, OC_3)
+	centerText(9, OC_4)
+	centerText(10, OC_5)
 	centerText(12, "Component Viewer")
 	drawBox((w - helpLen)/2 - 2, h - 7, helpLen + 4, 4, theme.introText, theme.introBackground, 1)
 	centerText(h - 6, help)
@@ -127,7 +143,7 @@ end
 local function printCompXY(menuSel)
 	local tmpList = {}
 	local tLen = 1
-	local w, h = gpu.getResolution()
+	local w, h = getSize()
 	local sPos = 0
 	local listWid = 0
 	
@@ -145,15 +161,16 @@ local function printCompXY(menuSel)
 	table.sort(tmpList)
 	tmpList = table_unique(tmpList)
 
-	local oSet = (h - #tmpList) / 2
 	local topBar = "List for "..menuSel
 	local tbLen = string.len(topBar)
 	local boxWid = 0
+	
 	if tbLen > listWid then
 		boxWid = tbLen
 	else
 		boxWid = listWid
 	end
+	
 	setColors(theme.textColor, theme.background)
 	term.clear()
 	drawBox(2, 3, w - 2, h - 3, theme.textColor, theme.background, 2)
@@ -162,15 +179,17 @@ local function printCompXY(menuSel)
 	centerText(((h - #tmpList)/2) - 3, topBar)
 	for b = 1, #tmpList do
 		if (math.fmod(b, 2) == 0) then
-			writeXY(((w - tbLen)/2), ((h - #tmpList)/2) + b - 2, tmpList[b]..string.rep(string.char(32), listWid - string.len(tmpList[b])))
+			setColors(theme.textColor, theme.background)
+			printXY(((w - tbLen)/2), ((h - #tmpList)/2) + b - 2, tmpList[b]..spaces(listWid - string.len(tmpList[b])))
 		else
-			hiLiteXY(((w - tbLen)/2), ((h - #tmpList)/2) + b - 2, tmpList[b]..string.rep(string.char(32), listWid - string.len(tmpList[b])))
+			setColors(theme.promptHighlight, theme.prompt)
+			printXY(((w - tbLen)/2), ((h - #tmpList)/2) + b - 2, tmpList[b]..spaces(listWid - string.len(tmpList[b])))
 		end
 	end
 	setColors(theme.textColor, theme.background)
-	term.setCursor((w - 24)/2, h - 3)
+	setCursor((w - 24)/2, h - 3)
 	centerText(h - 3, "Press ENTER to continue")
-	term.setCursor(w/2 + (string.len("Press ENTER to continue")/2) + 2, h - 3)
+	setCursor(w/2 + (string.len("Press ENTER to continue")/2) + 2, h - 3)
 	local key = term.read()
 	term.clear()
 end
@@ -179,7 +198,9 @@ local defaultTheme = {				-- Water Theme
   textColor = 0xFFFFFF,
   background = 0x0000FF,
 	introText = 0xFF0000,
-	introBackground = 0xFFFFFF,
+	introBackground = 0xC5C1AA,
+	menuHintText = 0xFFFF00,
+	menuHint = 0x000000,
   prompt = 0x000000,
   promptHighlight = 0xFFFFFF,
   }
@@ -190,37 +211,36 @@ local normalTheme = {				-- Water Theme
   prompt = 0xFFFFFF,
   promptHighlight = 0x000000,
   }
+
 	
 local function up()
-	writeXY(col, currRow + offset, string.char(32)..menuList[currRow]..string.rep(string.char(32), menuWid - string.len(menuList[currRow]) + 1 ))
+	setColors(theme.textColor, theme.background)
+	printXY(col, currRow + offset, string.char(32)..menuList[currRow]..string.rep(string.char(32), menuWid - string.len(menuList[currRow]) + 1 ))
   if currRow > 1 then
     currRow = currRow - 1
 	else
 		currRow = #menuList
 	end
-	hiLiteXY(col, currRow + offset, string.char(32)..menuList[currRow]..string.rep(string.char(32), menuWid - string.len(menuList[currRow]) + 1 ))
-	if currRow < #menuList then
-		hiLiteXY((w - (menuWid + string.len("List the function calls for ")))/2, h - 9, string.rep(string.char(32), menuWid + string.len("List the function calls for ")))
-		hiLiteXY((w - (menuWid + string.len("List the function calls for ")))/2, h - 9, "List the function calls for "..menuList[currRow])
-	else
-		hiLiteXY((w - (menuWid + string.len("List the function calls for ")))/2, h - 9, string.rep(string.char(32), menuWid + string.len("List the function calls for ")))
-	end
+	setColors(theme.menuHintText, theme.menuHint)
+	printXY((w - (menuWid + string.len(menuHint)))/2, h - 9, string.rep(string.char(32), menuWid + string.len(menuHint)))
+	printXY((w - (menuWid + string.len(menuHint)))/2, h - 9, menuHint..menuList[currRow])
+	setColors(theme.promptHighlight, theme.prompt)
+	printXY(col, currRow + offset, string.char(32)..menuList[currRow]..string.rep(string.char(32), menuWid - string.len(menuList[currRow]) + 1 ))
 end
 
 local function down()
-	writeXY(col, currRow + offset, string.char(32)..menuList[currRow]..string.rep(string.char(32), menuWid - string.len(menuList[currRow]) + 1 ))
+	setColors(theme.textColor, theme.background)
+	printXY(col, currRow + offset, string.char(32)..menuList[currRow]..string.rep(string.char(32), menuWid - string.len(menuList[currRow]) + 1 ))
   if currRow < #menuList then
     currRow = currRow + 1
 	else 
 		currRow = 1
 	end
-	hiLiteXY(col, currRow + offset, string.char(32)..menuList[currRow]..string.rep(string.char(32), menuWid - string.len(menuList[currRow]) + 1 ))
-	if currRow < #menuList then
-		hiLiteXY((w - (menuWid + string.len("List the function calls for ")))/2, h - 9, string.rep(string.char(32), menuWid + string.len("List the function calls for ")))
-		hiLiteXY((w - (menuWid + string.len("List the function calls for ")))/2, h - 9, "List the function calls for "..menuList[currRow])
-	else
-		hiLiteXY((w - (menuWid + string.len("List the function calls for ")))/2, h - 9, string.rep(string.char(32), menuWid + string.len("List the function calls for ")))
-	end
+	setColors(theme.menuHintText, theme.menuHint)
+	printXY((w - (menuWid + string.len(menuHint)))/2, h - 9, string.rep(string.char(32), menuWid + string.len(menuHint)))
+	printXY((w - (menuWid + string.len(menuHint)))/2, h - 9, menuHint..menuList[currRow])
+	setColors(theme.promptHighlight, theme.prompt)
+	printXY(col, currRow + offset, string.char(32)..menuList[currRow]..string.rep(string.char(32), menuWid - string.len(menuList[currRow]) + 1 ))
 end
 
 offset = (h - #menuList) / 2
@@ -229,7 +249,8 @@ local function printBuf()
 		drawBox(col - 2, offset - 1, menuWid + 6, #menuList + 5, theme.textColor, theme.background, 2)
 	end
 	for a = 1, #menuList do
-		writeXY(col, offset + a, string.char(32)..menuList[a]..string.rep(string.char(32), menuWid - string.len(menuList[a]) + 1 ))
+		setColors(theme.textColor, theme.background)
+		printXY(col, offset + a, string.char(32)..menuList[a]..spaces(menuWid - string.len(menuList[a]) + 1 ))
 	end
 end
 
@@ -246,8 +267,7 @@ local function enter()
 	end
 end
 
-local controlKeyCombos = {[keyboard.keys.s]=true,[keyboard.keys.w]=true,
-                          [keyboard.keys.c]=true,[keyboard.keys.x]=true}
+local controlKeyCombos = {[keyboard.keys.s]=true, [keyboard.keys.w]=true, [keyboard.keys.c]=true, [keyboard.keys.x]=true}
 
 local function onKeyDown(char, code)
   if code == keyboard.keys.up then
@@ -263,13 +283,12 @@ if isAdvanced() then
 	theme = defaultTheme
 	setColors(theme.textColor, theme.background)
 else
-	term.setCursor(1,1)
-	print("Regretfully you need at least a tier 2 screen to use the Component Viewer")
+	printXY(1, 1, "Regretfully you need at least a tier 2 screen to use the Component Viewer")
 	running = false
 end
 
 term.clear()
-local w, h = gpu.getResolution()
+local w, h = getSize()
 
 if (isAdvanced()) then
 	intro()
@@ -278,13 +297,11 @@ end
 
 
 while running do
-	hiLiteXY(col, currRow + offset, string.char(32)..menuList[currRow]..string.rep(string.char(32), menuWid - string.len(menuList[currRow]) + 1 ))
-	if currRow < #menuList then
-		hiLiteXY((w - (menuWid + string.len("List the function calls for ")))/2, h - 9, string.rep(string.char(32), menuWid + string.len("List the function calls for ")))
-		hiLiteXY((w - (menuWid + string.len("List the function calls for ")))/2, h - 9, "List the function calls for "..menuList[currRow])
-	else
-		hiLiteXY((w - (menuWid + string.len("List the function calls for ")))/2, h - 9, string.rep(string.char(32), menuWid + string.len("List the function calls for ")))
-	end
+	setColors(theme.menuHintText, theme.menuHint)
+	printXY((w - (menuWid + string.len(menuHint)))/2, h - 9, string.rep(string.char(32), menuWid + string.len(menuHint)))
+	printXY((w - (menuWid + string.len(menuHint)))/2, h - 9, menuHint..menuList[currRow])
+	setColors(theme.promptHighlight, theme.prompt)
+	printXY(col, currRow + offset, string.char(32)..menuList[currRow]..string.rep(string.char(32), menuWid - string.len(menuList[currRow]) + 1 ))
   local event, address, arg1, arg2, arg3 = event.pull()
   if type(address) == "string" and component.isPrimary(address) then
     local blink = true
