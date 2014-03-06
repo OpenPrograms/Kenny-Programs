@@ -77,7 +77,7 @@ local function table_count(tt, item)
 	return count
 end
 	
-function table_unique(tt)
+local function table_unique(tt)
 	local newtable = {}
 	for ii,xx in ipairs(tt) do
 		if table_count(newtable, xx) == 0 then
