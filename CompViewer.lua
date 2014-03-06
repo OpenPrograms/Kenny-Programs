@@ -11,6 +11,10 @@ local colors=require("colors")
 
 local gpu = component.gpu
 
+local function spaces(cnt)
+	return string.rep(string.char(32), cnt)
+end
+
 local OC_1 = " ***  ****  ***** *   *  ****  ***  *   * ****  *   * ***** ***** ****   ****"
 local OC_2 = "*   * *   * *     **  * *     *   * * * * *   * *   *   *   *     *   * *    "
 local OC_3 = "*   * ****  ***   * * * *     *   * *   * ****  *   *   *   ***   ****   *** "
@@ -42,7 +46,7 @@ for address, name in component.list() do
 	end
 
 	for k, v in pairs(component.proxy(address)) do
-		compList1[compLen] = name.."."..k
+		compList[compLen] = name.."."..k
 		compLen = compLen + 1
 	end
 	menuLen = menuLen + 1
@@ -82,15 +86,11 @@ local function setColors(fore, back)
 end
 
 local function setCursor(col, row)
-	term.getCursor(col, row)
+	term.setCursor(col, row)
 end
 
 local function getSize()
 	return gpu.getResolution()
-end
-
-local function spaces(cnt)
-	return string.rep(string.char(32), cnt)
 end
 
 local function extraChars(letter, cnt)
@@ -130,6 +130,7 @@ local function intro()
 	
 	drawBox(2, 3, w - 2, h - 3, theme.textColor, theme.background, 2)
 	drawBox((w - len)/2 - 2, 5, len + 4, 10, theme.introText, theme.introBackground, 1)
+	
 	centerText(6, OC_1)
 	centerText(7, OC_2)
 	centerText(8, OC_3)
