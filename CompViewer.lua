@@ -97,6 +97,24 @@ local function extraChars(letter, cnt)
 	return string.rep(unicode.char(letter), cnt)
 end
 
+local function saveWin(x, y, wid, hgt)
+	local winCol = {}
+	local winRow = {}
+	for a = 1, hgt do
+		for b = 1, wid do
+			winCol[b] = gpu.get((x + b) - 1, (y + a) - 1)
+		end
+		winRow[a] = table.concat(winCol)
+	end
+	return winRow
+end
+
+local function restoreWin(x, y, wind)
+	for a = 1, #wind do
+		gpu.set(x, (y + a) - 1, wind[a])
+	end
+end
+
 local function drawBox(col, row, wid, hgt, fore, back, opt)
 	local ul = {0x250C, 0x2554}
 	local ur = {0x2510, 0x2557}
@@ -189,17 +207,34 @@ local function printCompXY(menuSel)
 	end
 	setColors(theme.textColor, theme.background)
 	setCursor((w - 24)/2, h - 3)
-	centerText(h - 3, "Press ENTER to continue")
-	setCursor(w/2 + (string.len("Press ENTER to continue")/2) + 2, h - 3)
+	centerText(h - 3, "[M + ENTER] Manual   [ENTER] continue")
+	setCursor(w/2 + (string.len("[M + ENTER] Manual   [ENTER] continue")/2) + 2, h - 3)
 	local key = term.read()
+	if string.upper(text.trim(key)) == "M" then
+		drawBox(1, 1, w, h - 1, theme.textColor, theme.background, 2)
+		centerText(4, "Description of the functions for "..menuSel)
+
+		if string.lower(menuSel) == "computer" then
+			printXY(10, 7, "address()"..spaces(5).."Gets the address of the card")
+			printXY(10, 9, "start(): boolean"..spaces(5).."Tries to start the computer. Returns true on success, false otherwise. Note that this will also")
+			printXY(31, 10, "return false if the computer was already running. If the computer is currently shutting down, this")
+			printXY(31, 11, "will cause the computer to reboot instead.")
+			printXY(10, 13, "stop(): boolean"..spaces(5).."Tries to stop the computer. Returns true on success, false otherwise. Also returns false if the")
+			printXY(30, 14, "computer is already stopped.")
+			printXY(10, 16, "isRunning(): boolean"..spaces(5).."Returns whether the computer is currently running.")
+			printXY(10, 18, "type()")
+		end
+		local key = term.read()
+	end
 	term.clear()
 end
+
 
 local defaultTheme = {				-- Water Theme
   textColor = 0xFFFFFF,
   background = 0x0000FF,
 	introText = 0xFF0000,
-	introBackground = 0xC5C1AA,
+	introBackground = 0x000000,
 	menuHintText = 0xFFFF00,
 	menuHint = 0x000000,
   prompt = 0x000000,
