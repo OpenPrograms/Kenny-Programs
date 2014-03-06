@@ -68,6 +68,25 @@ end
 local w, h = gpu.getResolution()
 col = (w - menuWid - 4) / 2 
 
+local function table_count(tt, item)
+	local count
+	count = 0
+	for ii,xx in pairs(tt) do
+		if item == xx then count = count + 1 end
+	end
+	return count
+end
+	
+function table_unique(tt)
+	local newtable = {}
+	for ii,xx in ipairs(tt) do
+		if table_count(newtable, xx) == 0 then
+			newtable[#newtable+1] = xx
+		end
+	end
+	return newtable
+end
+
 local function getCh()
 	return (select(3, event.pull("key_down")))
 end
