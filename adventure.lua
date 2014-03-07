@@ -991,11 +991,11 @@ function commands.cbreak( _sItem, _sTool )
 		return
 	elseif _sItem == "self" or _sItem == "myself" then
 		if isAdvanced() then
-			gpu.setForeground( colours.red )
+			gpu.setForeground( 0xFF0000 )
 		end
 		print( "You have died." )
 		print( "Score: &e0" )
-		gpu.setForeground( colours.white )
+		gpu.setForeground( oxFFFFFF )
 		bRunning = false
 		return
 	end
@@ -1084,11 +1084,11 @@ function commands.craft( _sItem )
 	if _sItem == "computer" or _sItem == "a computer" then
 		print( "By creating a computer in a computer in a computer, you tear a hole in the spacetime continuum from which no mortal being can escape." )
 		if isAdvanced() then
-			gpu.setForeground( colours.red )
+			gpu.setForeground( 0xFF0000 )
 		end
 		print( "You have died." )
 		print( "Score: &e0" )
-		gpu.setForeground( colours.white )
+		gpu.setForeground( oxFFFFFF )
 		bRunning = false
 		return
 	end
@@ -1302,11 +1302,11 @@ local function simulate()
 					
 					if bInjured then
 						if isAdvanced() then
-							gpu.setForeground( colours.red )
+							gpu.setForeground( 0xFF0000 )
 						end
 						print( "You have died." )
 						print( "Score: &e0" )
-						gpu.setForeground( colours.white )
+						gpu.setForeground( oxFFFFFF )
 						bRunning = false
 						return
 					else
