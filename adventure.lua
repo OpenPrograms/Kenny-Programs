@@ -990,12 +990,12 @@ function commands.cbreak( _sItem, _sTool )
 		inventory[ "some wood" ] = items[ "some wood" ]
 		return
 	elseif _sItem == "self" or _sItem == "myself" then
-		if term.isColour() then
-			term.setTextColour( colours.red )
+		if isAdvanced() then
+			gpu.setForeground( colours.red )
 		end
 		print( "You have died." )
 		print( "Score: &e0" )
-		term.setTextColour( colours.white )
+		gpu.setForeground( colours.white )
 		bRunning = false
 		return
 	end
@@ -1083,12 +1083,12 @@ function commands.craft( _sItem )
 	
 	if _sItem == "computer" or _sItem == "a computer" then
 		print( "By creating a computer in a computer in a computer, you tear a hole in the spacetime continuum from which no mortal being can escape." )
-		if term.isColour() then
-			term.setTextColour( colours.red )
+		if isAdvanced() then
+			gpu.setForeground( colours.red )
 		end
 		print( "You have died." )
 		print( "Score: &e0" )
-		term.setTextColour( colours.white )
+		gpu.setForeground( colours.white )
 		bRunning = false
 		return
 	end
@@ -1301,12 +1301,12 @@ local function simulate()
 					end
 					
 					if bInjured then
-						if term.isColour() then
-							term.setTextColour( colours.red )
+						if isAdvanced() then
+							gpu.setForeground( colours.red )
 						end
 						print( "You have died." )
 						print( "Score: &e0" )
-						term.setTextColour( colours.white )
+						gpu.setForeground( colours.white )
 						bRunning = false
 						return
 					else
