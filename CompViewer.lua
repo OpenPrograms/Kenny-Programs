@@ -199,7 +199,7 @@ local function printCompXY(menuSel)
 	end
 
 	table.sort(tmpList)
-	tmpList = ks.table_unique(tmpList)
+	tmpList = table_unique(tmpList)
 
 	local topBar = "List for "..menuSel
 	local tbLen = string.len(topBar)
