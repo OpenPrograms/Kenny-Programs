@@ -22,7 +22,7 @@ local OC_4 = "*   * *     *     *  ** *     *   * *   * *     *   *   *   *     
 local OC_5 = " ***  *     ***** *   *  ****  ***  *   * *      ***    *   ***** *   * **** "
 
 local menuHint = "List function calls for the "
-local help = "[UP/DN] - Arrow through the menu          [Enter/Left/Right] - Select current menu item"
+local help = "[UP/DN] - Arrow through the menu     [Enter/Left/Right] - Select current menu item     [R] - Refresh List     [Q/X] - Exit"
 
 local menuList = {}
 local menuLen = 1
@@ -39,22 +39,27 @@ local offset = 0
 local running = true
 
 
-
-for address, name in component.list() do
-	menuList[menuLen] = name
-	if (string.len(menuList[menuLen]) > menuWid) then
-		menuWid = string.len(menuList[menuLen])
+local function getMenuList()
+	local w, h = gpu.getResolution()
+	for address, name in component.list() do
+		menuList[menuLen] = name
+		if (string.len(menuList[menuLen]) > menuWid) then
+			menuWid = string.len(menuList[menuLen])
+		end
+		
+		for k, v in pairs(component.proxy(address)) do
+			compList[compLen] = name.."."..k
+			compLen = compLen + 1
+		end
+		menuLen = menuLen + 1
 	end
-
-	for k, v in pairs(component.proxy(address)) do
-		compList[compLen] = name.."."..k
-		compLen = compLen + 1
-	end
-	menuLen = menuLen + 1
+	table.sort(menuList)
+	menuList[menuLen] = "Exit"
+	col = (w - menuWid - 4) / 2 
+	offset = (h - #menuList) / 2
+	return col	
 end
 
-table.sort(menuList)
-menuList[menuLen] = "Exit"
 
 local w, h = gpu.getResolution()
 local tmpW, tmpH = gpu.getResolution()
@@ -64,8 +69,6 @@ if (w < 160 and h < 50) then
 	gpu.setResolution(160,50)
 end
 
-local w, h = gpu.getResolution()
-col = (w - menuWid - 4) / 2 
 
 local function table_count(tt, item)
 	local count
@@ -88,6 +91,10 @@ end
 
 local function getCh()
 	return (select(3, event.pull("key_down")))
+end
+
+local function getKey()
+	return (select(4, event.pull("key_down")))
 end
 
 local function isAdvanced()
@@ -397,10 +404,9 @@ local function down()
 	printXY(col, currRow + offset, string.char(32)..menuList[currRow]..string.rep(string.char(32), menuWid - string.len(menuList[currRow]) + 1 ))
 end
 
-offset = (h - #menuList) / 2
 
 local function printBuf()
-	if (isAdvanced()) then
+	if isAdvanced() then
 		drawBox(col - 2, offset - 1, menuWid + 6, #menuList + 5, theme.textColor, theme.background, 2)
 	end
 	for a = 1, #menuList do
@@ -422,18 +428,6 @@ local function enter()
 	end
 end
 
-local controlKeyCombos = {[keyboard.keys.s]=true, [keyboard.keys.w]=true, [keyboard.keys.c]=true, [keyboard.keys.x]=true}
-
-local function onKeyDown(char, code)
-  if code == keyboard.keys.up then
-    up()
-  elseif code == keyboard.keys.down then
-    down()
-  elseif code == keyboard.keys.enter or code == keyboard.keys.left or code == keyboard.keys.right then
-    enter()
-  end
-end
-
 if isAdvanced() then
 	theme = defaultTheme
 	setColors(theme.textColor, theme.background)
@@ -446,6 +440,7 @@ term.clear()
 local w, h = gpu.getResolution()
 
 if (isAdvanced()) then
+	getMenuList()
 	intro()
 	printBuf()
 end
@@ -457,12 +452,22 @@ while running do
 	printXY((w - (menuWid + string.len(menuHint)))/2, h - 9, menuHint..menuList[currRow])
 	setColors(theme.promptHighlight, theme.prompt)
 	printXY(col, currRow + offset, string.char(32)..menuList[currRow]..string.rep(string.char(32), menuWid - string.len(menuList[currRow]) + 1 ))
-  local event, address, arg1, arg2, arg3 = event.pull()
-  if type(address) == "string" and component.isPrimary(address) then
-    local blink = true
-    if event == "key_down" then
-      onKeyDown(arg1, arg2)
-    end
+  key = getKey() or getCh()
+  if key == keyboard.keys.up then
+    up()
+  elseif key == keyboard.keys.down then
+    down()
+  elseif key == keyboard.keys.enter or key == keyboard.keys.left or key == keyboard.keys.right then
+    enter()
+  elseif key == keyboard.keys.r then
+		menuLen = 1
+		menuWid = 0
+		menuList = {}
+		getMenuList()
+		intro()
+		printBuf()
+  elseif key == keyboard.keys.q or key == keyboard.keys.x then
+    running = false
   end
 end
 
