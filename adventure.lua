@@ -1321,11 +1321,11 @@ local function simulate()
 	
 	-- Always print this
 	if bInjured then
-		if term.isColour() then
-			term.setTextColour( colours.red )
+		if isAdvanced() then
+			gpu.setForeground( 0xFF0000 )
 		end
 		print( "You are injured." )
-		term.setTextColour( colours.white )
+		gpu.setForeground( 0xFFFFFF )
 	end
 	
 	-- Advance time
