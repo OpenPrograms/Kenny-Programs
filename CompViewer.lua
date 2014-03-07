@@ -8,7 +8,6 @@ local text = require("text")
 local unicode = require("unicode")
 local sides = require("sides")
 local colors=require("colors")
-local ks=require("ks")
 
 local gpu = component.gpu
 
