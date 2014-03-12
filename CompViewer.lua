@@ -15,11 +15,15 @@ local function spaces(cnt)
 	return string.rep(string.char(32), cnt)
 end
 
-local OC_1 = " ***  ****  ***** *   *  ****  ***  *   * ****  *   * ***** ***** ****   ****"
-local OC_2 = "*   * *   * *     **  * *     *   * * * * *   * *   *   *   *     *   * *    "
-local OC_3 = "*   * ****  ***   * * * *     *   * *   * ****  *   *   *   ***   ****   *** "
-local OC_4 = "*   * *     *     *  ** *     *   * *   * *     *   *   *   *     *  *      *"
-local OC_5 = " ***  *     ***** *   *  ****  ***  *   * *      ***    *   ***** *   * **** "
+local function spChar(charter, cnt)
+	return string.rep(unicode.char(charter), cnt)
+end
+
+local OC_1 = " "..spChar(0x2584,3).."  "..spChar(0x2584,4).."  "..spChar(0x2584,5).." "..spChar(0x2584,1).."   "..spChar(0x2584,1).."  "..spChar(0x2584,4).."  "..spChar(0x2584,3).."  "..spChar(0x2584,1).."   "..spChar(0x2584,1).." "..spChar(0x2584,4).."  "..spChar(0x2584,1).."   "..spChar(0x2584,1).." "..spChar(0x2584,5).." "..spChar(0x2584,5).." "..spChar(0x2584,4).."   "..spChar(0x2584,4)
+local OC_2 = spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1).."     "..spChar(0x2588,1)..spChar(0x2584,1).."  "..spChar(0x2588,1).." "..spChar(0x2588,1).."     "..spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1)..spChar(0x2580,1)..spChar(0x2584,1)..spChar(0x2580,1)..spChar(0x2588,1).." "..spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1).."   "..spChar(0x2588,1).."   "..spChar(0x2588,1).."   "..spChar(0x2588,1).."     "..spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1)
+local OC_3 = spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1)..spChar(0x2580,3).."  "..spChar(0x2588,1)..spChar(0x2580,2).."   "..spChar(0x2588,1).." "..spChar(0x2588,1).." "..spChar(0x2588,1).." "..spChar(0x2588,1).."     "..spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1)..spChar(0x2580,3).."  "..spChar(0x2588,1).."   "..spChar(0x2588,1).."   "..spChar(0x2588,1).."   "..spChar(0x2588,1)..spChar(0x2580,2).."   "..spChar(0x2588,1)..spChar(0x2580,1)..spChar(0x2588,1)..spChar(0x2580,1).."   "..spChar(0x2580,2)..spChar(0x2584,1)
+local OC_4 = spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1).."     "..spChar(0x2588,1).."     "..spChar(0x2588,1).."  "..spChar(0x2588,2).." "..spChar(0x2588,1).."     "..spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1).."     "..spChar(0x2588,1).."   "..spChar(0x2588,1).."   "..spChar(0x2588,1).."   "..spChar(0x2588,1).."     "..spChar(0x2588,1).."  "..spChar(0x2588,1).."      "..spChar(0x2588,1)
+local OC_5 = " "..spChar(0x2580,3).."  "..spChar(0x2580,1).."     "..spChar(0x2580,5).." "..spChar(0x2580,1).."   "..spChar(0x2580,1).."  "..spChar(0x2580,4).."  "..spChar(0x2580,3).."  "..spChar(0x2580,1).."   "..spChar(0x2580,1).." "..spChar(0x2580,1).."      "..spChar(0x2580,3).."    "..spChar(0x2580,1).."   "..spChar(0x2580,5).." "..spChar(0x2580,1).."   "..spChar(0x2580,1).." "..spChar(0x2580,4)
 
 local menuHint = "List function calls for the "
 local help = "[UP/DN] - Arrow through the menu     [Enter/Left/Right] - Select current menu item     [R] - Refresh List     [Q/X] - Exit"
@@ -168,19 +172,30 @@ local function centerText(row, msg)
 	gpu.set((w - len)/2, row, msg)
 end
 
+local function centerIntroText(row, msg)
+	local msg1 = "*   * *   * *     **  * *     *   * * * * *   * *   *   *   *     *   * *    "
+	local w, h = getSize()
+	local len = string.len(msg1)
+	gpu.set((w - len)/2, row, msg)
+end
+
+
+
+
 local function intro()
 	local w, h = gpu.getResolution()
-	local len = string.len(OC_1)
+	local msg1 = "*   * *   * *     **  * *     *   * * * * *   * *   *   *   *     *   * *    "
+	local len = string.len(msg1)
 	local helpLen = string.len(help)
 	
 	drawBox(2, 3, w - 2, h - 3, theme.textColor, theme.background, 2)
 	drawBox((w - len)/2 - 2, 5, len + 4, 10, theme.introText, theme.introBackground, 1)
 	
-	centerText(6, OC_1)
-	centerText(7, OC_2)
-	centerText(8, OC_3)
-	centerText(9, OC_4)
-	centerText(10, OC_5)
+	centerIntroText(6, OC_1)
+	centerIntroText(7, OC_2)
+	centerIntroText(8, OC_3)
+	centerIntroText(9, OC_4)
+	centerIntroText(10, OC_5)
 	centerText(12, "Component Viewer")
 	drawBox((w - helpLen)/2 - 2, h - 7, helpLen + 4, 4, theme.introText, theme.introBackground, 1)
 	centerText(h - 6, help)
@@ -346,6 +361,8 @@ local function printCompXY(menuSel)
 			printXY(20, 29, "for the channel with the specified color.")
 			printXY(10, 31, "setBundledOutput(side: number, color: number, value: number): number"..spaces(5).."Like setOutput, but for bundled output,")
 			printXY(20, 32, "setting the value for the channel with the specified color.")
+			centerText(h - 3, "[Any Key] continue")
+			setCursor(w/2 + (string.len("[Any Key] continue")/2) + 2, h - 3)
 		else
 			printXY(15, 7, "Currently no documentation for this")
 		end
@@ -452,7 +469,7 @@ while running do
 	printXY((w - (menuWid + string.len(menuHint)))/2, h - 9, menuHint..menuList[currRow])
 	setColors(theme.promptHighlight, theme.prompt)
 	printXY(col, currRow + offset, string.char(32)..menuList[currRow]..string.rep(string.char(32), menuWid - string.len(menuList[currRow]) + 1 ))
-  key = getKey() or getCh()
+  key = getKey()
   if key == keyboard.keys.up then
     up()
   elseif key == keyboard.keys.down then
