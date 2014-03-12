@@ -180,8 +180,6 @@ local function centerIntroText(row, msg)
 end
 
 
-
-
 local function intro()
 	local w, h = gpu.getResolution()
 	local msg1 = "*   * *   * *     **  * *     *   * * * * *   * *   *   *   *     *   * *    "
