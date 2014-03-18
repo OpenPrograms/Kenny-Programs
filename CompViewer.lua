@@ -19,6 +19,21 @@ local function spChar(charter, cnt)
 	return string.rep(unicode.char(charter), cnt)
 end
 
+local function Marque(row, delay, txt)
+	local w, h = component.gpu.getResolution()
+	local i = w - 2
+	while i >= 2 do
+		if i > 2 then
+			component.gpu.fill(2, row, w - 1, 1, " ")
+			component.gpu.set(i, row, txt)
+			os.sleep(delay)
+			i = i - 1
+		else
+			i = w -1
+		end
+	end
+end
+
 local OC_1 = " "..spChar(0x2584,3).."  "..spChar(0x2584,4).."  "..spChar(0x2584,5).." "..spChar(0x2584,1).."   "..spChar(0x2584,1).."  "..spChar(0x2584,4).."  "..spChar(0x2584,3).."  "..spChar(0x2584,1).."   "..spChar(0x2584,1).." "..spChar(0x2584,4).."  "..spChar(0x2584,1).."   "..spChar(0x2584,1).." "..spChar(0x2584,5).." "..spChar(0x2584,5).." "..spChar(0x2584,4).."   "..spChar(0x2584,4)
 local OC_2 = spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1).."     "..spChar(0x2588,1)..spChar(0x2584,1).."  "..spChar(0x2588,1).." "..spChar(0x2588,1).."     "..spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1)..spChar(0x2580,1)..spChar(0x2584,1)..spChar(0x2580,1)..spChar(0x2588,1).." "..spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1).."   "..spChar(0x2588,1).."   "..spChar(0x2588,1).."   "..spChar(0x2588,1).."     "..spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1)
 local OC_3 = spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1)..spChar(0x2580,3).."  "..spChar(0x2588,1)..spChar(0x2580,2).."   "..spChar(0x2588,1).." "..spChar(0x2588,1).." "..spChar(0x2588,1).." "..spChar(0x2588,1).."     "..spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1)..spChar(0x2580,3).."  "..spChar(0x2588,1).."   "..spChar(0x2588,1).."   "..spChar(0x2588,1).."   "..spChar(0x2588,1)..spChar(0x2580,2).."   "..spChar(0x2588,1)..spChar(0x2580,1)..spChar(0x2588,1)..spChar(0x2580,1).."   "..spChar(0x2580,2)..spChar(0x2584,1)
@@ -186,7 +201,7 @@ local function intro()
 	local len = string.len(msg1)
 	local helpLen = string.len(help)
 	
-	drawBox(2, 3, w - 2, h - 3, theme.textColor, theme.background, 2)
+	drawBox(1, 3, w, h - 3, theme.textColor, theme.background, 2)
 	drawBox((w - len)/2 - 2, 5, len + 4, 10, theme.introText, theme.introBackground, 1)
 	
 	centerIntroText(6, OC_1)
@@ -372,13 +387,15 @@ end
 
 local defaultTheme = {				-- Water Theme
   textColor = 0xFFFFFF,
-  background = 0x0000FF,
+  background = 0x000099,
 	introText = 0xFF0000,
 	introBackground = 0x000000,
 	menuHintText = 0xFFFF00,
 	menuHint = 0x000000,
-  prompt = 0x000000,
-  promptHighlight = 0xFFFFFF,
+  prompt = 0xBBBB00,
+  promptHighlight = 0x000000,
+	fancyDots = 0xAAFFCC,
+	fancyBackground = 0x113322
   }
 
 local normalTheme = {				-- Water Theme
@@ -387,38 +404,6 @@ local normalTheme = {				-- Water Theme
   prompt = 0xFFFFFF,
   promptHighlight = 0x000000,
   }
-
-	
-local function up()
-	setColors(theme.textColor, theme.background)
-	printXY(col, currRow + offset, string.char(32)..menuList[currRow]..string.rep(string.char(32), menuWid - string.len(menuList[currRow]) + 1 ))
-  if currRow > 1 then
-    currRow = currRow - 1
-	else
-		currRow = #menuList
-	end
-	setColors(theme.menuHintText, theme.menuHint)
-	printXY((w - (menuWid + string.len(menuHint)))/2, h - 9, string.rep(string.char(32), menuWid + string.len(menuHint)))
-	printXY((w - (menuWid + string.len(menuHint)))/2, h - 9, menuHint..menuList[currRow])
-	setColors(theme.promptHighlight, theme.prompt)
-	printXY(col, currRow + offset, string.char(32)..menuList[currRow]..string.rep(string.char(32), menuWid - string.len(menuList[currRow]) + 1 ))
-end
-
-local function down()
-	setColors(theme.textColor, theme.background)
-	printXY(col, currRow + offset, string.char(32)..menuList[currRow]..string.rep(string.char(32), menuWid - string.len(menuList[currRow]) + 1 ))
-  if currRow < #menuList then
-    currRow = currRow + 1
-	else 
-		currRow = 1
-	end
-	setColors(theme.menuHintText, theme.menuHint)
-	printXY((w - (menuWid + string.len(menuHint)))/2, h - 9, string.rep(string.char(32), menuWid + string.len(menuHint)))
-	printXY((w - (menuWid + string.len(menuHint)))/2, h - 9, menuHint..menuList[currRow])
-	setColors(theme.promptHighlight, theme.prompt)
-	printXY(col, currRow + offset, string.char(32)..menuList[currRow]..string.rep(string.char(32), menuWid - string.len(menuList[currRow]) + 1 ))
-end
-
 
 local function printBuf()
 	if isAdvanced() then
@@ -430,19 +415,6 @@ local function printBuf()
 	end
 end
 
-local function enter()
-  term.setCursorBlink(false)
-  local w, h = gpu.getResolution()
-	if currRow == #menuList then
-	  running = false
-	else
-		term.clear()
-		printCompXY(menuList[currRow])
-		intro()
-		printBuf()
-	end
-end
-
 if isAdvanced() then
 	theme = defaultTheme
 	setColors(theme.textColor, theme.background)
@@ -451,6 +423,7 @@ else
 	running = false
 end
 
+
 term.clear()
 local w, h = gpu.getResolution()
 
@@ -458,22 +431,38 @@ if (isAdvanced()) then
 	getMenuList()
 	intro()
 	printBuf()
+
+end
+
+local function menu(currChoice, maxChoice, viewList, help)
 end
 
 
 while running do
 	setColors(theme.menuHintText, theme.menuHint)
 	printXY((w - (menuWid + string.len(menuHint)))/2, h - 9, string.rep(string.char(32), menuWid + string.len(menuHint)))
-	printXY((w - (menuWid + string.len(menuHint)))/2, h - 9, menuHint..menuList[currRow])
+	if (currRow < #menuList) then
+		printXY((w - (menuWid + string.len(menuHint)))/2, h - 9, menuHint..menuList[currRow])
+	end
 	setColors(theme.promptHighlight, theme.prompt)
 	printXY(col, currRow + offset, string.char(32)..menuList[currRow]..string.rep(string.char(32), menuWid - string.len(menuList[currRow]) + 1 ))
-  key = getKey()
+	key = getKey()
+	setColors(theme.textColor, theme.background)
+	printXY(col, currRow + offset, string.char(32)..menuList[currRow]..string.rep(string.char(32), menuWid - string.len(menuList[currRow]) + 1 ))
+	
   if key == keyboard.keys.up then
-    up()
+		currRow = math.fmod(( currRow + #menuList - 2), ( #menuList)) + 1
   elseif key == keyboard.keys.down then
-    down()
+		currRow = math.fmod(currRow, #menuList) + 1
   elseif key == keyboard.keys.enter or key == keyboard.keys.left or key == keyboard.keys.right then
-    enter()
+		if currRow == #menuList then
+			running = false
+		else
+			term.clear()
+			printCompXY(menuList[currRow])
+			intro()
+			printBuf()
+		end
   elseif key == keyboard.keys.r then
 		menuLen = 1
 		menuWid = 0
