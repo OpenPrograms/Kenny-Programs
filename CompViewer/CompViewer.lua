@@ -94,8 +94,7 @@ else
 	localVer = localVersion()
 	if not file_check(os.getenv("PWD") .. "compviewer-version.txt") then 
 		print("Setting up version cache")
-		--downloadFile("compviewer-version.txt")
-		wget("http://pc-logix.com/compviewer-version.txt", "compviewer-version.txt")
+		downloadFile("compviewer-version.txt","compviewer-version.txt")
 	end
 
 	if(remoteVer > localVer) then
