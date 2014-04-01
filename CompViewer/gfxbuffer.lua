@@ -177,7 +177,6 @@ function bufferMeta.flush(buffer)
 
   --now draw the spans!
   local parent=buffer.parent
-  local pfg,pbg=parent.getForeground(), parent.getBackground()
   local cfg,cbg=pfg,pbg
   local spans=buffer.spans
 
@@ -194,11 +193,11 @@ function bufferMeta.flush(buffer)
     end
     parent.set(span.x,span.y,span.str)
   end
-  if cfg~=pfg then
-    parent.setForeground(pfg)
+  if cfg~=buffer.colorForeground then
+    parent.setForeground(buffer.colorForeground)
   end
-  if cbg~=pbg then
-    parent.setBackground(pbg)
+  if cbg~=buffer.colorBackground then
+    parent.setBackground(buffer.colorBackground)
   end
   --...and that's that. Throw away our spans.
   buffer.spans={}

@@ -477,11 +477,12 @@ local function restoreFrame(renderTarget,x,y,prevState)
     end
   end
 
-  renderTarget.flush()
 
   term.setCursor(curx,cury)
   renderTarget.setForeground(pfg)
   renderTarget.setBackground(pbg)
+  renderTarget.flush()
+
   term.setCursorBlink(pcb)
 
 end
