@@ -25,6 +25,9 @@ local OC_4 = spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1).."
 local OC_5 = " "..spChar(0x2580,3).."  "..spChar(0x2580,1).."     "..spChar(0x2580,5).." "..spChar(0x2580,1).."   "..spChar(0x2580,1).."  "..spChar(0x2580,4).."  "..spChar(0x2580,3).."  "..spChar(0x2580,1).."   "..spChar(0x2580,1).." "..spChar(0x2580,1).."      "..spChar(0x2580,3).."    "..spChar(0x2580,1).."   "..spChar(0x2580,5).." "..spChar(0x2580,1).."   "..spChar(0x2580,1).." "..spChar(0x2580,4)
 
 local gpu = component.gpu
+local Tier1 = 1
+local Tier2 = 4
+local Tier3 = 8
 
 local menuList = {}
 local menuLen = 1
@@ -47,7 +50,6 @@ local fname = "CompInfo.txt"
 local filename = shell.resolve(fname)
 
 local gui=gml.create("center","center",50,16)
-local infoGUI=gml.create("center","center",150,46)
 
 gui:addLabel(1,1,14,"Component")
 local contentsLabel=gui:addLabel(18,1,31,"contents of")
@@ -72,7 +74,7 @@ local function table_unique(tt)
 end
 
 local function isAdvanced()
-	return (gpu.getDepth() > 1)
+	return gpu.getDepth()
 end
 
 local function setColors(fore, back)
@@ -167,7 +169,7 @@ local function intro()
 	centerText(12, "Component Viewer")
 end
 
-if (isAdvanced()) then
+if (isAdvanced() == Tier3) then
 	theme = defaultTheme
 	intro()
 else
@@ -200,17 +202,8 @@ function loadInfoData(select)
 	local tmpLine = {}
 	local tmpStr = ""
 	sentStr = {}
-	
-	if w > 80 then
-		lineLen = w - 20
-	else
-		lineLen = w - 6
-	end
-	if h > 25 then
-		lineHeight = h -10
-	else
-		lineHeight = h - 5
-	end
+	lineLen = w - 8
+
 	do
 		local f = io.open(filename)
 			if f then
@@ -220,7 +213,7 @@ function loadInfoData(select)
 						optNameStart = lineCnt + 1
 					end
 					if text.trim(line) == optNameEnd then
-						optNameLast = lineCnt
+						optNameLast = lineCnt - 1
 					end
 					table.insert(tmpLine, line)
 				end
@@ -228,14 +221,20 @@ function loadInfoData(select)
 		end
 	end	
 	if lineCnt > 2 then
+    local tStr = ""
 		for k, v in pairs(tmpLine) do
 			if k >= optNameStart and k <= optNameLast then
 --					v = text.trim(v)
 				if string.len(v) > lineLen then
 					while string.len(v) > lineLen do
 						tmpStr = string.sub(v, 1, lineLen)
-						delimPos = strripos(tmpStr, " ")
-						table.insert(sentStr, (string.sub(v, 1, delimPos - 1)..spaces(140 - delimPos)))
+            if string.len(tmpStr) < lineLen then
+              tStr = string.sub(tmpStr, 1, string.len(tmpStr) - 1)..spaces(w - string.len(tmpStr))
+            else
+              delimPos = strripos(tmpStr, " ")
+              tStr = string.sub(tmpStr, 1, delimPos - 1)..spaces((w - delimPos) + 12)
+            end
+						table.insert(sentStr, tStr)
 						v = string.sub(v, delimPos + 1)
 					end
 					if string.len(v) < lineLen then
@@ -275,11 +274,12 @@ local function updateFunctionsList(comp)
 end
 
 function newListBox()
+	local infoGUI=gml.create("center","center",160,50)
 	select = menuDirList:getSelected()
 	loadInfoData(select)
 	term.clear()
 	local infoLabel=infoGUI:addLabel(50,1,50,"Functions explanation for "..select)
-	local infoList=infoGUI:addListBox(5,-5,150,38, sentStr)
+	local infoList=infoGUI:addListBox(1,-5,160,42, sentStr)
 	infoGUI:addButton(-70,-1,12,2,"Close",infoGUI.close)
 	infoGUI:run()
 	term.clear()
