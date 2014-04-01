@@ -1,6 +1,119 @@
 local component = require("component")
-local event = require("event")
 local fs = require("filesystem")
+local internet = require("internet")
+local process = require("process")
+-- The following code added by Michiyo, to check if:
+-- A.) The computer has HTTP access, and 
+-- B.) if the required files exist to run this program.
+-- C.) And to download them if it can.
+--#~#~#~#~#~#~#~ CHANGE THE FOLLOWING VARIABLE TO FALSE TO DISABLE AUTOUPDATE CHECKING~#~#~#~#~#~#~#
+autoUpdate = true
+
+function file_check(file_name)
+	local file = fs.open(file_name)
+	if file ~= nil then
+		return true
+	else
+		return false
+	end
+end
+wget = loadfile("/bin/wget.lua")
+function downloadFile(remotename, filename)
+	wget("http://pc-logix.com/https_proxy.php?address=https://raw.githubusercontent.com/OpenPrograms/Kenny-Programs/master/CompViewer/" .. remotename, filename)
+end
+
+function remoteVersion()
+	for line in internet.request("http://pc-logix.com/https_proxy.php?address=https://raw.githubusercontent.com/OpenPrograms/Kenny-Programs/master/CompViewer/compviewer-version.txt") do 
+		if tonumber(line) ~= nil then 
+			return tonumber(line) 
+		else 
+			return 0 
+		end
+	end
+end
+
+function localVersion()
+	if not file_check(os.getenv("PWD") .. "compviewer-version.txt") then
+		return 0
+	else
+		local f = io.open(os.getenv("PWD") .. "compviewer-version.txt", "rb")
+    	local content = f:read("*all")
+    	f:close()
+    	return tonumber(content)
+	end
+end
+
+function doUpdate(watdo)
+if (watdo == "update") then
+	if autoUpdate == true then
+		print("Cleaning up previous install")
+		fs.remove(os.getenv("PWD") .. "default.gss")
+		fs.remove(os.getenv("PWD") .. "gml.lua")
+		fs.remove(os.getenv("PWD") .. "gfxbuffer.lua")
+		fs.remove(os.getenv("PWD") .. "colorutils.lua")
+		fs.remove(os.getenv("PWD") .. "colorutils.lua")
+		fs.remove(os.getenv("PWD") .. "compviewer-version.txt")
+		currFile = process.running()
+		fs.remove(currFile)
+		if not file_check(os.getenv("PWD") .. currFile) then 
+			print("Downloading CompViewer.lua")
+			downloadFile("CompViewer.lua", currFile)
+		end
+	end
+end
+	print("Downloading latest versions of required files")
+	if not file_check(os.getenv("PWD") .. "default.gss") then 
+		print("Downloading default.gss")
+		downloadFile("default.gss","default.gss")
+	end
+	if not file_check(os.getenv("PWD") .. "gml.lua") then 
+		print("Downloading gml.lua")
+		downloadFile("gml.lua","gml.lua")
+	end
+	if not file_check(os.getenv("PWD") .. "gfxbuffer.lua") then 
+		print("Downloading gfxbuffer.lua")
+		downloadFile("gfxbuffer.lua","gfxbuffer.lua")
+	end
+	if not file_check(os.getenv("PWD") .. "colorutils.lua") then 
+		print("Downloading colorutils.lua")
+		downloadFile("colorutils.lua","colorutils.lua")
+	end
+	if not file_check(os.getenv("PWD") .. "compviewer-version.txt") then 
+		print("Downloading compviewer-version.txt")
+		downloadFile("compviewer-version.txt","compviewer-version.txt")
+	end
+end
+
+if not component.isAvailable("internet") then 
+	if not file_check(os.getenv("PWD") .. "gml.lua") or not file_check(os.getenv("PWD") .. "default.gss") or not file_check(os.getenv("PWD") .. "gfxbuffer.lua") or not file_check(os.getenv("PWD") .. "colorutils.lua") or not file_check(os.getenv("PWD") .. "CompInfo.txt") then
+		io.stderr:write("You are missing one or more of the required files 'gml.lua', 'colorutils.lua', 'gfxbuffer.lua', 'CompInfo.txt', or 'default.gss' and do not have internet access to download them automaticly!\n")
+		return
+	end
+else 
+	remoteVer = remoteVersion()
+	localVer = localVersion()
+	if not file_check(os.getenv("PWD") .. "compviewer-version.txt") then 
+		print("Setting up version cache")
+		downloadFile("compviewer-version.txt","compviewer-version.txt")
+	end
+
+	if(remoteVer > localVer) then
+		if(localVer == 0) then
+			doUpdate("fresh")
+		else
+			doUpdate("update")
+		end
+	end
+	
+
+	print("Updating Component Info file, Please wait")
+	fs.remove(os.getenv("PWD") .. "CompInfo.txt")
+	os.sleep(0.5)
+	downloadFile("CompInfo.txt")
+end
+--We now return you to the previous code by Kenny.
+
+local event = require("event")
 local keyboard = require("keyboard")
 local shell = require("shell")
 local term = require("term")
