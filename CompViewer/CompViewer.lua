@@ -18,11 +18,11 @@ local function spChar(letter, cnt)
 	return string.rep(unicode.char(letter), cnt)
 end
 
-local OC_1 = " "..spChar(0x2584,3).."  "..spChar(0x2584,4).."  "..spChar(0x2584,5).." "..spChar(0x2584,1).."   "..spChar(0x2584,1).."  "..spChar(0x2584,4).."  "..spChar(0x2584,3).."  "..spChar(0x2584,1).."   "..spChar(0x2584,1).." "..spChar(0x2584,4).."  "..spChar(0x2584,1).."   "..spChar(0x2584,1).." "..spChar(0x2584,5).." "..spChar(0x2584,5).." "..spChar(0x2584,4).."   "..spChar(0x2584,4)
-local OC_2 = spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1).."     "..spChar(0x2588,1)..spChar(0x2584,1).."  "..spChar(0x2588,1).." "..spChar(0x2588,1).."     "..spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1)..spChar(0x2580,1)..spChar(0x2584,1)..spChar(0x2580,1)..spChar(0x2588,1).." "..spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1).."   "..spChar(0x2588,1).."   "..spChar(0x2588,1).."   "..spChar(0x2588,1).."     "..spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1)
-local OC_3 = spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1)..spChar(0x2580,3).."  "..spChar(0x2588,1)..spChar(0x2580,2).."   "..spChar(0x2588,1).." "..spChar(0x2588,1).." "..spChar(0x2588,1).." "..spChar(0x2588,1).."     "..spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1)..spChar(0x2580,3).."  "..spChar(0x2588,1).."   "..spChar(0x2588,1).."   "..spChar(0x2588,1).."   "..spChar(0x2588,1)..spChar(0x2580,2).."   "..spChar(0x2588,1)..spChar(0x2580,1)..spChar(0x2588,1)..spChar(0x2580,1).."   "..spChar(0x2580,2)..spChar(0x2584,1)
-local OC_4 = spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1).."     "..spChar(0x2588,1).."     "..spChar(0x2588,1).."  "..spChar(0x2588,2).." "..spChar(0x2588,1).."     "..spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1).."     "..spChar(0x2588,1).."   "..spChar(0x2588,1).."   "..spChar(0x2588,1).."   "..spChar(0x2588,1).."     "..spChar(0x2588,1).."  "..spChar(0x2588,1).."      "..spChar(0x2588,1)
-local OC_5 = " "..spChar(0x2580,3).."  "..spChar(0x2580,1).."     "..spChar(0x2580,5).." "..spChar(0x2580,1).."   "..spChar(0x2580,1).."  "..spChar(0x2580,4).."  "..spChar(0x2580,3).."  "..spChar(0x2580,1).."   "..spChar(0x2580,1).." "..spChar(0x2580,1).."      "..spChar(0x2580,3).."    "..spChar(0x2580,1).."   "..spChar(0x2580,5).." "..spChar(0x2580,1).."   "..spChar(0x2580,1).." "..spChar(0x2580,4)
+local OC_1 = "   "..spChar(0x2584,3).."  "..spChar(0x2584,4).."  "..spChar(0x2584,5).." "..spChar(0x2584,1).."   "..spChar(0x2584,1).."  "..spChar(0x2584,4).."  "..spChar(0x2584,3).."  "..spChar(0x2584,1).."   "..spChar(0x2584,1).." "..spChar(0x2584,4).."  "..spChar(0x2584,1).."   "..spChar(0x2584,1).." "..spChar(0x2584,5).." "..spChar(0x2584,5).." "..spChar(0x2584,4).."   "..spChar(0x2584,4).."  "
+local OC_2 = "  "..spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1).."     "..spChar(0x2588,1)..spChar(0x2584,1).."  "..spChar(0x2588,1).." "..spChar(0x2588,1).."     "..spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1)..spChar(0x2580,1)..spChar(0x2584,1)..spChar(0x2580,1)..spChar(0x2588,1).." "..spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1).."   "..spChar(0x2588,1).."   "..spChar(0x2588,1).."   "..spChar(0x2588,1).."     "..spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1).."  "
+local OC_3 = "  "..spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1)..spChar(0x2580,3).."  "..spChar(0x2588,1)..spChar(0x2580,2).."   "..spChar(0x2588,1).." "..spChar(0x2588,1).." "..spChar(0x2588,1).." "..spChar(0x2588,1).."     "..spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1)..spChar(0x2580,3).."  "..spChar(0x2588,1).."   "..spChar(0x2588,1).."   "..spChar(0x2588,1).."   "..spChar(0x2588,1)..spChar(0x2580,2).."   "..spChar(0x2588,1)..spChar(0x2580,1)..spChar(0x2588,1)..spChar(0x2580,1).."   "..spChar(0x2580,2)..spChar(0x2584,1).."  "
+local OC_4 = "  "..spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1).."     "..spChar(0x2588,1).."     "..spChar(0x2588,1).."  "..spChar(0x2588,2).." "..spChar(0x2588,1).."     "..spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1).."   "..spChar(0x2588,1).." "..spChar(0x2588,1).."     "..spChar(0x2588,1).."   "..spChar(0x2588,1).."   "..spChar(0x2588,1).."   "..spChar(0x2588,1).."     "..spChar(0x2588,1).."  "..spChar(0x2588,1).."      "..spChar(0x2588,1).."  "
+local OC_5 = "   "..spChar(0x2580,3).."  "..spChar(0x2580,1).."     "..spChar(0x2580,5).." "..spChar(0x2580,1).."   "..spChar(0x2580,1).."  "..spChar(0x2580,4).."  "..spChar(0x2580,3).."  "..spChar(0x2580,1).."   "..spChar(0x2580,1).." "..spChar(0x2580,1).."      "..spChar(0x2580,3).."    "..spChar(0x2580,1).."   "..spChar(0x2580,5).." "..spChar(0x2580,1).."   "..spChar(0x2580,1).." "..spChar(0x2580,4).."  "
 
 local gpu = component.gpu
 local Tier1 = 1
@@ -49,10 +49,10 @@ local tmpW, tmpH = gpu.getResolution()
 local fname = "CompInfo.txt"
 local filename = shell.resolve(fname)
 
-local gui=gml.create("center","center",50,16)
+local gui=gml.create("center",15,80,30)
 
-gui:addLabel(1,1,14,"Component")
-local contentsLabel=gui:addLabel(18,1,31,"contents of")
+gui:addLabel(2,1,14,"Component")
+local contentsLabel=gui:addLabel(30,1,31,"contents of")
 
 local function table_count(tt, item)
 	local count
@@ -123,7 +123,7 @@ local function centerText(row, msg)
 end
 
 local function centerIntroText(row, msg)
-	local msg1 = "*   * *   * *     **  * *     *   * * * * *   * *   *   *   *     *   * *    "
+	local msg1 = "   *   * *   * *     **  * *     *   * * * * *   * *   *   *   *     *   * *     "
 	local w, h = getSize()
 	local len = string.len(msg1)
 	gpu.set((w - len)/2, row, msg)
@@ -155,8 +155,8 @@ local w, h = gpu.getResolution()
 
 local function intro()
 	local w, h = gpu.getResolution()
-	local msg1 = "*   * *   * *     **  * *     *   * * * * *   * *   *   *   *     *   * *    "
-	local len = string.len(msg1)
+	local msg1 = "   *   * *   * *     **  * *     *   * * * * *   * *   *   *   *     *   * *     "
+	local len = string.len(msg1) + 1
 	
 	drawBox(1, 3, w, h - 3, theme.textColor, theme.background, 2)
 	drawBox((w - len)/2 - 2, 5, len + 4, 10, theme.introText, theme.introBackground, 1)
@@ -211,7 +211,7 @@ function loadInfoData(select)
 					lineCnt = lineCnt + 1
 					if text.trim(line) == optName then
 						optNameStart = lineCnt + 1
-					end
+          end
 					if text.trim(line) == optNameEnd then
 						optNameLast = lineCnt - 1
 					end
@@ -221,6 +221,9 @@ function loadInfoData(select)
 		end
 	end	
 	if lineCnt > 2 then
+    if optNameStart < 2 then
+      table.insert(sentStr, "No information available for "..select)
+    end
     local tStr = ""
 		for k, v in pairs(tmpLine) do
 			if k >= optNameStart and k <= optNameLast then
@@ -250,8 +253,8 @@ end
 
 getMenuList()
 
-local menuDirList=gui:addListBox(1,2,16,11, menuList)
-local functionsList=gui:addListBox(17,2,32,11, tmpList)
+local menuDirList=gui:addListBox(2,2,24,25, menuList)
+local functionsList=gui:addListBox(30,2,50,25, tmpList)
 
 local function updateFunctionsList(comp)
 	local tLen = 1
@@ -259,6 +262,9 @@ local function updateFunctionsList(comp)
 	local sTmp = ""
 	local tmpList = {}
 	
+  contentsLabel.text="Functions for "..comp
+  contentsLabel:draw()
+
 	for len = 1, #compList do
 		sPos = string.find(compList[len], ".", 1, true)
 		if (string.sub(compList[len], 1, sPos - 1) == comp) then
@@ -269,8 +275,6 @@ local function updateFunctionsList(comp)
 	table.sort(tmpList)
 	tmpList = table_unique(tmpList)
 	functionsList:updateList(tmpList)
-  contentsLabel.text="Functions for "..comp
-  contentsLabel:draw()
 end
 
 function newListBox()
@@ -304,4 +308,7 @@ updateFunctionsList(menuDirList:getSelected())
 
 gui:run()
 term.setCursor(1,1)
+gpu.setForeground(0xFFFFFF)
+gpu.setBackground(0x000000)
+
 term.clear()
