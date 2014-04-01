@@ -1601,7 +1601,7 @@ function gml.create(x,y,width,height,renderTarget)
       gui.renderTarget.setBackground(fillBG)
       term.setCursorBlink(false)
 
-      gui.fill(bodyX,bodyY,bodyW,bodyH,fillCh)
+      gui.renderTarget.fill(bodyX,bodyY,bodyW,bodyH,fillCh)
 
       for i=1,#gui.components do
         gui.components[i]:draw()
