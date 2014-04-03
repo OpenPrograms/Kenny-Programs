@@ -27,7 +27,7 @@ local gfxbuffer=require("gfxbuffer")
 
 local doubleClickThreshold=.25
 
-local gml={}
+local gml={VERSION="1.0"}
 
 local defaultStyle=nil
 
@@ -428,12 +428,13 @@ local function frameAndSave(element)
   local pcb=term.getCursorBlink()
   local curx,cury=term.getCursor()
   local pfg,pbg=element.renderTarget.getForeground(),element.renderTarget.getBackground()
+  local rtg=element.renderTarget.get
   --preserve background
   for ly=1,height do
     t[ly]={}
-    local str, cfg, cbg=element.renderTarget.get(x,y+ly-1)
+    local str, cfg, cbg=rtg(x,y+ly-1)
     for lx=2,width do
-      local ch, fg, bg=element.renderTarget.get(x+lx-1,y+ly-1)
+      local ch, fg, bg=rtg(x+lx-1,y+ly-1)
       if fg==cfg and bg==cbg then
         str=str..ch
       else
@@ -443,7 +444,6 @@ local function frameAndSave(element)
     end
     t[ly][#t[ly]+1]={str,cfg,cbg}
   end
-
   local styles=getAppliedStyles(element)
 
   local bodyX,bodyY,bodyW,bodyH=drawBorder(element,styles)
@@ -858,6 +858,7 @@ local function runGui(gui)
 
     elseif e[1]=="key_down" then
       local char,code=e[3],e[4]
+      --tab
       if code==15 and gui.focusElement then
         local newFocus=gui.focusElement
         if keyboard.isShiftDown() then
@@ -890,6 +891,7 @@ local function runGui(gui)
       elseif gui.focusElement and gui.focusElement.keyHandler then
         gui.focusElement:keyHandler(char,code)
       end
+
     end
   end
 
@@ -1003,10 +1005,10 @@ local function insertTextTF(tf,text)
   end
 end
 
-local function addTextField(gui,x,y,width)
+local function addTextField(gui,x,y,width,text)
   local tf=baseComponent(gui,x,y,width,1,"textfield",true)
 
-  tf.text=""
+  tf.text=text or ""
   tf.cursorIndex=1
   tf.scrollIndex=1
   tf.selectStart=1
@@ -1510,6 +1512,8 @@ local function addListBox(gui,x,y,width,height,list)
       if lb.selectedLabel<#lb.list then
         lb:select(lb.selectedLabel+1)
       end
+    elseif code==keyboard.keys.enter and lb.onEnter then
+      lb:onEnter()
     end
   end
 

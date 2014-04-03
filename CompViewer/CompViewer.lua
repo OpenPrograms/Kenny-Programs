@@ -2,6 +2,16 @@ local component = require("component")
 local fs = require("filesystem")
 local internet = require("internet")
 local process = require("process")
+local event = require("event")
+local keyboard = require("keyboard")
+local shell = require("shell")
+local term = require("term")
+local text = require("text")
+local unicode = require("unicode")
+local sides = require("sides")
+local colors=require("colors")
+local gml=require("gml")
+
 -- The following code added by Michiyo, to check if:
 -- A.) The computer has HTTP access, and 
 -- B.) if the required files exist to run this program.
@@ -44,25 +54,25 @@ function localVersion()
 end
 
 function doUpdate(watdo)
-if (watdo == "update") then
-	if autoUpdate == true then
-		print("Cleaning up previous install")
-		fs.remove(os.getenv("PWD") .. "default.gss")
-		fs.remove(os.getenv("PWD") .. "gml.lua")
-		fs.remove(os.getenv("PWD") .. "gfxbuffer.lua")
-		fs.remove(os.getenv("PWD") .. "colorutils.lua")
-		fs.remove(os.getenv("PWD") .. "colorutils.lua")
-		fs.remove(os.getenv("PWD") .. "compviewer-version.txt")
-		currFile = process.running()
-		fs.remove(currFile)
-		if not file_check(os.getenv("PWD") .. currFile) then 
-			print("Downloading CompViewer.lua")
-			downloadFile("CompViewer.lua", currFile)
+	if (watdo == "update") then
+		if autoUpdate == true then
+			print("Cleaning up previous install")
+			fs.remove(os.getenv("PWD") .. "cv.gss")
+			fs.remove(os.getenv("PWD") .. "gml.lua")
+			fs.remove(os.getenv("PWD") .. "gfxbuffer.lua")
+			fs.remove(os.getenv("PWD") .. "colorutils.lua")
+			fs.remove(os.getenv("PWD") .. "colorutils.lua")
+			fs.remove(os.getenv("PWD") .. "compviewer-version.txt")
+			currFile = process.running()
+			fs.remove(currFile)
+			if not file_check(os.getenv("PWD") .. currFile) then 
+				print("Downloading CompViewer.lua")
+				downloadFile("CompViewer.lua", currFile)
+			end
 		end
 	end
-end
 	print("Downloading latest versions of required files")
-	if not file_check(os.getenv("PWD") .. "default.gss") then 
+	if not file_check(os.getenv("PWD") .. "cv.gss") then 
 		print("Downloading default.gss")
 		downloadFile("default.gss","default.gss")
 	end
@@ -105,23 +115,13 @@ else
 		end
 	end
 	
-
-	print("Updating Component Info file, Please wait")
+	print("Updating Component Info file, One moment plaease")
 	fs.remove(os.getenv("PWD") .. "CompInfo.txt")
 	os.sleep(0.5)
 	downloadFile("CompInfo.txt")
 end
 --We now return you to the previous code by Kenny.
 
-local event = require("event")
-local keyboard = require("keyboard")
-local shell = require("shell")
-local term = require("term")
-local text = require("text")
-local unicode = require("unicode")
-local sides = require("sides")
-local colors=require("colors")
-local gml=require("gml")
 
 local function spaces(cnt)
 	return string.rep(string.char(32), cnt)
@@ -143,29 +143,32 @@ local Tier2 = 4
 local Tier3 = 8
 
 local menuList = {}
-local menuLen = 1
-local menuWid = 0
 
 local compList = {}
 local tmpList = {}
-local compLen = 1
-local compListWid = 0
-local col = 1
-local currRow = 1
 local sentStr = {}
-
-local offset = 0
-local running = true
-local w, h = gpu.getResolution()
-local tmpW, tmpH = gpu.getResolution()
+local compLen = 1
 
 local fname = "CompInfo.txt"
 local filename = shell.resolve(fname)
 
-local gui=gml.create("center",15,80,30)
+local w, h = gpu.getResolution()
 
-gui:addLabel(2,1,14,"Component")
-local contentsLabel=gui:addLabel(30,1,31,"contents of")
+local guiRow = 1
+local guiWidth = 1
+local guiHeight = 1
+local guiContentsLabelCol = 1
+local guiContentsLabelWidth = 1
+local menuDirWidth = 1
+local menuDirHeight = 1
+local functionsCol = 1
+local functionsWidth = 1
+local functionsHeight = 1
+local infoGuiWidth = 1
+local infoGuiHeight = 1
+local infoFunctionsLabelWidth = 1
+local infoListboxWidth = 1
+local infoListboxHeight = 1
 
 local function table_count(tt, item)
 	local count
@@ -282,18 +285,78 @@ local function intro()
 	centerText(12, "Component Viewer")
 end
 
-if (isAdvanced() == Tier3) then
+local gpuDepth = gpu.getDepth()
+if (gpuDepth >= Tier2) then
 	theme = defaultTheme
-	intro()
 else
 	theme = normalTheme
+end
+
+
+if (gpuDepth == Tier3) then
+	guiRow = 15
+	guiWidth = 80
+	guiHeight = 30
+	guiContentsLabelCol = 30
+	guiContentsLabelWidth = 31
+	menuDirWidth = 24
+	menuDirHeight = 25
+	functionsCol = 30
+	functionsWidth = 50
+	functionsHeight = 25
+	infoGuiWidth = 160
+	infoGuiHeight = 50
+	infoFunctionsLabelWidth = 50
+	infoListboxWidth = 160
+	infoListboxHeight = 42
+	intro()
+elseif (gpuDepth == Tier2) then
+	guiRow = "center"
+	guiWidth = 50
+	guiHeight = 16
+	guiContentsLabelCol = 18
+	guiContentsLabelWidth = 31
+	menuDirWidth = 16
+	menuDirHeight = 11
+	functionsCol = 17
+	functionsWidth = 32
+	functionsHeight = 11
+	infoGuiWidth = 80
+	infoGuiHeight = 25
+	infoFunctionsLabelWidth = 30
+	infoListboxWidth = 80
+	infoListboxHeight = 16
+else 
+	guiRow = "center"
+	guiWidth = 50
+	guiHeight = 16
+	guiContentsLabelCol = 18
+	guiContentsLabelWidth = 31
+	menuDirWidth = 16
+	menuDirHeight = 11
+	functionsCol = 17
+	functionsWidth = 32
+	functionsHeight = 11
+	infoGuiWidth = 50
+	infoGuiHeight = 16
+	infoFunctionsLabelWidth = 30
+	infoListboxWidth = 50
+	infoListboxHeight = 10
 end
 
 local function strripos(s, delim)
 	return s:match('^.*()'..delim)
 end
 
+local gui=gml.create("center", guiRow, guiWidth, guiHeight)
+gui.style=gml.loadStyle("cv.gss")
+
+gui:addLabel(2,1,14,"Component")
+local contentsLabel=gui:addLabel(guiContentsLabelCol,1, guiContentsLabelWidth, "contents of")
+
+
 local function getMenuList()
+	menuList = {}
 	local tmpName = ""
 	for address, name in component.list() do
 		table.insert(menuList,name)
@@ -340,24 +403,27 @@ function loadInfoData(select)
     local tStr = ""
 		for k, v in pairs(tmpLine) do
 			if k >= optNameStart and k <= optNameLast then
---					v = text.trim(v)
+					v = text.trim(v)
 				if string.len(v) > lineLen then
 					while string.len(v) > lineLen do
+						v = spaces(6)..v
 						tmpStr = string.sub(v, 1, lineLen)
             if string.len(tmpStr) < lineLen then
-              tStr = string.sub(tmpStr, 1, string.len(tmpStr) - 1)..spaces(w - string.len(tmpStr))
+              tStr = string.sub(tmpStr, 1, string.len(tmpStr) - 1)
             else
               delimPos = strripos(tmpStr, " ")
-              tStr = string.sub(tmpStr, 1, delimPos - 1)..spaces((w - delimPos) + 12)
+              tStr = string.sub(tmpStr, 1, delimPos - 1)
             end
 						table.insert(sentStr, tStr)
 						v = string.sub(v, delimPos + 1)
 					end
 					if string.len(v) < lineLen then
-						table.insert(sentStr, v)
+						table.insert(sentStr, spaces(6)..text.trim(v))
 					end
-				else
+				elseif string.sub(v, 1, string.len(select)) == select then
 					table.insert(sentStr, v)
+				else 
+					table.insert(sentStr, spaces(6)..v)
 				end
 			end
 		end
@@ -366,8 +432,13 @@ end
 
 getMenuList()
 
-local menuDirList=gui:addListBox(2,2,24,25, menuList)
-local functionsList=gui:addListBox(30,2,50,25, tmpList)
+local menuDirList=gui:addListBox(2, 2, menuDirWidth, menuDirHeight, menuList)
+local functionsList=gui:addListBox(functionsCol, 2, functionsWidth, functionsHeight, tmpList)
+
+local function updateMenuList()
+	getMenuList()
+	menuDirList:updateList(menuList)
+end
 
 local function updateFunctionsList(comp)
 	local tLen = 1
@@ -391,20 +462,23 @@ local function updateFunctionsList(comp)
 end
 
 function newListBox()
-	local infoGUI=gml.create("center","center",160,50)
+	local infoGUI=gml.create("center", "center", infoGuiWidth, infoGuiHeight)
 	select = menuDirList:getSelected()
 	loadInfoData(select)
 	term.clear()
-	local infoLabel=infoGUI:addLabel(50,1,50,"Functions explanation for "..select)
-	local infoList=infoGUI:addListBox(1,-5,160,42, sentStr)
-	infoGUI:addButton(-70,-1,12,2,"Close",infoGUI.close)
+	local infoLabel=infoGUI:addLabel("center", 1, infoFunctionsLabelWidth, "Functions explanation for "..select)
+	local infoList=infoGUI:addListBox(1, -5, infoListboxWidth, infoListboxHeight, sentStr)
+	infoGUI:addButton("center",-1,12,2,"Close",infoGUI.close)
 	infoGUI:run()
 	term.clear()
-	intro()
+	if (gpuDepth == Tier3) then
+		intro()
+	end
 	gui:draw()
 end
 
-gui:addButton(-11,-1,8,1,"Info", newListBox)
+gui:addButton(-20,-1,8,1,"Info", newListBox)
+gui:addButton(-11,-1,8,1,"Reload", updateMenuList)
 gui:addButton(-2,-1,8,1,"Close",gui.close)
 
 local function onMenuSelect(lb,prevIndex,selIndex)

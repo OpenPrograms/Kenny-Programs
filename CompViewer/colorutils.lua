@@ -5,7 +5,7 @@ a simple library with some useful functions for dealing with colors.
 Shared by gfxbuffer and canvas, and possibly gml later?
 
 --]]
-local colorutils = {}
+local colorutils = {VERSION="1.0"}
 
 function colorutils.convColor_hto8(hex)
   local r,g,b=bit32.rshift(hex,16),bit32.rshift(hex,8)%256,hex%256

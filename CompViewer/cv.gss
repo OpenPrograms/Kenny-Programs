@@ -34,7 +34,7 @@ gui {
   fill-color-bg: 0xb4b4b4;
   fill-ch: " ";
   
-  border-color-fg: 0xffffff;
+  border-color-fg: 0x00ff00;
   border-color-bg: 0xb4b4b4;  
   border-ch-top: U+2550;
   border-ch-bottom: U+2550;
@@ -47,10 +47,17 @@ gui {
 }
 
 label {
-  border: false;
-  text-color: 0xffffff;
+  text-color: 0x000000;
   text-background: 0xb4b4b4;
- 
+}
+
+label.error {
+  text-color: 0xff0000;
+}
+
+label.error!1 {
+  text-color:0x000000;
+  text-background: 0xffffff
 }
 
 button {
