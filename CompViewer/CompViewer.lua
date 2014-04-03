@@ -73,8 +73,8 @@ function doUpdate(watdo)
 	end
 	print("Downloading latest versions of required files")
 	if not file_check(os.getenv("PWD") .. "cv.gss") then 
-		print("Downloading default.gss")
-		downloadFile("default.gss","default.gss")
+		print("Downloading cv.gss")
+		downloadFile("default.gss","cv.gss")
 	end
 	if not file_check(os.getenv("PWD") .. "gml.lua") then 
 		print("Downloading gml.lua")
@@ -115,7 +115,7 @@ else
 		end
 	end
 	
-	print("Updating Component Info file, One moment plaease")
+	print("Updating Component Info file, One moment please")
 	fs.remove(os.getenv("PWD") .. "CompInfo.txt")
 	os.sleep(0.5)
 	downloadFile("CompInfo.txt")
