@@ -1,128 +1,128 @@
 [COMPUTER]
-  address
+computer.address
       Gets the address of the card
 
-start():boolean
+computer.start():boolean
       Tries to start the computer. Returns true on success, false otherwise. Note that this will also return false if the computer was already running. If the computer is currently shutting down, this will cause the computer to reboot instead.
 
-stop():boolean
+computer.stop():boolean
       Tries to stop the computer. Returns true on success, false otherwise. Also returns false if the computer is already stopped.
 
-isRunning():boolean
+computer.isRunning():boolean
       Returns whether the computer is currently running.
 
-type()
+computer.type()
       Returns the name of the component
 [COMPUTER_END]
 
 [GPU]
-address
+gpu.address
       Gets the address of the card
 
-bind(address: string): boolean[, string]
+gpu.bind(address: string): boolean[, string]
       Tries to bind the GPU to a screen with the specified address. Returns true on success, false and an error message on failure. A GPU can only be bound to one screen at a time. All operations on it will work on the bound screen. If you wish to control multiple screens at once, you'll need to put more than one graphics card into your computer.
 
-copy(x: number, y: number, width: number, height: number, tx: number, ty: number): boolean
+gpu.copy(x: number, y: number, width: number, height: number, tx: number, ty: number): boolean
       Copies a portion of the screens buffer to another location. The source rectangle is specified by the x, y, width and height parameters. The target rectangle is defined by x + tx, y + ty, width and height. Returns true on success, false otherwise.
 
-fill(x: number, y: number, width: number, height: number, char: string):boolean
+gpu.fill(x: number, y: number, width: number, height: number, char: string):boolean
       Fills a rectangle in the screen buffer with the specified character. The target rectangle is specified by the x and y coordinates and the rectangle's width and height. The fill character char must be a string of length one, i.e. a single character. Returns true on success, false otherwise. Note that filling screens with spaces () is usually less expensive, i.e. consumes less energy, because it is considered a 'clear' operation (see config).
 
-get(x: number, y: number):string
+gpu.get(x: number, y: number):string
       Gets the character currently being displayed at the specified coordinates.
 
-getBackground(): number
+gpu.getBackground(): number
       Gets the current background color. This background color is applied to all 'pixels' that get changed by other operations. Note that the returned number is an RGB value in hexadecimal format, i.e. 0xRRGGBB. This is to allow uniform color operations regardless of color depth supported by the screen and GPU.
 
-getDepth(): number
+gpu.getDepth(): number
       The currently set color depth of the GPU/screen, in bits. Can be 1, 4 or 8.
 
-getForeground():number
+gpu.getForeground():number
       Like getBackground, but for the foreground color.
 
-getResolution(): number, number
+gpu.getResolution(): number, number
       Gets the currently set resolution.
 
-getSize(): number, number
+gpu.getSize(): number, number
       Gets the size in blocks of the screen the graphics card is bound to. For simple screens and robots this will be one by one.
 
-maxDepth():number
+gpu.maxDepth():number
       Gets the maximum supported color depth supported by the GPU and the screen it is bound to (minimum of the two).
 
-maxResolution(): number, number
+gpu.maxResolution(): number, number
       Gets the maximum resolution supported by the GPU and the screen it is bound to (minimum of the two).
 
-set(x: number, y: number, value: string): boolean
+gpu.set(x: number, y: number, value: string): boolean
       Writes a string to the screen, starting at the specified coordinates. The string will be copied to the screen's buffer directly, in a single row. This means even if the specified string contains line breaks, these will just be printed as special characters, the string will not be displayed over multiple lines. Returns true if the string was set to the buffer, false otherwise.
 
-setBackground(color: number): number
+gpu.setBackground(color: number): number
       Sets the background color to apply to 'pixels' modified by other operations from now on. The returned value is the new background color, which may differ from the specified value based on the supported color depth.  Note that the color is expected to be specified in hexadecimal RGB format, i.e. 0xRRGGBB. This is to allow uniform color operations regardless of the color depth supported by the screen and GPU.
 
-setDepth(bit: number): boolean
+gpu.setDepth(bit: number): boolean
       Sets the color depth to use. Can be up to the maximum supported color depth. If a larger or invalid value is provided it will throw an error. Returns true if the depth was set, false otherwise.
 
-setForeground(color: number): number
+gpu.setForeground(color: number): number
       Like setBackground, but for the foreground color.
 
-setResolution(width: number, height: number): boolean
+gpu.setResolution(width: number, height: number): boolean
       Sets the specified resolution. Can be up to the maximum supported resolution. If a larger or invalid resolution is provided it will throw an error. Returns true if the resolution was set, false otherwise.
 
-type()
+gpu.type()
       Returns the name of the component
 [GPU_END]      
 
 [MODEM]
-address
+modem.address
       Gets the address of the card
       
-broadcast(port: number, ...): boolean
+modem.broadcast(port: number, ...): boolean
       Sends a broadcast message. This message is delivered to all reachable network cards. Returns true if the message was sent. Note that broadcast messages are not delivered to the modem that sent the message. All additional arguments are passed along as data. See send.
       
-getStrength(): number
+modem.getStrength(): number
       The current signal strength to apply when sending messages. Wireless network cards only.
 
-isWireless(): boolean
+modem.isWireless(): boolean
       Returns whether this modem is capable of sending wireless messages.
       
-isOpen(port: number): boolean
+modem.isOpen(port: number): boolean
       Returns whether the specified 'port' is currently being listened on. Messages only trigger signals when they arrive on a port that is open.
       
-open(port: number): boolean
+modem.open(port: number): boolean
       Opens the specified port number for listening. Returns true if the port was opened, false if it was already open.
 
-send(address: string, port: number[, ...]): boolean
+modem.send(address: string, port: number[, ...]): boolean
       Sends a network message to the specified address. Returns true if the message was sent. This does not mean the message was received, only that it was sent. No port-sniffing for you. Any additional arguments are passed along as data. These arguments must be basic types: nil, boolean, number and string values are supported, tables and functions are not. See the text API for serialization of tables.
 
-setStrength(value: number): number
+modem.setStrength(value: number): number
       Sets the signal strength. If this is set to a value larger than zero, sending a message will also generate a wireless message. The higher the signal strength the more energy is required to send messages, though. Wireless network cards only.
 
-type
+modem.type
       Returns the name of the component
 [MODEM_END]
 
 [REDSTONE]
-address
+redstone.address
       Gets the address of the card
 
-getInput(side: number): number
+redstone.getInput(side: number): number
       Gets the current ingoing redstone signal from the specified side. Note that the side is relative to the computer's orientation, i.e. sides.south is in front of the computer, not south in the world. Likewise, sides.left is to the left of the computer, so when you look at the computer's front, it'll be to your right. If you use mods such as RedLogic the input may exceed the vanilla values of [0, 15].
 
-getOutput(side: number): number
+redstone.getOutput(side: number): number
       Gets the currently set output on the specified side.
 
-getBundledInput(side: number, color: number): number
+redstone.getBundledInput(side: number, color: number): number
       Like getInput, but for bundled input, reading the value for the channel with the specified color.
 
-getBundledOutput(side: number, color: number): number
+redstone.getBundledOutput(side: number, color: number): number
       Like getOutput, but for bundled output, getting the value for the channel with the specified color.
 
-setBundledOutput(side: number, color: number, value: number): number
+redstone.setBundledOutput(side: number, color: number, value: number): number
       Like setOutput, but for bundled output, setting the value for the channel with the specified color.
 
-setOutput(side: number, value: number): number
+redstone.setOutput(side: number, value: number): number
       Sets the strength of the redstone signal to emit on the specified side. Returns the new value. This can be an arbitrarily large number for mods that support this. For vanilla interaction it is clamped to the interval [0, 15].
 
-type
+redstone.type
       Returns the name of the component
 [REDSTONE_END]
 
@@ -189,18 +189,4 @@ filesystem.copy(fromPath: string, toPath: string): boolean or nil, string
 
 filesystem.open(path: string[, mode: string]): table or nil, string
       Opens a file at the specified path for reading or writing. If mode is not specified it defaults to "r". Possible modes are: r, rb, w, wb, a and ab. Returns a file stream (see below) on success, nil and an error message otherwise. Note that you can only open a limited number of files per file system at the same time. Files will be automatically closed when the garbage collection kicks in, but it is generally a good idea to call close on the file stream when done with the file. Important: it is generally recommended to use io.open instead of this function, to get a buffered wrapper for the file stream.
-
-When opening files directly via the file system API you will get a file stream, a table with four functions. These functions are thin wrappers to the file system proxy's callbacks, which also means that read/write operations are not buffered, and can therefore be slow when reading few bytes often. You'll usually want to use io.open instead.
-
-file:close()
-      Closes the file stream, releasing the handle on the underlying file system.
-
-file:read(n: number): string or nil, string
-      Tries to read the specified number of bytes from the file stream. Returns the read string, which may be shorter than the specified number. Returns nil when the end of the stream was reached. Returns nil and an error message if some error occurred.
-
-file:seek(whence: string[, offset: number]): number or nil, string
-      Jumps to the specified position in the file stream, if possible. Only supported by file streams opened in read mode. The first parameter determines the relative location to seek from and can be cur for the current position, set for the beginning of the stream and end for the end of the stream. The second parameter is the offset by which to modify the position. Returns the new position or nil and an error message if some error occurred. The default value for the second parameter is 0, so f:seek("set") will reset the position to the start of the file, f:seek("cur") will return the current position in the file.
-
-file:write(str: value): boolean or nil, string
-      Writes the specified data to the stream. Returns true on success, nil and an error message otherwise.
 [FILESYSTEM_END]
