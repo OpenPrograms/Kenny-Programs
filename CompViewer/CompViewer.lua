@@ -74,7 +74,7 @@ function doUpdate(watdo)
 	print("Downloading latest versions of required files")
 	if not file_check(os.getenv("PWD") .. "cv.gss") then 
 		print("Downloading cv.gss")
-		downloadFile("default.gss","cv.gss")
+		downloadFile("cv.gss","cv.gss")
 	end
 	if not file_check(os.getenv("PWD") .. "gml.lua") then 
 		print("Downloading gml.lua")
@@ -95,8 +95,8 @@ function doUpdate(watdo)
 end
 
 if not component.isAvailable("internet") then 
-	if not file_check(os.getenv("PWD") .. "gml.lua") or not file_check(os.getenv("PWD") .. "default.gss") or not file_check(os.getenv("PWD") .. "gfxbuffer.lua") or not file_check(os.getenv("PWD") .. "colorutils.lua") or not file_check(os.getenv("PWD") .. "CompInfo.txt") then
-		io.stderr:write("You are missing one or more of the required files 'gml.lua', 'colorutils.lua', 'gfxbuffer.lua', 'CompInfo.txt', or 'default.gss' and do not have internet access to download them automaticly!\n")
+	if not file_check(os.getenv("PWD") .. "gml.lua") or not file_check(os.getenv("PWD") .. "cv.gss") or not file_check(os.getenv("PWD") .. "gfxbuffer.lua") or not file_check(os.getenv("PWD") .. "colorutils.lua") or not file_check(os.getenv("PWD") .. "CompInfo.txt") then
+		io.stderr:write("You are missing one or more of the required files 'gml.lua', 'colorutils.lua', 'gfxbuffer.lua', 'CompInfo.txt', or 'cv.gss' and do not have internet access to download them automaticly!\n")
 		return
 	end
 else 
