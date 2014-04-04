@@ -322,8 +322,8 @@ elseif (gpuDepth == Tier2) then
 	guiContentsLabelWidth = 31
 	menuDirWidth = 16
 	menuDirHeight = 11
-	functionsCol = 17
-	functionsWidth = 32
+	functionsCol = 20
+	functionsWidth = 30
 	functionsHeight = 11
 	infoGuiWidth = 80
 	infoGuiHeight = 25
