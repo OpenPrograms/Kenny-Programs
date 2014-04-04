@@ -10,7 +10,6 @@ local text = require("text")
 local unicode = require("unicode")
 local sides = require("sides")
 local colors=require("colors")
-local gml=require("gml")
 
 -- The following code added by Michiyo, to check if:
 -- A.) The computer has HTTP access, and 
@@ -126,6 +125,7 @@ else
 end
 --We now return you to the previous code by Kenny.
 
+local gml=require("gml")
 
 local function spaces(cnt)
 	return string.rep(string.char(32), cnt)
