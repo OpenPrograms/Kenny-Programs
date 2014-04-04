@@ -1,0 +1,192 @@
+[COMPUTER]
+computer.address
+      Gets the address of the card
+
+computer.start():boolean
+      Tries to start the computer. Returns true on success, false otherwise. Note that this will also return false if the computer was already running. If the computer is currently shutting down, this will cause the computer to reboot instead.
+
+computer.stop():boolean
+      Tries to stop the computer. Returns true on success, false otherwise. Also returns false if the computer is already stopped.
+
+computer.isRunning():boolean
+      Returns whether the computer is currently running.
+
+computer.type()
+      Returns the name of the component
+[COMPUTER_END]
+
+[GPU]
+gpu.address
+      Gets the address of the card
+
+gpu.bind(address: string): boolean[, string]
+      Tries to bind the GPU to a screen with the specified address. Returns true on success, false and an error message on failure. A GPU can only be bound to one screen at a time. All operations on it will work on the bound screen. If you wish to control multiple screens at once, you'll need to put more than one graphics card into your computer.
+
+gpu.copy(x: number, y: number, width: number, height: number, tx: number, ty: number): boolean
+      Copies a portion of the screens buffer to another location. The source rectangle is specified by the x, y, width and height parameters. The target rectangle is defined by x + tx, y + ty, width and height. Returns true on success, false otherwise.
+
+gpu.fill(x: number, y: number, width: number, height: number, char: string):boolean
+      Fills a rectangle in the screen buffer with the specified character. The target rectangle is specified by the x and y coordinates and the rectangle's width and height. The fill character char must be a string of length one, i.e. a single character. Returns true on success, false otherwise. Note that filling screens with spaces () is usually less expensive, i.e. consumes less energy, because it is considered a 'clear' operation (see config).
+
+gpu.get(x: number, y: number):string
+      Gets the character currently being displayed at the specified coordinates.
+
+gpu.getBackground(): number
+      Gets the current background color. This background color is applied to all 'pixels' that get changed by other operations. Note that the returned number is an RGB value in hexadecimal format, i.e. 0xRRGGBB. This is to allow uniform color operations regardless of color depth supported by the screen and GPU.
+
+gpu.getDepth(): number
+      The currently set color depth of the GPU/screen, in bits. Can be 1, 4 or 8.
+
+gpu.getForeground():number
+      Like getBackground, but for the foreground color.
+
+gpu.getResolution(): number, number
+      Gets the currently set resolution.
+
+gpu.getSize(): number, number
+      Gets the size in blocks of the screen the graphics card is bound to. For simple screens and robots this will be one by one.
+
+gpu.maxDepth():number
+      Gets the maximum supported color depth supported by the GPU and the screen it is bound to (minimum of the two).
+
+gpu.maxResolution(): number, number
+      Gets the maximum resolution supported by the GPU and the screen it is bound to (minimum of the two).
+
+gpu.set(x: number, y: number, value: string): boolean
+      Writes a string to the screen, starting at the specified coordinates. The string will be copied to the screen's buffer directly, in a single row. This means even if the specified string contains line breaks, these will just be printed as special characters, the string will not be displayed over multiple lines. Returns true if the string was set to the buffer, false otherwise.
+
+gpu.setBackground(color: number): number
+      Sets the background color to apply to 'pixels' modified by other operations from now on. The returned value is the new background color, which may differ from the specified value based on the supported color depth.  Note that the color is expected to be specified in hexadecimal RGB format, i.e. 0xRRGGBB. This is to allow uniform color operations regardless of the color depth supported by the screen and GPU.
+
+gpu.setDepth(bit: number): boolean
+      Sets the color depth to use. Can be up to the maximum supported color depth. If a larger or invalid value is provided it will throw an error. Returns true if the depth was set, false otherwise.
+
+gpu.setForeground(color: number): number
+      Like setBackground, but for the foreground color.
+
+gpu.setResolution(width: number, height: number): boolean
+      Sets the specified resolution. Can be up to the maximum supported resolution. If a larger or invalid resolution is provided it will throw an error. Returns true if the resolution was set, false otherwise.
+
+gpu.type()
+      Returns the name of the component
+[GPU_END]      
+
+[MODEM]
+modem.address
+      Gets the address of the card
+      
+modem.broadcast(port: number, ...): boolean
+      Sends a broadcast message. This message is delivered to all reachable network cards. Returns true if the message was sent. Note that broadcast messages are not delivered to the modem that sent the message. All additional arguments are passed along as data. See send.
+      
+modem.getStrength(): number
+      The current signal strength to apply when sending messages. Wireless network cards only.
+
+modem.isWireless(): boolean
+      Returns whether this modem is capable of sending wireless messages.
+      
+modem.isOpen(port: number): boolean
+      Returns whether the specified 'port' is currently being listened on. Messages only trigger signals when they arrive on a port that is open.
+      
+modem.open(port: number): boolean
+      Opens the specified port number for listening. Returns true if the port was opened, false if it was already open.
+
+modem.send(address: string, port: number[, ...]): boolean
+      Sends a network message to the specified address. Returns true if the message was sent. This does not mean the message was received, only that it was sent. No port-sniffing for you. Any additional arguments are passed along as data. These arguments must be basic types: nil, boolean, number and string values are supported, tables and functions are not. See the text API for serialization of tables.
+
+modem.setStrength(value: number): number
+      Sets the signal strength. If this is set to a value larger than zero, sending a message will also generate a wireless message. The higher the signal strength the more energy is required to send messages, though. Wireless network cards only.
+
+modem.type
+      Returns the name of the component
+[MODEM_END]
+
+[REDSTONE]
+redstone.address
+      Gets the address of the card
+
+redstone.getInput(side: number): number
+      Gets the current ingoing redstone signal from the specified side. Note that the side is relative to the computer's orientation, i.e. sides.south is in front of the computer, not south in the world. Likewise, sides.left is to the left of the computer, so when you look at the computer's front, it'll be to your right. If you use mods such as RedLogic the input may exceed the vanilla values of [0, 15].
+
+redstone.getOutput(side: number): number
+      Gets the currently set output on the specified side.
+
+redstone.getBundledInput(side: number, color: number): number
+      Like getInput, but for bundled input, reading the value for the channel with the specified color.
+
+redstone.getBundledOutput(side: number, color: number): number
+      Like getOutput, but for bundled output, getting the value for the channel with the specified color.
+
+redstone.setBundledOutput(side: number, color: number, value: number): number
+      Like setOutput, but for bundled output, setting the value for the channel with the specified color.
+
+redstone.setOutput(side: number, value: number): number
+      Sets the strength of the redstone signal to emit on the specified side. Returns the new value. This can be an arbitrarily large number for mods that support this. For vanilla interaction it is clamped to the interval [0, 15].
+
+redstone.type
+      Returns the name of the component
+[REDSTONE_END]
+
+[FILESYSTEM]
+filesystem.isAutorunEnabled(): boolean
+      Returns whether autorun is currently enabled. If this is true, newly mounted file systems will be checked for a file named autorun[.lua] in their root directory. If such a file exists, it is executed.
+
+filesystem.setAutorunEnabled(value: boolean)
+      Sets whether autorun files should be ran on startup.
+
+filesystem.canonical(path: string): string
+      Returns the canonical form of the specified path, i.e. a path containing no "indirections" such as . or ... For example, the paths /tmp/../bin/ls.lua and /bin/./ls.lua are equivalent, and their canonical form is /bin/ls.lua. Note that this function truncates relative paths to their topmost "known" directory. For example, ../bin/ls.lua becomes bin/ls.lua. It stays a relative path, however - mind the lack of a leading slash.
+
+filesystem.concat(pathA: string, pathB: string[, ...]): string
+      Concatenates two or more paths. Note that all paths other than the first are treated as relative paths, even if they begin with a slash. The canonical form of the resulting concatenated path is returned, so fs.concat("a", "..") results in an empty string.
+
+filesystem.path(path: string): string
+      Returns the path component of a path to a file, i.e. everything before the last slash in the canonical form of the specified path.
+
+filesystem.name(path: string): string
+      Returns the file name component of a path to a file, i.e. everything after the last slash in the canonical form of the specified path.
+
+filesystem.proxy(filter: string): table or nil, string
+      This is similar to component.proxy, except that the specified string may also be a file system component's label. We check for the label first, if no file system has the specified label we fall back to component.proxy. Returns the proxy of the specified file system, or nil and an error message if no file system matching the specified filter was found.
+
+filesystem.mount(fs: table or string, path: string): boolean or nil, string
+      Mounts a file system at the specified path. The first parameter can be either a file system component's proxy, its address or its label. The second is a path into the global directory tree. Returns true if the file system was successfully mounted, nil and an error message otherwise.
+
+filesystem.mounts(): function -> table, string
+      Returns an iterator function over all currently mounted file system component's proxies and the paths at which they are mounted. This means the same proxy may appear multiple times, but with different mount paths.
+
+filesystem.umount(fsOrPath: table or string): boolean
+      Unmounts a file system. The parameter can either be a file system component's proxy or (abbreviated) address, in which case all mount points of this file system will be removed, or a path into the global directory structure, in which case the file system mount containing that directory will be unmounted.
+
+filesystem.get(path: string): table, string or nil, string
+      Gets the file system component's proxy that contains the specified path. Returns the proxy and mount path, or nil and an error message.
+
+filesystem.exists(path: string): boolean
+      Checks whether a file or folder exist at the specified path.
+
+filesystem.size(path: string): number
+      Gets the file size of the file at the specified location. Returns 0 if the path points to anything other than a file.
+
+filesystem.isDirectory(path: string): boolean
+      Gets whether the path points to a directory. Returns false if not, either because the path points to a file, or file.exists(path) is false.
+
+filesystem.lastModified(path: string): number
+      Returns the real world unicode timestamp of the last time the file at the specified path was modified. For directories this is usually the time of their creation.
+
+filesystem.list(path: string): function -> string or nil, string
+      Returns an iterator over all elements in the directory at the specified path. Returns nil and an error messages if the path is invalid or some other error occurred. Note that directories usually are postfixed with a slash, to allow identifying them without an additional call to fs.isDirectory.
+
+filesystem.makeDirectory(path: string): boolean or nil, string
+      Creates a new directory at the specified path. Creates any parent directories that do not extist yet, if necessary. Returns true on success, nil and an error message otherwise.
+
+filesystem.remove(path: string): boolean or nil, string
+      Deletes a file or folder. If the path specifies a folder, deletes all files and subdirectories in the folder, recursively. Return true on success, nil and an error message otherwise.
+
+filesystem.rename(oldPath: string, newPath: string): boolean or nil, string
+      Renames a file or folder. If the paths point to different file system components this will only work for files, because it actually perform a copy operation, followed by a deletion if the copy succeeds. Returns true on success, nil and an error message otherwise.
+
+filesystem.copy(fromPath: string, toPath: string): boolean or nil, string
+      Copies a file to the specified location. The target path has to contain the target file name. Does not support folders.
+
+filesystem.open(path: string[, mode: string]): table or nil, string
+      Opens a file at the specified path for reading or writing. If mode is not specified it defaults to "r". Possible modes are: r, rb, w, wb, a and ab. Returns a file stream (see below) on success, nil and an error message otherwise. Note that you can only open a limited number of files per file system at the same time. Files will be automatically closed when the garbage collection kicks in, but it is generally a good idea to call close on the file stream when done with the file. Important: it is generally recommended to use io.open instead of this function, to get a buffered wrapper for the file stream.
+[FILESYSTEM_END]
