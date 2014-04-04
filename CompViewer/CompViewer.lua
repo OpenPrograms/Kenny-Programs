@@ -100,7 +100,7 @@ end
 
 if not component.isAvailable("internet") then 
 	if not file_check(os.getenv("PWD") .. "gml.lua") or not file_check(os.getenv("PWD") .. "cv.gss") or not file_check(os.getenv("PWD") .. "default.gss") or not file_check(os.getenv("PWD") .. "gfxbuffer.lua") or not file_check(os.getenv("PWD") .. "colorutils.lua") or not file_check(os.getenv("PWD") .. "CompInfo.txt") then
-		io.stderr:write("You are missing one or more of the required files 'gml.lua', 'colorutils.lua', 'gfxbuffer.lua', 'CompInfo.txt', or 'cv.gss' and do not have internet access to download them automaticly!\n")
+		io.stderr:write("You are missing one or more of the required files 'gml.lua', 'colorutils.lua', 'gfxbuffer.lua', 'CompInfo.txt', or 'cv.gss', or 'default.gss' and do not have internet access to download them automaticly!\n")
 		return
 	end
 else 
@@ -338,8 +338,8 @@ else
 	guiContentsLabelWidth = 31
 	menuDirWidth = 16
 	menuDirHeight = 11
-	functionsCol = 17
-	functionsWidth = 32
+	functionsCol = 20
+	functionsWidth = 30
 	functionsHeight = 11
 	infoGuiWidth = 50
 	infoGuiHeight = 16
