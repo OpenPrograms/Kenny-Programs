@@ -191,14 +191,14 @@ filesystem.open(path: string[, mode: string]): table or nil, string
       Opens a file at the specified path for reading or writing. If mode is not specified it defaults to "r". Possible modes are: r, rb, w, wb, a and ab. Returns a file stream (see below) on success, nil and an error message otherwise. Note that you can only open a limited number of files per file system at the same time. Files will be automatically closed when the garbage collection kicks in, but it is generally a good idea to call close on the file stream when done with the file. Important: it is generally recommended to use io.open instead of this function, to get a buffered wrapper for the file stream.
 [FILESYSTEM_END]
 [STARGATE]
-stargate.connect(address:string):boolean
-      connects a stargate to another stargate at the given address
+stargate.connect(address:string):boolean[nil, string]
+      connects a stargate to another stargate at the given address, returns true on success, or [nil, error] otherwise
 
 stargate.dial(address:string):boolean
       same as conncect
       
-stargate.disconnect():boolean[,string]
-      disconnects the stargate from another stargate
+stargate.disconnect():boolean[nil ,string]
+      disconnects the stargate from another stargate, returns true on success, or [nil, error] otherwise
       
 stargate.getAddress():string
       returns the address of the current stargate
