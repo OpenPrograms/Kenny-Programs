@@ -192,10 +192,10 @@ filesystem.open(path: string[, mode: string]): table or nil, string
 [FILESYSTEM_END]
 [STARGATE]
 stargate.connect(address:string):boolean
-      connects a stargate to another stargate at the given address
+      connects a stargate to another stargate at the given address. this works the same as dial.  The reason for both of these (which do the same thing) is for cross compatitibility amongst mods.
 
 stargate.dial(address:string):boolean
-      same as conncect
+      connects a stargate to another stargate at the given address. this works the same as connect.  The reason for both of these (which do the same thing) is for cross compatitibility amongst mods.
       
 stargate.disconnect():boolean[,string]
       disconnects the stargate from another stargate
