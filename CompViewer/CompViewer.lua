@@ -49,11 +49,11 @@ function compareVersions(v1,v2)
 	end
 	wget = loadfile("/bin/wget.lua")
 	function downloadFile(remotename, filename)
-		wget("https://raw.github.com/MichiyoRavencroft/Kenny-Programs/master/CompViewer/" .. remotename, filename)
+		wget("https://raw.github.com/OpenPrograms/Kenny-Programs/master/CompViewer/" .. remotename, filename)
 	end
 
 	function remoteVersion()
-		for line in internet.request("https://raw.github.com/MichiyoRavencroft/Kenny-Programs/master/CompViewer/compviewer-version.txt") do 
+		for line in internet.request("https://raw.github.com/OpenPrograms/Kenny-Programs/master/CompViewer/compviewer-version.txt") do 
 			if line ~= "not found" then 
 				return text.trim(line)
 			else 
