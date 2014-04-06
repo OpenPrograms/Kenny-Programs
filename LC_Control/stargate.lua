@@ -153,10 +153,7 @@ if (compareVersions(remoteVersion(), localVersion()) == 0) then
 	elseif(compareVersions(remoteVersion(), localVersion()) > 0) then
 		doUpdate("update")
 	end
-	print("Updating Component Info file, One moment please")
-	fs.remove(os.getenv("PWD") .. "CompInfo.txt")
 	os.sleep(0.5)
-	downloadFile("CompInfo.txt")
 end
 --We've checked for gml, and downloaded it if it was available, so we can load gml now.
 
