@@ -163,8 +163,8 @@ local gpu=component.gpu
 local fname = "GateInfo.txt"
 local filename = shell.resolve(fname)
 local connectAddress = ""
-local destAddress = {}
-local destName = {}
+local destAddress = {" "}
+local destName = {" "}
 local timerID = 0
 
 local function isAdvanced()
@@ -235,7 +235,7 @@ local newAddressGUI = gml.create(8, 16, 50, 20)
 local newAddressLabel=gui:addLabel(15, -31, 13,"Address Name:")
 local newAddressField=gui:addTextField(15,-28,30)
 local newGateAddressLabel=gui:addLabel(15, -26, 13,"Gate Address:")
-local newGateAddressField=gui:addTextField(15,-22,9)
+local newGateAddressField=gui:addTextField(15,-22,10)
 
 function saveAddressData()
   destName[#destName + 1] = text.trim(newAddressField.text)
