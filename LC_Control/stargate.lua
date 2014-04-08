@@ -220,7 +220,7 @@ end
 local function valid(address)
   local reply, error = sg.isValidAddress(address)
   if reply == nil then
-    return (error)
+    return ("Address must be 7 or 9 long")
   else
     return (tostring(reply))
   end
@@ -273,7 +273,7 @@ function saveAddressData()
 		local f = io.open(filename, "w")
 		if f then
 			for a = 1, #destName do
-        f:write(tostring(destName[a])..","..tostring(destAddress[a]).."\n")
+        f:write(tostring(destName[a])..","..string.sub(tostring(destAddress[a]), 1, 9).."\n")
 			end
 			f:close()
 		end
@@ -402,12 +402,14 @@ local function disconnect()
 end
 
 local function dialGate()
-  sg.dial(connectAddress)
-  dialingActiveLabel["text-color"] = 0xFFFFFF
-  dialingActiveLabel["text-background"] = 0x009900
-  dialingActiveLabel.text= string.sub(" "..dialing().."  ", 1, 7)
-  dialingActiveLabel:draw()
-  timerID = event.timer(26, updateValues, 1)
+  if (valid(connectAddress) == "true") then
+    sg.dial(connectAddress)
+    dialingActiveLabel["text-color"] = 0xFFFFFF
+    dialingActiveLabel["text-background"] = 0x009900
+    dialingActiveLabel.text= string.sub(" "..dialing().."  ", 1, 7)
+    dialingActiveLabel:draw()
+    timerID = event.timer(26, updateValues, 1)
+  end
 end
 
 local function onAddressDial()
