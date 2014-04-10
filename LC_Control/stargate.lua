@@ -261,14 +261,6 @@ local function hasFuel()
 end
 
 function saveAddressData()
-  if (string.len(text.trim(newAddressField.text)) > 1) then
-    destName[#destName + 1] = text.trim(newAddressField.text)
-    destAddress[#destAddress + 1] = text.trim(newGateAddressField.text)
-    newAddressField.text = ""
-    newGateAddressField.text = ""
-    newAddressField:draw()
-    newGateAddressField:draw()
-  end
 	do
 		local f = io.open(filename, "w")
 		if f then
@@ -279,6 +271,27 @@ function saveAddressData()
 		end
 	end
   addressList:updateList(destName)
+end
+
+local function setNewAddress()
+  if (string.len(text.trim(newAddressField.text)) > 3) then
+    if (string.len(destName[1]) > 1) then
+      destName[#destName + 1] = text.trim(newAddressField.text)
+      destAddress[#destAddress + 1] = text.trim(newGateAddressField.text)
+      newAddressField.text = ""
+      newGateAddressField.text = ""
+      newAddressField:draw()
+      newGateAddressField:draw()
+    else
+      destName[#destName] = text.trim(newAddressField.text)
+      destAddress[#destAddress] = text.trim(newGateAddressField.text)
+      newAddressField.text = ""
+      newGateAddressField.text = ""
+      newAddressField:draw()
+      newGateAddressField:draw()
+    end
+    saveAddressData()
+  end
 end
 
 local function cancelAddress()
@@ -314,7 +327,7 @@ local function addAddress()
   newAddressField=newAddressGUI:addTextField(15, 2, 30)
   newGateAddressLabel=newAddressGUI:addLabel(2, 4, 13,"Gate Address:")
   newGateAddressField=newAddressGUI:addTextField(15, 4, 10)
-  newAddressSave=newAddressGUI:addButton(5, 6, 10, 1, "Save", saveAddressData)
+  newAddressSave=newAddressGUI:addButton(5, 6, 10, 1, "Save", setNewAddress)
   newAddressCancel=newAddressGUI:addButton(20, 6, 10, 1, "Cancel", cancelAddress)
   newAddressClose=newAddressGUI:addButton(35, 6, 10, 1, "Close", newAddressGUI.close)
   newAddressGUI:run()
