@@ -1,0 +1,70 @@
+appeng-rv14-finale3-mc16x.jar
+ArchimedesShips.zip
+Aroma1997Core MC.1.6.4 v.1.0.1.5.jar
+Aroma1997s Dimensional World MC.1.6.4 v.1.0.2.14.jar
+Barrels 3.4.1 - 1.6.4.jar
+BetterChests MC.1.6.4 v.1.1.0.3.jar
+BiblioCraft[v1.5.4].zip
+BigReactors3.0.3.zip
+BiomesOPlenty-universal-1.6.4-1.2.1.434.jar
+buildcraft-A-1.6.4-4.2.2.jar
+Calclavia-Core-Development-1.2.0.136-universal.jar
+Carpenter's Blocks v2.0.2 - MC 1.6+.zip
+ChickenChunks 1.3.3.4.jar
+CodeChickenCore 0.9.0.9.jar
+CoFHCore-2.0.0.2.jar
+ComputerCraft1.63pr1.jar
+Computronics-0.1.2.jar
+DragonAPI 1.6 V17.zip
+EnderStorage 1.4.3.6.jar
+extrautils-1.0.2.zip
+GregsLighting-1.9.1-mc1.6.4.jar
+hydraulicraft-1.0.4-65.jar
+ICBM-1.4.2.370.jar
+iChunUtil2.4.0.zip
+immibis-core-57.1.93.jar
+immibis-peripherals-57.0.1.jar
+InventoryTweaks-MC1.6.2-1.56-b77.jar
+ironchest-universal-1.6.4-5.4.1.673.zip
+LanteaCraft-RC1-25.jar
+LogisticsPipes-MC1.6.4-0.7.4.dev.102.jar
+MadScience-MC1.6.4-F9.11.1.964_v1.00.149-universal.jar
+MineFactoryReloaded-2.7.5-352.jar
+MiningHats-1.2.zip
+Modular-Force-Field-System-3.6.2.65-core.jar
+mystcraft-uni-1.6.4-0.10.12.01.zip
+Natura_mc1.6.X_2.1.14.jar
+NotEnoughItems 1.6.1.9.jar
+OpenBlocks-1.2.5.jar
+OpenComponents-MC1.6.4-0.1.1.35-universal.jar
+OpenComputers-MC1.6.4-1.2.7.337-universal.jar
+OpenModsLib-0.2.jar
+OpenPrinter-0.1.0-forge9.11.1.953-snapshot-12.jar
+PortalGun2.0.2.zip
+PortalGunSounds.pak
+PowerCrystalsCore-1.1.8-9.jar
+PrinterBlock_1.6.4a.zip
+ProjectRedBase-1.6.4-4.2.2.19.jar
+ProjectRedCompat-1.6.4-4.2.2.19.jar
+ProjectRedIntegration-1.6.4-4.2.2.19.jar
+ProjectRedLighting-1.6.4-4.2.2.19.jar
+ProjectRedMechanical-1.6.4-4.2.2.19.jar
+ProjectRedWorld-1.6.4-4.2.2.19.jar
+Railcraft_1.6.4-8.3.2.0.jar
+RedstoneArsenal-1.0.0.0.jar
+RedstoneJukebox.zip
+RemainInMotion_1.0.3.zip
+saves-schematica-dummy
+ShadersModCore-v2.0.1-beta18-mc1.6.2-f859-ofuc4.jar
+StevesCarts2.0.0.b10.zip
+StevesFactoryManagerA35.zip
+TConstruct_mc1.6.4_1.5.3d3.jar
+ThermalExpansion-3.0.0.2.jar
+TMechworks_mc1.6.4_0.1.3.jar
+Torched2.0.0.zip
+Universal-Electricity-3.1.0.79-core.jar
+V3_preview3.zip
+Waila_1.4.4a.zip
+ZansMinimap1.6.4.zip
+zornco_BCB_v1.6.2SRG V1.2.zip
+zornco_fps_v1.6.2SRG.zip
