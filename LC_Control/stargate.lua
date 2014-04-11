@@ -220,7 +220,7 @@ end
 local function valid(address)
   local reply, error = sg.isValidAddress(address)
   if reply == nil then
-    return ("Address must be 7 or 9 long")
+    return (error)
   else
     return (tostring(reply))
   end
@@ -230,8 +230,8 @@ loadAddressData()
 
 local addressListBoxGUI = gml.create("center", 18, 48, 16)
 local addressList=gui:addListBox(21, 7, 38, 8, destName)
-local addressLabel=gui:addLabel(21, 16, 35,"Destination:  "..text.trim(destAddress[1]))
-local validLabel=gui:addLabel(21, 18, 35, "Valid:  "..valid(text.trim(destAddress[1])))     
+local addressLabel=gui:addLabel(19, 16, 41,"Destination:  "..text.trim(destAddress[1]))
+local validLabel=gui:addLabel(19, 18, 41, "Valid:  "..valid(text.trim(destAddress[1])))     
 
 local contentsLabel=gui:addLabel(5, 2, 15, "Gate Address:")
 local contentsActiveLabel=gui:addLabel(20, 2, 9, "         ")
@@ -273,27 +273,6 @@ function saveAddressData()
   addressList:updateList(destName)
 end
 
-local function setNewAddress()
-  if (string.len(text.trim(newAddressField.text)) > 3) then
-    if (string.len(destName[1]) > 1) then
-      destName[#destName + 1] = text.trim(newAddressField.text)
-      destAddress[#destAddress + 1] = text.trim(newGateAddressField.text)
-      newAddressField.text = ""
-      newGateAddressField.text = ""
-      newAddressField:draw()
-      newGateAddressField:draw()
-    else
-      destName[#destName] = text.trim(newAddressField.text)
-      destAddress[#destAddress] = text.trim(newGateAddressField.text)
-      newAddressField.text = ""
-      newGateAddressField.text = ""
-      newAddressField:draw()
-      newGateAddressField:draw()
-    end
-    saveAddressData()
-  end
-end
-
 local function cancelAddress()
   newAddressField.text = ""
   newGateAddressField.text = ""
@@ -311,10 +290,20 @@ local function deleteAddress()
   if addressID ~= 0 then
     table.remove(destName, addressID)
     table.remove(destAddress, addressID)
-    destName[addressID] = nil
-    destAddress[addressID] = nil
   end
   addressList:updateList(destName)
+  saveAddressData()
+end
+
+local function setNewAddressData()
+  if (string.len(text.trim(newAddressField.text)) > 1) then
+    destName[#destName + 1] = text.trim(newAddressField.text)
+    destAddress[#destAddress + 1] = text.trim(newGateAddressField.text)
+    newAddressField.text = ""
+    newGateAddressField.text = ""
+    newAddressField:draw()
+    newGateAddressField:draw()
+  end
   saveAddressData()
 end
 
@@ -327,7 +316,7 @@ local function addAddress()
   newAddressField=newAddressGUI:addTextField(15, 2, 30)
   newGateAddressLabel=newAddressGUI:addLabel(2, 4, 13,"Gate Address:")
   newGateAddressField=newAddressGUI:addTextField(15, 4, 10)
-  newAddressSave=newAddressGUI:addButton(5, 6, 10, 1, "Save", setNewAddress)
+  newAddressSave=newAddressGUI:addButton(5, 6, 10, 1, "Save", setNewAddressData)
   newAddressCancel=newAddressGUI:addButton(20, 6, 10, 1, "Cancel", cancelAddress)
   newAddressClose=newAddressGUI:addButton(35, 6, 10, 1, "Close", newAddressGUI.close)
   newAddressGUI:run()
@@ -401,10 +390,10 @@ local function updateDialAddress(info)
   end
   if addressID ~= 0 then
     connectAddress = text.trim(destAddress[addressID])
-    addressLabel.text="Destination Address: "..destAddress[addressID]
+    addressLabel.text="Address: "..destAddress[addressID]
     addressLabel:draw()
   end
-  validLabel.text= "Valid Address:  "..valid(connectAddress)
+  validLabel.text= "Valid:  "..valid(connectAddress)
   validLabel:draw()
 end
 
