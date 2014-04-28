@@ -11,7 +11,6 @@ local unicode = require("unicode")
 local sides = require("sides")
 local colors=require("colors")
 
-
 function getCh()
 	return (select(4, event.pull("key_down")))
 end
@@ -38,7 +37,7 @@ Chapter = {
   [1] = {
     "Key Points in this Chapter:\n1. Learning how to create a program.\n2. Learning how to save that program.\n3. Learning how to run that program.",
     "1.1 - Learning how to create a program.\n\nOk so first things first right? We gotta learn how to create our first program. Creating a program is very simple in OC.\n\nedit programname\n\nedit means we want to create or edit program, and programname is the name of the program we wish to edit or create.",
-    "1.2 - Learning how to save that program.\n\nSo now your inside the editing feature of OC and you can move around almost like a notepad. We want to press the [Control] key which will bring up a menu at the bottom of your screen. Pressing the [Left] and [Right] arrow keys will change your selection in this menu. [SAVE] will save the program. [QUIT] will quit editing the program. By pressing [ENTER] we can choose our selection.",
+    "1.2 - Learning how to save that program.\n\nSo now your inside the editing feature of OC and you can move around almost like a notepad. We want to press the [Control] key which will bring up a menu at the bottom of your screen. Pressing CTRL - S [SAVE] will save the program. CTRL - W [EXIT] will exit editing the program.",
     "1.3 - Learning how to run that program.\n\nWe've created our little program, but how do we run it? Well thats simple. We type the program name into our terminal and press [ENTER], but remember all things in LUA are case-sensitive. Your program named \"Hello\" is not the same as your program named \"hello\".",
     "1.4 - Practice What We've Learned!\n\nYou'll see a new option at the bottom of your screen now. You can press [SPACE] to continue onward to the next chapter, you can also press [ENTER] to run this chapters simulation.\nDon't worry, you won't hurt my feelings by not practicing.",
     "SIM"
@@ -161,7 +160,7 @@ Chapter = {
   [11] = {
     "This is not a Chapter, this is just random blurbs of extra information about other features and functions.",
     "Blurb 0 (The Most Important) - Use NOTEPAD++ to edit your code, the in-game edit kinda sucks\n\nFind your code in saves/world/computer/#",
-    "Blurb 1 - sleep(1) will pause your code for 1 second",
+    "Blurb 1 - os.sleep(1) will pause your code for 1 second",
     "Blurb 2 - timername = os.startTimer(1) will cause a timer to go off in 1 second, use events to check for the name",
     "Blurb 3 - Making your code readable helps everyone\nwhile true do\nif x == 5 then\nend\nend\nCOULD BE\nwhile true do\n if x == 5 then\n end\nend",
     "Blurb 4 - Atleast 75% of the time, an error tells you exactly whats wrong with your program.\nSomething with NIL means your trying to use a NIL variable.",
@@ -187,7 +186,7 @@ Examples = {
     term.clear()
     term.setCursor(1,1)
     while true do
-      local event, param1, param2 = event.pull()
+      param1 = getCh()
       print (event)
       print (param1)
       print (param2)
@@ -227,7 +226,7 @@ Examples = {
           break 
         end
         print (line[i])
-        sleep (1)
+        os.sleep (1)
         i = i + 1
       end
     else
@@ -302,16 +301,26 @@ function SaveExamples()
   print "at it, or you can open the file inside"
   print "your computer by finding it in your"
   print "saves directory under your worldname"
-  print "and computer #."
+  print "and the folder number of your hard drive."
   print ""
-  print ("Your Computer # is "..os.getComputerID())
   pressany()
-  sleep(.5)
-  shell.execute("mkdir", "examples")
+  os.sleep(.5)
+  local path = fs.path(require("process").running())
+  if fs.exists(path.."/examples") then
+    print(" ")
+  else
+    fs.makeDirectory(path.."/examples")
+  end
+  
   local i = 1
   while true do
     if Examples[i] ~= nil then
-      file = io.open("examples/"..Examples[i][4], "w")
+      if fs.exists(path.."examples/"..Examples[i][4]) then
+        print("Files already exist. exiting the save function")
+        os.sleep(3)
+        return
+      end
+      local file = io.open(path.."examples/"..Examples[i][4], "w")
       file:write("--[[\n")
       file:write(Examples[i][2])
       file:write("--]]\n")
@@ -328,22 +337,38 @@ function SaveExamples()
   pressany()
 end
 
+function spaces(cnt)
+	return string.rep(string.char(32), cnt)
+end
+
+local function spChar(letter, cnt)
+	return string.rep(unicode.char(letter), cnt)
+end
+
 function mainmenu()
+	local ul = {0x250C, 0x2554}
+	local ur = {0x2510, 0x2557}
+	local ll = {0x2514, 0x255A}
+	local lr = {0x2518, 0x255D}
+	local sl = {0x2502, 0x2551}
+	local al = {0x2500, 0x2550}
+
   while true do
     term.clear()
     term.setCursor(1,1)
-    print "--------------------------------------"
-    print "| OpenComputers Interactive Tutorial |"
-    print "| By: Casper7526 |"
-    print "--------------------------------------"
-    print "| |"
-    print "| 1. Start |"
-    print "| 2. Choose Chapter |"
-    print "| 3. Examples |"
-    print "| 4. Save Examples To File |"
-    print "| 5. Exit |"
-    print "| |"
-    print "--------------------------------------"
+    
+    print (spChar(ul[1], 1)..spChar(al[1],38)..spChar(ur[1], 1))
+    print (spChar(sl[1], 1).."  OpenComputers Interactive Tutorial  "..spChar(sl[1], 1))
+    print (spChar(sl[1], 1).."   By: Casper7526 (ported by Kenny)   "..spChar(sl[1], 1))
+    print (spChar(0x251C, 1)..spChar(al[1],38)..spChar(0x2524, 1))
+    print (spChar(sl[1], 1)..spaces(38)..spChar(sl[1], 1))
+    print (spChar(sl[1], 1).."  1. Start                            "..spChar(sl[1], 1))
+    print (spChar(sl[1], 1).."  2. Choose Chapter                   "..spChar(sl[1], 1))
+    print (spChar(sl[1], 1).."  3. Examples                         "..spChar(sl[1], 1))
+    print (spChar(sl[1], 1).."  4. Save Examples To File            "..spChar(sl[1], 1))
+    print (spChar(sl[1], 1).."  5. Exit                             "..spChar(sl[1], 1))
+    print (spChar(sl[1], 1)..spaces(38)..spChar(sl[1], 1))
+    print (spChar(ll[1], 1)..spChar(al[1],38)..spChar(lr[1], 1))
     local param1 = getCh()
     if param1 == keyboard.keys["5"] then
       break
@@ -365,7 +390,7 @@ function LoadExample(num)
   print (Examples[num][2])
   pressany()
   term.clear()
-  sleep(.5)
+  os.sleep(.5)
   term.setCursor(1,1)
   print (Examples[num][3])
   pressany()
@@ -395,7 +420,7 @@ function ChooseExample()
       break 
     end
     if Examples[tonumber(choice)] == nil then 
-      print "Thats not a valid chapter." sleep(1) 
+      print "Thats not a valid chapter." os.sleep(1) 
     else
       LoadExample(tonumber(choice))
       break 
@@ -427,7 +452,7 @@ function ChooseChapter()
       break 
     end
     if ChapterTitles[tonumber(choice)] == nil then 
-      print "Thats not a valid chapter." sleep(1) 
+      print "Thats not a valid chapter." os.sleep(1) 
     else
       LoadChapter(tonumber(choice)) 
       break 
@@ -491,7 +516,7 @@ end
 function pressany()
   term.setCursor(1,17)
   print "Press Any Key To Continue"
-  local event = event.pull()
+  pause=getCh()
 end
 
 function Sim(chapter)
@@ -517,13 +542,13 @@ function Sim(chapter)
         if input == "edit hello" then
           shell.execute("edit", "tmptut")
           print "Great Job, now let's run our program!"
-          sleep(2)
+          os.sleep(2)
           stage = 2
         else
           print "Remember, lua is case sensitive."
           print "Try"
           print "edit hello"
-          sleep(2)	
+          os.sleep(2)	
         end
       elseif stage == 2 then
         if input == "hello" then 
@@ -532,7 +557,7 @@ function Sim(chapter)
           print "Remember, lua is case sensitive."
           print "Try"
           print "hello"
-          sleep(2)	
+          os.os.sleep(2)	
         end
       end
     end
@@ -566,8 +591,8 @@ function Sim(chapter)
         print ""
         print "Press [ENTER] to end the simulation."
         print "Press Any Other Key to go back and work on your program."
-        local event, param1, param2 = event.pull()
-        if event == "key" and param1 == 28 then 
+        param1 = getCh()
+        if param1 == keyboard.keys.enter then 
           break 
         end
       elseif string.lower(input) == "example" then
@@ -613,8 +638,8 @@ function Sim(chapter)
         print ""
         print "Press [ENTER] to end the simulation."
         print "Press Any Other Key to go back and work on your program."
-        local event, param1, param2 = event.pull()
-        if event == "key" and param1 == 28 then 
+        param1 = getCh()
+        if param1 == keyboard.keys.enter then 
           break 
         end
       elseif string.lower(input) == "example" then
@@ -660,8 +685,8 @@ function Sim(chapter)
         print ""
         print "Press [ENTER] to end the simulation."
         print "Press Any Other Key to go back and work on your program."
-        local event, param1, param2 = event.pull()
-        if event == "key" and param1 == 28 then 
+        param1 = getCh()
+        if param1 == keyboard.keys.enter then 
           break 
         end
       elseif string.lower(input) == "example" then
@@ -702,8 +727,8 @@ function Sim(chapter)
         print ""
         print "Press [ENTER] to end the simulation."
         print "Press Any Other Key to go back and work on your program."
-        local event, param1, param2 = event.pull()
-        if event == "key" and param1 == 28 then 
+        param1 = getCh()
+        if param1 == keyboard.keys.enter then 
           break 
         end
       elseif string.lower(input) == "example" then
@@ -748,8 +773,8 @@ function Sim(chapter)
         print ""
         print "Press [ENTER] to end the simulation."
         print "Press Any Other Key to go back and work on your program."
-        local event, param1, param2 = event.pull()
-        if event == "key" and param1 == 28 then 
+        param1 = getCh()
+        if param1 == keyboard.keys.enter then 
           break 
         end
       elseif string.lower(input) == "example" then
