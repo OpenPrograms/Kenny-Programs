@@ -11,6 +11,14 @@ local unicode = require("unicode")
 local sides = require("sides")
 local colors=require("colors")
 
+
+local ul = {0x250C, 0x2554}
+local ur = {0x2510, 0x2557}
+local ll = {0x2514, 0x255A}
+local lr = {0x2518, 0x255D}
+local sl = {0x2502, 0x2551}
+local al = {0x2500, 0x2550}
+
 function getCh()
 	return (select(4, event.pull("key_down")))
 end
@@ -35,7 +43,7 @@ ChapterTitles = {
 
 Chapter = {
   [1] = {
-    "Key Points in this Chapter:\n1. Learning how to create a program.\n2. Learning how to save that program.\n3. Learning how to run that program.",
+    "Key Points in this Chapter:\n\n1. Learning how to create a program.\n2. Learning how to save that program.\n3. Learning how to run that program.",
     "1.1 - Learning how to create a program.\n\nOk so first things first right? We gotta learn how to create our first program. Creating a program is very simple in OC.\n\nedit programname\n\nedit means we want to create or edit program, and programname is the name of the program we wish to edit or create.",
     "1.2 - Learning how to save that program.\n\nSo now your inside the editing feature of OC and you can move around almost like a notepad. We want to press the [Control] key which will bring up a menu at the bottom of your screen. Pressing CTRL - S [SAVE] will save the program. CTRL - W [EXIT] will exit editing the program.",
     "1.3 - Learning how to run that program.\n\nWe've created our little program, but how do we run it? Well thats simple. We type the program name into our terminal and press [ENTER], but remember all things in LUA are case-sensitive. Your program named \"Hello\" is not the same as your program named \"hello\".",
@@ -43,7 +51,7 @@ Chapter = {
     "SIM"
     },
   [2] = {
-    "Key Points in this Chapter:\n1. How to use print\n2. How to use write\n3. How to clear the screen.\n4. How to use the cursor position.\n5. How to clear a specific line.",
+    "Key Points in this Chapter:\n\n1. How to use print\n2. How to use write\n3. How to clear the screen.\n4. How to use the cursor position.\n5. How to clear a specific line.",
     "2.1 - How to use print.\n\nTo show text to the user is a simple task. We do so by the following.\n\nprint (\"Hello User\")\n\nprint means to display the text to the user, and Hello User is the text we wish to display.",
     "2.2 - How to use write.\n\nWhen you print text, the program automatically adds a linebreak after your print command, sometimes you may not wish to do this.\n\nwrite (\"Hello\")\nprint (\"User\")\n\nThese two lines would make the exact same appearance as the print line we made previously. The reason is because the write command does not generate a linebreak and we can use this to keep our current position and continue writing on the same line.",
     "2.3 - How to clear the screen.\nQuite often you'll want to clear the screen automatically in your program.\n\nterm.clear()\n\nUsing this line we can clear the screen for our user to remove anything we don't want cluttering up the screen.",
@@ -56,7 +64,7 @@ Chapter = {
     "SIM"
     },
   [3] = {
-    "Key Points in this Chapter:\n1. What is a variable\n2. How to use a variable\n3. How to display a variable\n4. How to convert a variable",
+    "Key Points in this Chapter:\n\n1. What is a variable\n2. How to use a variable\n3. How to display a variable\n4. How to convert a variable",
     "3.1 - What is a variable.\n\nThink of a variable as a container in which you can place text or a number. Using variables allows you to store information and modify it on the fly. Using variables correctly is the key to making a sucessful program.",
     "3.2 - How to use a variable.\n\nThe first thing we should almost always do when we want to use a variable in a program is to define the variable. We do this by giving the variable a default piece of data. If we don't define a variable then the variable is considered NIL until it has been set.",
     "3.2 - How to use a variable.\n\nA NIL variable can cause lots of problems in your program, if you try to add together 2 variables and one is NIL, you'll get an error, if you try printing a NIL variable you'll get an error.",
@@ -76,7 +84,7 @@ Chapter = {
     "SIM"	
     },
   [4] = {
-    "Key Points in this Chapter:\n1. How to get user input",
+    "Key Points in this Chapter:\n\n1. How to get user input",
     "4.1 - How to get user input.\n\nWhat's the point of having all these cool variables if your user can't make a variable be something they want? We fix this by allowing the user to input a variable into the program.",
     "4.1 - How to get user input.\n\nx = io.read()\nThe io.read() tells the program to stop and wait for user input, when the user presses enter that information is then stored in the variable x and the program continues.\nUser input is always stored as a string, therefor if the user types 1 and presses enter, x will be come \"1\", not 1",
     "4.1 - How to get user input.\n\nOnce the user's input is entered into the x variable you can use that variable like you would any other variable. This means if you then wanted to show the user their input you could follow your io.read() line with print(x)",
@@ -85,7 +93,7 @@ Chapter = {
     "SIM"	
     },
   [5] = {
-    "Key Points in this Chapter:\n1. What is an IF statement\n2. The ELSE statement\n3. The ELSEIF statement\n4. Complex IF's",
+    "Key Points in this Chapter:\n\n1. What is an IF statement\n2. The ELSE statement\n3. The ELSEIF statement\n4. Complex IF's",
     "5.1 - What is an IF statement.\n\nWe use IF statements to control the programs direction based on certain criteria that you define. Doing this allows us to do only certain things based on certain conditions.",
     "5.1 - What is an IF statement.\n\nif name == \"Bob\" then\nprint (\"Hello Again Bob\")\nend\n\nThe 1st line says, if the variable name is equal to \"Bob\" then enter this IF statement. The next line is the code that will run if name does equal Bob. The 3rd line says to end the IF statement, if the name was not Bob the program would skip to the line directly after end.",
     "5.1 - What is an IF statement.\n\nWe have many options in the IF statement, we could do:\nif x >= 1\nRemember we can't do that IF statement if x is a string x = \"1\".\nif name ~= \"Bob\"\nThe ~= option means is not equal too. This if statement would pass if the name was NOT Bob.",
@@ -102,7 +110,7 @@ Chapter = {
     "SIM"	
     },
   [6] = {
-    "Key Points in this Chapter:\n1.What is a loop\n2.How to exit a loop\n3.Different kinds of loops",
+    "Key Points in this Chapter:\n\n1.What is a loop\n2.How to exit a loop\n3.Different kinds of loops",
     "6.1 - What is a loop\n\nA loop is a section of code that will continually run until told otherwise. We use these to repeat the same code until we say otherwise.\n\nwhile true do\nend\n\nThis is a while loop that has no exit, it will continually run over and over again until the program crashes.",
     "6.2 - How to exit a loop\nSince we don't want our loops to run until they crash we have to give them a way to stop. We do this by using the BREAK command.The break command is mostly placed inside an IF statement as just placing it in the loop itself would break the loop right away.",
     "6.2 - How to exit a loop\n\nx = 0\nwhile true do\n x = x + 1\n if x == 10 then\n break\n end\nend\n\nNotice how are while statements have their own end? This would run the loop and continually add 1 to x until x == 10 then it will break out of the loop.",
@@ -113,7 +121,7 @@ Chapter = {
     "SIM"	
     },
   [7] = {
-    "Key Points in this Chapter:\n1. Turning on and off redstone\n2. Checking and Setting Redstone",
+    "Key Points in this Chapter:\n\n1. Turning on and off redstone\n2. Checking and Setting Redstone",
     "7.1 - Turning on and off redstone\n\nOne of the greatest features of OC is that your computer can not only receive redstone signals, but it can also send them as well. We have 6 directions to choose from and they are:\ntop, bottom, front, back, left, right",
     "7.1 - Turning on and off redstone\n\nWe can control redstone with our computer using 2 basic commands, redstone.getInput(side) and redstone.setOutput(side, boolean).\nWe have to remember to place our sides in quotes though IE \"left\"",
     "7.2 - Checking and Setting Redstone\n\nredstone.setOutput(\"back\", true)\nThis tells the computer to turn on the redstone output on the back of the computer. We can replace true with false to turn off the redstone output to the back.",
@@ -123,7 +131,7 @@ Chapter = {
     "SIM"	
     },	
   [8] = {
-    "Key Points in this Chapter:\n1. How to turn on a single color\n2. How to turn off a single color\n3. Using multiple colors\n4. Testing Inputs\n5. Turning off all colors.",
+    "Key Points in this Chapter:\n\n1. How to turn on a single color\n2. How to turn off a single color\n3. Using multiple colors\n4. Testing Inputs\n5. Turning off all colors.",
     "8.1 - How to turn on a single color\n\nrs.setBundledOutput(\"back\", colors.white)\n\nThis would turn on the white output in the back.",
     "8.2 - How to turn off a single color\n\nrs.setBundledOutput(\"back\", rs.getBundledOutput(\"back\") - colors.white)\n\n This would turn off only the color white in the back.",
     "8.3 - Using Multiple colors\nUsing multiple colors is much easier when you use the colors.combine colors.subtract functions.",
@@ -134,7 +142,7 @@ Chapter = {
     "SIM"	
     },
   [9] = {
-    "Key Points in this Chapter:\n1. What is an event?\n2. How do we check for events\n3. What types of events are there?\n4. Using event loops\n5. WHATS GOING ON!",
+    "Key Points in this Chapter:\n\n1. What is an event?\n2. How do we check for events\n3. What types of events are there?\n4. Using event loops\n5. WHATS GOING ON!",
     "9.1 - What is an event?\n\nAn event can be many things, from redstone to timers, as well as smashing your face on the keyboard. These can all trigger events within a program, and by correctly using the event.pull() command we can make sure that no matter what happens, we'll know about it!",
     "9.2 - How do we check for events\n\nevent, param1, param2 = event.pull()\n\nPlacing this line in your code will stop the program until ANY event triggers. So just by pressing a key, you will pass this statement because a keypress is an event",
     "9.2 - How do we check for events\n\nThe easiest way to check for an event happening is the IF statement.\n\nif event == \"char\" and param1 == \"q\" then\n This line would trigger if you pressed q on your keyboard.",
@@ -146,7 +154,7 @@ Chapter = {
     "SIM"
     },
   [10] = {
-    "Key Points in this Chapter:\n1. What is a function?\n2. How to use a basic function\n3. How to get a return value from a function",
+    "Key Points in this Chapter:\n\n1. What is a function?\n2. How to use a basic function\n3. How to get a return value from a function",
     "10.1 - What is a function\n\nThink of a function as a part of your code that can be ran from anywhere inside your code. Once your function is done running, it will take you back to where your code left off.",
     "10.2 - How to use a basic function\n\nfunction hello()\nprint (\"Hello\")\nend\n\n Here we created a function named hello, and inside that function we placed a print statement that says hello.",
     "10.2 - How to use a basic function\n\nNow that we have our function created, anytime and anywhere in our program, we can place\nhello()\nThis will jump to the function, run the functions code, then come back to where you called the function.",
@@ -255,7 +263,7 @@ Examples = {
     "This tutorial is very basic, but is a very powerful function as well. The shell.execute command allows us to run a command from within our program as if we were at the terminal.",
     [[
     shell.execute("programname")
-    shell.execute("mkdir", "testing")
+    shell.execute("mkdir", nil, "testing")
     This would create a testing directory
     shell.execute("copy", "disk/hello", "world")
     This would copy the program hello from the disk directory
@@ -346,12 +354,6 @@ local function spChar(letter, cnt)
 end
 
 function mainmenu()
-	local ul = {0x250C, 0x2554}
-	local ur = {0x2510, 0x2557}
-	local ll = {0x2514, 0x255A}
-	local lr = {0x2518, 0x255D}
-	local sl = {0x2502, 0x2551}
-	local al = {0x2500, 0x2550}
 
   while true do
     term.clear()
@@ -400,20 +402,22 @@ function ChooseExample()
   while true do
     term.clear()
     term.setCursor(1,1)
-    print "--------------- Example Index ---------------"
-    print "---------------------------------------------"
-    print ""
+    print (spChar(ul[1], 1)..spChar(al[1],39)..spChar(ur[1], 1))
+    print (spChar(sl[1], 1)..spaces(13).."Example Index"..spaces(13)..spChar(sl[1], 1))
+    print (spChar(0x251C, 1)..spChar(al[1],39)..spChar(0x2524, 1))
+    print (spChar(sl[1], 1)..spaces(39)..spChar(sl[1], 1))
     local i = 1
     while true do
       if Examples[i] == nil then 
         break 
       end
-      print (i..". "..Examples[i][1])
+      print (spChar(sl[1],1).."  "..i..". "..text.trim(Examples[i][1])..spaces(34-string.len(text.trim(Examples[i][1])))..spChar(sl[1], 1))
       i = i + 1
     end
-    print ""
-    print "q. Quit"
-    print "---------------------------------------------"
+    print (spChar(sl[1], 1)..spaces(39)..spChar(sl[1], 1))
+    print (spChar(sl[1], 1).."  q. Quit"..spaces(30)..spChar(sl[1], 1))
+    print (spChar(sl[1], 1)..spaces(39)..spChar(sl[1], 1))
+    print (spChar(ll[1], 1)..spChar(al[1],39)..spChar(lr[1], 1))
     term.write "Choice - "
     choice = io.read()
     if string.lower(choice) == "q" then 
@@ -434,18 +438,27 @@ function ChooseChapter()
   while true do
     term.clear()
     term.setCursor(1,1)
-    print "--------------- Chapter Index ---------------"
-    print "---------------------------------------------"
-    print ""
+    print (spChar(ul[1], 1)..spChar(al[1],39)..spChar(ur[1], 1))
+    print (spChar(sl[1], 1)..spaces(13).."Chapter Index"..spaces(13)..spChar(sl[1], 1))
+    print (spChar(0x251C, 1)..spChar(al[1],39)..spChar(0x2524, 1))
+    print (spChar(sl[1], 1)..spaces(39)..spChar(sl[1], 1))
     local i = 1
     while true do
-      if ChapterTitles[i] == nil then break end
-      print (i..". "..ChapterTitles[i])
+      if ChapterTitles[i] == nil then
+        break
+      end
+      if i < 10 then
+        spStr = 34
+      else
+        spStr = 33
+      end
+      print (spChar(sl[1],1).."  "..i..". "..text.trim(ChapterTitles[i])..spaces(spStr-string.len(text.trim(ChapterTitles[i])))..spChar(sl[1], 1))
       i = i + 1
     end
-    print ""
-    print "q. Quit"
-    print "---------------------------------------------"
+    print (spChar(sl[1], 1)..spaces(39)..spChar(sl[1], 1))
+    print (spChar(sl[1], 1).."  q. Quit"..spaces(30)..spChar(sl[1], 1))
+    print (spChar(sl[1], 1)..spaces(39)..spChar(sl[1], 1))
+    print (spChar(ll[1], 1)..spChar(al[1],39)..spChar(lr[1], 1))
     term.write "Choice - "
     choice = io.read()
     if string.lower(choice) == "q" then 
@@ -464,9 +477,14 @@ function LoadChapter(chapter)
   while true do
     term.clear()
     term.setCursor(1,1)
-    print ("Chapter "..chapter.." - "..ChapterTitles[chapter])
-    print ("---------------------------------------------")
-    print (Chapter[chapter][CurrentSection])
+    local spStr = 35
+    if chapter > 10 then
+      spStr = 34
+    end
+    print (spChar(ul[1], 1)..spChar(al[1],50)..spChar(ur[1], 1))
+    print (spChar(sl[1], 1)..spaces(3).."Chapter "..chapter.." - "..ChapterTitles[chapter]..spaces(spStr-string.len(ChapterTitles[chapter]))..spChar(sl[1], 1))
+    print (spChar(ll[1], 1)..spChar(al[1],50)..spChar(lr[1], 1))
+    print ("   "..Chapter[chapter][CurrentSection])
     print ""
     if Chapter[chapter][CurrentSection + 1] == "END" then 
       print "THATS ALL FOLKS!" 
@@ -507,7 +525,7 @@ function EndSim(chapter)
     print "Press [ENTER] to move on to the next chapter"
     local param1 = getCh()
     if param1 == keyboard.keys.enter then 
-      shell.execute("rm", "tmptut") 
+      shell.execute("rm", nil, "tmptut") 
       break 
     end
   end
@@ -540,7 +558,7 @@ function Sim(chapter)
       end
       if stage == 1 then
         if input == "edit hello" then
-          shell.execute("edit", "tmptut")
+          shell.execute("edit", nil, "tmptut")
           print "Great Job, now let's run our program!"
           os.sleep(2)
           stage = 2
@@ -581,7 +599,7 @@ function Sim(chapter)
       if input == "quit" then 
         break 
       elseif input == "edit hello" then 
-        shell.execute("edit", "tmptut") 
+        shell.execute("edit", nil, "tmptut") 
       elseif input == "hello" then 
         shell.execute("tmptut") 
         pressany()
@@ -628,7 +646,7 @@ function Sim(chapter)
       if input == "quit" then 
         break 
       elseif input == "edit hello" then 
-        shell.execute("edit", "tmptut") 
+        shell.execute("edit", nil, "tmptut") 
       elseif input == "hello" then 
         shell.execute("tmptut") 
         pressany()
@@ -675,7 +693,7 @@ function Sim(chapter)
       if input == "quit" then 
         break 
       elseif input == "edit hello" then 
-        shell.execute("edit", "tmptut") 
+        shell.execute("edit", nil, "tmptut") 
       elseif input == "hello" then 
         shell.execute("tmptut") 
         pressany()
@@ -717,7 +735,7 @@ function Sim(chapter)
       if input == "quit" then 
         break 
       elseif input == "edit hello" then 
-        shell.execute("edit", "tmptut") 
+        shell.execute("edit", nil, "tmptut") 
       elseif input == "hello" then 
         shell.execute("tmptut") 
         pressany()
@@ -763,7 +781,7 @@ function Sim(chapter)
       if input == "quit" then 
         break 
       elseif input == "edit hello" then 
-        shell.execute("edit", "tmptut") 
+        shell.execute("edit", nil, "tmptut") 
       elseif input == "hello" then 
         shell.execute("tmptut") 
         pressany()
@@ -816,7 +834,7 @@ function Sim(chapter)
       if input == "quit" then
         break 
       elseif input == "edit hello" then 
-        shell.execute("edit", "tmptut") 
+        shell.execute("edit", nil, "tmptut") 
       elseif input == "hello" then 
         shell.execute("tmptut") 
         pressany()
@@ -866,7 +884,7 @@ function Sim(chapter)
       if input == "quit" then 
         break 
       elseif input == "edit hello" then 
-        shell.execute("edit", "tmptut") 
+        shell.execute("edit", nil, "tmptut") 
       elseif input == "hello" then 
         shell.execute("tmptut") 
         pressany()
@@ -917,7 +935,7 @@ function Sim(chapter)
       if input == "quit" then 
         break 
       elseif input == "edit hello" then 
-        shell.execute("edit", "tmptut") 
+        shell.execute("edit", nil, "tmptut") 
       elseif input == "hello" then 
         shell.execute("tmptut") 
         pressany()
@@ -969,7 +987,7 @@ function Sim(chapter)
       if input == "quit" then 
         break 
       elseif input == "edit hello" then 
-        shell.execute("edit", "tmptut") 
+        shell.execute("edit", nil, "tmptut") 
       elseif input == "hello" then 
         shell.execute("tmptut") 
         pressany()
