@@ -11,11 +11,11 @@ Adventure:
 	/blob/master/adventure.lua
 	CC adventure ported to OC
 KS:
-  /blob/master/ks.lua
-  Easy to use term API
+	/blob/master/ks.lua
+	Easy to use term API
 Open Computers Dig:
-  /blob/master/OpenComputers/dig.lua
-  Dig program included with Open Computers
+	/blob/master/OpenComputers/dig.lua
+	Dig program included with Open Computers
 Open Computers OpenIRC:
-  /blob/master/OpenComputers/irc.lua
-  IRC program included with Open Computers
+	/blob/master/OpenComputers/irc.lua
+	IRC program included with Open Computers
