@@ -1,21 +1,21 @@
 CompViewer:
-  /blob/master/CompViewer/CompViewer.lua
-  GUI component viewer
+	/blob/master/CompViewer/CompViewer.lua
+	GUI component viewer
 Lua Tutorial:
-  /blob/master/Ingame_Lua_Tutorial/LuaTutorial.lua
-  Ingame Lua tutorial
+	/blob/master/Ingame_Lua_Tutorial/LuaTutorial.lua
+	Ingame Lua tutorial
 LC Control:
-  /blob/master/LC_Control/stargate.lua
-  GUI stargate controller
+	/blob/master/LC_Control/stargate.lua
+	GUI stargate controller
 Adventure:
-  /blob/master/adventure.lua
-  CC adventure ported to OC
+	/blob/master/adventure.lua
+	CC adventure ported to OC
 KS:
-  /blob/master/ks.lua
-  Easy to use term API
+	/blob/master/ks.lua
+	Easy to use term API
 Open Computers Dig:
-  /blob/master/OpenComputers/dig.lua
-  Dig program included with Open Computers
+	/blob/master/OpenComputers/dig.lua
+	Dig program included with Open Computers
 Open Computers OpenIRC:
-  /blob/master/OpenComputers/irc.lua
-  IRC program included with Open Computers
+	/blob/master/OpenComputers/irc.lua
+	IRC program included with Open Computers
