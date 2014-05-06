@@ -221,4 +221,131 @@ stargate.isDialing():boolean
 stargate.isValidAddress(address:string):boolean
       returns true if the address is a valid stargate address, false otherwise
 [STARGATE_END]
-
+[BR_REACTOR]
+br_reactor.getConnected():Boolean
+      Returns true if the computer port is connected to a valid Multiblock Reactor.
+      
+br_reactor.getActive():Boolean
+      Returns true if the reactor is active (consuming fuel and generating power), false otherwise.
+      
+br_reactor.getNumberOfControlRods():Integer
+      Returns the number of control rods attached to this reactor. This is one more than the maximum control rod index.
+      
+br_reactor.getEnergyStored():Integer
+      Returns the amount of energy stored in the Multiblock Reactor's internal energy buffer, in Redstone Flux (RF) units
+      
+br_reactor.getFuelTemperature():Integer
+      Returns the temperature of the Multiblock Reactor's fuel, in degrees Centigrade.
+      
+br_reactor.getCasingTemperature():Integer
+      Returns the temperature of the Multiblock Reactor's casing/frame, in degrees Centigrade.
+      
+br_reactor.getFuelAmount():Integer
+      Returns the total amount of fuel contained in the reactor, in milli-buckets (mB)
+      
+br_reactor.getWasteAmount():Integer
+      Returns the total amount of waste contained in the reactor, in milli-buckets (mB)
+      
+br_reactor.getFuelAmountMax():Integer
+      Returns the total amount of fuel + waste which can be contained in the reactor at one time, in milli-buckets (mB)
+      
+br_reactor.getControlRodName(Integer):String
+      Returns the user-set name for the specified control rod, as a string. String is empty if the name is not set
+      
+br_reactor.getControlRodLevel(Integer):Integer
+      Returns an integer indicating how far the specified control rod is inserted into the reactor, range is from 0 (not inserted) to 100 (fully inserted)
+      
+br_reactor.getEnergyProducedLastTick():Float
+      Returns an estimate of the Redstone Flux (RF) energy generated in the past tick. 	If the reactor is actively cooled, returns the amount of hot fluid produced in the past tick, in milli-Buckets (mB).
+      
+br_reactor.getHotFluidProducedLastTick():Float
+      Returns the amount of hot fluid produced in the past tick, in milli-Buckets (mB). 	If the reactor is passively cooled, always returns 0.
+      
+br_reactor.getCoolantType():String or Nil
+      Returns the Fluid Dictionary name of the type of fluid contained in the Multiblock Reactor's coolant tank, or Nil if the tank is empty.
+      
+br_reactor.getCoolantAmount():Integer
+      Returns the amount of coolant fluid contained in the Multiblock Reactor's coolant tank, in milli-buckets (mB)
+      
+br_reactor.getHotFluidType():String or Nil
+      Returns the Fluid Dictionary name of the type of fluid contained in the Multiblock Reactor's hot-fluid tank, or Nil if the tank is empty.
+      
+br_reactor.getHotFluidAmount():Integer
+      Returns the amount of superheated fluid contained in the Multiblock Reactor's hot-fluid tank, in milli-buckets (mB)
+      
+br_reactor.getFuelReactivity():Integer
+      Returns the reactivity level of the reactor's fuel. 100 = 100 percent
+      
+br_reactor.getFuelConsumedLastTick():Float
+      Returns the amount of fuel consumed last tick, in milli-buckets (mB). Note that fractional milliBuckets can be consumed, so this can return, for example, 0.5
+      
+br_reactor.isActivelyCooled():Boolean
+      Returns true if the Multiblock Reactor is in "active cooling" mode, false otherwise
+      
+br_reactor.setActive(Boolean):None
+      Sets the reactor to be active if the argument is true, or inactive if the argument is false
+      
+br_reactor.setAllControlRodLevels(Integer):none  (Integer = insertion level 0-100)
+      Sets all control rods to the specified insertion level. Range is from 0 (not inserted) to 100 (fully inserted)
+      
+br_reactor.setControlRodLevel(Integer):none   (Integer = insertion level 0-100)
+      Sets the specified control rod (first argument) to the specified insertion level (second argument). Insertion level range is from 0 to 100, as above.
+      
+br_reactor.doEjectWaste():none
+      Instruct the reactor to attempt to eject any waste in the reactor via its access ports. The reactor will favor access ports set to Out. 1 ingot of waste will be ejected per 1000 mB currently in the reactor. If there is less than 1000 mB of waste in the reactor, nothing will happen. 
+[BR_REACTOR_END]
+[BR_TURBINE]
+br_turbine.getConnected():Boolean
+      Returns true if the computer port is connected to a valid Multiblock Turbine.
+      
+br_turbine.getActive():Boolean
+      Returns true if the turbine is active (consuming hot fluid and generating power), false otherwise.
+      
+br_turbine.getEnergyStored():Integer
+      Returns the amount of energy stored in the Multiblock Turbine's internal energy buffer, in Redstone Flux (RF) units
+      
+br_turbine.getRotorSpeed():Float
+      Returns the rotational velocity of the Multiblock Turbine's rotor, in Rotations Per Minute (RPMs)
+      
+br_turbine.getInputAmount():Integer
+      Returns the amount of fluid contained in the Multiblock Turbine's hot-fluid intake tank, in milli-buckets (mB)
+      
+br_turbine.getInputType():String or Nil
+      Returns the Fluid Dictionary name of the fluid contained in the Multiblock Turbine's hot-fluid intake tank, or Nil if the tank is empty
+      
+br_turbine.getOutputAmount():Integer
+      Returns the amount of fluid contained in the Multiblock Turbine's effluent outlet tank, in milli-buckets (mB)
+      
+br_turbine.getOutputType():String or Nil
+      Returns the Fluid Dictionary name of the fluid contained in the Multiblock Turbine's effluent outlet tank, or Nil if the tank is empty
+      
+br_turbine.getFluidAmountMax():Integer
+      Returns the maximum amount of fluid which the Turbine's fluid tanks may contain, in milli-buckets (mB)
+      
+br_turbine.getFluidFlowRate():Integer
+      Returns the amount of hot fluid which the turbine consumed in the last tick, in milli-buckets (mB)
+      
+br_turbine.getFluidFlowRateMax():Integer
+      Returns the user setting governing the maximum desired amount of fluid for the Multiblock Turbine to consume per tick, in milli-buckets (mB)
+      
+br_turbine.getFluidFlowRateMaxMax():Integer
+      Returns the maximum permissible user setting for the desired fluid flow rate, in milli-buckets (mB). Normally returns 2000 mB
+      
+br_turbine.getEnergyProducedLastTick():Float
+      Returns the amount of energy the Multiblock Turbine produced in the last tick, in Redstone Flux (RF) units
+      
+br_turbine.setActive(Boolean):None
+      Sets the reactor to be active if the argument is true, or inactive if the argument is false
+      
+br_turbine.setFluidFlowRateMax(Integer):None   Integer = flow rate (0 through FluidFlowRateMaxMax)
+      Sets the player's desired maximum rate at which the Multiblock Turbine will consume intake fluids. Range is from 0 (not inserted) to the return value of getFluidFlowRateMaxMax (normally 2000).
+      
+br_turbine.setVentOff():None
+      Sets the Multiblock Turbine to never vent its condensed/cooled fluids. This is identical to pressing the "Vent: None" button in the turbine's GUI.
+      
+br_turbine.setVentOverflow():None
+      Sets the Multiblock Turbine to vent its condensed/cooled fluids if they cannot be placed in the condensed fluid (outlet) tank. This is identical to pressing the "Vent: Overflow" button in the turbine's GUI.
+      
+br_turbine.setVentAll():None
+      Sets the Multiblock Turbine to always vent its condensed/cooled fluids, so the turbine will never create condensed fluid when processing hot fluids. This is identical to pressing the "Vent: All" button in the turbine's GUI. 
+[BR_TURBINE_END]

@@ -464,6 +464,11 @@ function loadInfoData(select)
 			end
 		end
 	end
+  for a = 1, #sentStr do
+    if string.sub(sentStr[a], 1, string.len(select)) == select then
+      sentStr[a] = string.sub(sentStr[a], string.len(select) + 2, string.len(sentStr[a]))
+    end
+  end
 end
 
 getMenuList()
