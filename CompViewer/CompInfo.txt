@@ -349,3 +349,103 @@ br_turbine.setVentOverflow():None
 br_turbine.setVentAll():None
       Sets the Multiblock Turbine to always vent its condensed/cooled fluids, so the turbine will never create condensed fluid when processing hot fluids. This is identical to pressing the "Vent: All" button in the turbine's GUI. 
 [BR_TURBINE_END]
+[EP_CONTROLLER]
+
+ep_controller.PORTAL CONTROLLER
+
+ep_controller.isPortalActive()
+      Returns a boolean of the current active state of the portal.
+
+ep_controller.getUniqueIdentifier()
+      Returns the portal’s Unique Identifier as a string. The glyphs IDs are seperated by ‘-’. Returns an empty string if there is no UID set.
+
+ep_controller.setUniqueIdentifier(“0-0-0-0-0-0-0-0-0?)
+      setUniqueIdentifier() Sets the unique identifier of the portal to the specified glyph identifier. Returns the portals UID once set, will be an empty string if it was unsuccessful (another portal already has that UID). Input must be a single string seperated by either spaces or – up to 9 integers in length. Having no arguments will remove its UID.
+
+ep_controller.getFrameColour()
+      Returns the colour of the portal frame as an integer
+
+ep_controller.setFrameColour(“FFFFFF”)
+      setFrameColour() 	Sets the colour of the portal frame to the specified hexadecimal RGB colour. Input must be a single string. If no arguments are given, it will reset the colour to its default
+
+ep_controller.getPortalColour()
+      Returns the colour of the portal as an integer
+
+ep_controller.setPortalColour(“FFFFFF”)
+      setPortalColour() Sets the colour of the portal to the specified hexadecimal RGB colour. Input must be a single string. If no arguments are given, it will reset the colour to its default
+
+ep_controller.getParticleColour()
+      Returns the colour of the portal as an integer
+
+ep_controller.setParticleColour(“FFFFFF”)
+      setParticleColour() Sets the colour of the particles to the specified hexadecimal RGB colour. Input must be a single string. If no arguments are given, it will reset the colour to its default
+
+ep_controller.DIALING DEVICE
+
+ep_controller.dial(“0-0-0-0-0-0-0-0-0?)
+      Dials the specified glyph identifier. Must be input in exactly the same way as setGlyphIdentifier() for the Portal Controller. If this identifier is in it’s list and has a custom texture set, it won’t use it.
+
+ep_controller.terminate()
+      Terminates any active portal connection.
+
+ep_controller.dialStored(1)
+      Dials the specific glyph identifier stored inside the dialling device. If it has a custom texture set, it will be used.
+
+ep_controller.getStoredName(1)
+      Returns the name in the specified position of the dialler’s list. Starts from 0.
+
+ep_controller.getStoredGlyph(1)
+      Returns the glyph identifier in the specified position of the dialler’s list. Starts from 0.
+
+ep_controller.getStoredCount()
+      Returns the amount of entries in the dialler’s list.
+
+ep_controller.NETWORK INTERFACE
+
+ep_controller.dial()
+      Dials the next portal in the network.
+
+ep_controller.terminate()
+      Terminates any active portal connection.
+
+
+ep_controller.The following functions are only available in 3.0.0b5 or later.
+
+ep_controller.FLUID TRANSFER MODULE
+
+ep_controller.getFluidStored()
+      Gets the fluid name of the currently stored fluid.
+
+ep_controller.getAmountStored()
+      Gets the amount of the stored fluid.
+
+ep_controller.isFull() 	
+
+ep_controller.isEmpty() 	
+
+ep_controller.isSending() 	
+
+ep_controller.ITEM TRANSFER MODULE
+
+ep_controller.getItemStored()
+      Gets the Item ID of the currently stored item. (1.6: numeric ID, 1.7: string ID)
+
+ep_controller.getAmountStored()
+      Gets the stack size of the stored item.
+
+ep_controller.hasStack()
+      Is there at least one item in this inventory?
+
+ep_controller.isSending() 	
+
+ep_controller.ENERGY TRANSFER MODULE
+
+ep_controller.getEnergyStored()
+      Gets the amount of energy stored.
+
+ep_controller.isFull() 	
+
+ep_controller.isEmpty() 	
+
+ep_controller.isSending()
+[EP_CONTROLLER_END]
