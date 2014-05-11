@@ -359,30 +359,30 @@ ep_controller.isPortalActive()
 ep_controller.getUniqueIdentifier()
       Returns the portal’s Unique Identifier as a string. The glyphs IDs are seperated by ‘-’. Returns an empty string if there is no UID set.
 
-ep_controller.setUniqueIdentifier(“0-0-0-0-0-0-0-0-0?)
+ep_controller.setUniqueIdentifier(0-0-0-0-0-0-0-0-0)
       setUniqueIdentifier() Sets the unique identifier of the portal to the specified glyph identifier. Returns the portals UID once set, will be an empty string if it was unsuccessful (another portal already has that UID). Input must be a single string seperated by either spaces or – up to 9 integers in length. Having no arguments will remove its UID.
 
 ep_controller.getFrameColour()
       Returns the colour of the portal frame as an integer
 
-ep_controller.setFrameColour(“FFFFFF”)
+ep_controller.setFrameColour(FFFFFF)
       setFrameColour() 	Sets the colour of the portal frame to the specified hexadecimal RGB colour. Input must be a single string. If no arguments are given, it will reset the colour to its default
 
 ep_controller.getPortalColour()
       Returns the colour of the portal as an integer
 
-ep_controller.setPortalColour(“FFFFFF”)
+ep_controller.setPortalColour(FFFFFF)
       setPortalColour() Sets the colour of the portal to the specified hexadecimal RGB colour. Input must be a single string. If no arguments are given, it will reset the colour to its default
 
 ep_controller.getParticleColour()
       Returns the colour of the portal as an integer
 
-ep_controller.setParticleColour(“FFFFFF”)
+ep_controller.setParticleColour(FFFFFF)
       setParticleColour() Sets the colour of the particles to the specified hexadecimal RGB colour. Input must be a single string. If no arguments are given, it will reset the colour to its default
 
 ep_controller.DIALING DEVICE
 
-ep_controller.dial(“0-0-0-0-0-0-0-0-0?)
+ep_controller.dial(0-0-0-0-0-0-0-0-0)
       Dials the specified glyph identifier. Must be input in exactly the same way as setGlyphIdentifier() for the Portal Controller. If this identifier is in it’s list and has a custom texture set, it won’t use it.
 
 ep_controller.terminate()
