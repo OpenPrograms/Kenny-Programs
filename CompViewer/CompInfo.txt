@@ -350,9 +350,6 @@ br_turbine.setVentAll():None
       Sets the Multiblock Turbine to always vent its condensed/cooled fluids, so the turbine will never create condensed fluid when processing hot fluids. This is identical to pressing the "Vent: All" button in the turbine's GUI. 
 [BR_TURBINE_END]
 [EP_CONTROLLER]
-
-ep_controller.PORTAL CONTROLLER
-
 ep_controller.isPortalActive()
       Returns a boolean of the current active state of the portal.
 
@@ -379,73 +376,65 @@ ep_controller.getParticleColour()
 
 ep_controller.setParticleColour(FFFFFF)
       setParticleColour() Sets the colour of the particles to the specified hexadecimal RGB colour. Input must be a single string. If no arguments are given, it will reset the colour to its default
-
-ep_controller.DIALING DEVICE
-
-ep_controller.dial(0-0-0-0-0-0-0-0-0)
+[EP_CONTROLLER_END]
+[EP__DIALING_DEVICE]
+ep_dialing_device.dial(0-0-0-0-0-0-0-0-0)
       Dials the specified glyph identifier. Must be input in exactly the same way as setGlyphIdentifier() for the Portal Controller. If this identifier is in it’s list and has a custom texture set, it won’t use it.
 
-ep_controller.terminate()
+ep_dialing_device.terminate()
       Terminates any active portal connection.
 
-ep_controller.dialStored(1)
+ep_dialing_device.dialStored(1)
       Dials the specific glyph identifier stored inside the dialling device. If it has a custom texture set, it will be used.
 
-ep_controller.getStoredName(1)
+ep_dialing_device.getStoredName(1)
       Returns the name in the specified position of the dialler’s list. Starts from 0.
 
-ep_controller.getStoredGlyph(1)
+ep_dialing_device.getStoredGlyph(1)
       Returns the glyph identifier in the specified position of the dialler’s list. Starts from 0.
 
-ep_controller.getStoredCount()
+ep_dialing_device.getStoredCount()
       Returns the amount of entries in the dialler’s list.
-
-ep_controller.NETWORK INTERFACE
-
-ep_controller.dial()
+[EP__DIALING_DEVICE_END]
+[EP_INTERFACE_NETWORK]
+ep_interface_network.dial()
       Dials the next portal in the network.
 
-ep_controller.terminate()
+ep_interface_network.terminate()
       Terminates any active portal connection.
-
-
-ep_controller.The following functions are only available in 3.0.0b5 or later.
-
-ep_controller.FLUID TRANSFER MODULE
-
-ep_controller.getFluidStored()
+[EP_INTERFACE_NETWORK_END]
+[EP_TRANSFER_FLUID]
+ep_transfer_fluid.getFluidStored()
       Gets the fluid name of the currently stored fluid.
 
-ep_controller.getAmountStored()
+ep_transfer_fluid.getAmountStored()
       Gets the amount of the stored fluid.
 
-ep_controller.isFull() 	
+ep_transfer_fluid.isFull() 	
 
-ep_controller.isEmpty() 	
+ep_transfer_fluid.isEmpty() 	
 
-ep_controller.isSending() 	
-
-ep_controller.ITEM TRANSFER MODULE
-
-ep_controller.getItemStored()
+ep_transfer_fluid.isSending() 	
+[EP_TRANSFER_FLUID_END]
+[EP_TRANSFER_ITEM]
+ep_transfer_item.getItemStored()
       Gets the Item ID of the currently stored item. (1.6: numeric ID, 1.7: string ID)
 
-ep_controller.getAmountStored()
+ep_transfer_item.getAmountStored()
       Gets the stack size of the stored item.
 
-ep_controller.hasStack()
+ep_transfer_item.hasStack()
       Is there at least one item in this inventory?
 
-ep_controller.isSending() 	
-
-ep_controller.ENERGY TRANSFER MODULE
-
-ep_controller.getEnergyStored()
+ep_transfer_item.isSending() 	
+[EP_TRANSFER_ITEM_END]
+[EP_TRANSFER_ENERGY]
+ep_transfer_energy.getEnergyStored()
       Gets the amount of energy stored.
 
-ep_controller.isFull() 	
+ep_transfer_energy.isFull() 	
 
-ep_controller.isEmpty() 	
+ep_transfer_energy.isEmpty() 	
 
-ep_controller.isSending()
-[EP_CONTROLLER_END]
+ep_transfer_energy.isSending()
+[EP_TRANSFER_ENERGY_END]
