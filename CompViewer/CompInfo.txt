@@ -350,91 +350,91 @@ br_turbine.setVentAll():None
       Sets the Multiblock Turbine to always vent its condensed/cooled fluids, so the turbine will never create condensed fluid when processing hot fluids. This is identical to pressing the "Vent: All" button in the turbine's GUI. 
 [BR_TURBINE_END]
 [EP_CONTROLLER]
-ep_controller.isPortalActive()
+ep_controller.isPortalActive():boolean
       Returns a boolean of the current active state of the portal.
 
-ep_controller.getUniqueIdentifier()
+ep_controller.getUniqueIdentifier():string
       Returns the portal’s Unique Identifier as a string. The glyphs IDs are seperated by ‘-’. Returns an empty string if there is no UID set.
 
-ep_controller.setUniqueIdentifier(0-0-0-0-0-0-0-0-0)
-      setUniqueIdentifier() Sets the unique identifier of the portal to the specified glyph identifier. Returns the portals UID once set, will be an empty string if it was unsuccessful (another portal already has that UID). Input must be a single string seperated by either spaces or – up to 9 integers in length. Having no arguments will remove its UID.
+ep_controller.setUniqueIdentifier(string [i.e. 0-0-0-0-0-0-0-0-0]):string
+      Sets the unique identifier of the portal to the specified glyph identifier. Returns the portals UID once set, will be an empty string if it was unsuccessful (another portal already has that UID). Input must be a single string seperated by either spaces or – up to 9 integers in length. Having no arguments will remove its UID.
 
-ep_controller.getFrameColour()
+ep_controller.getFrameColour():integer
       Returns the colour of the portal frame as an integer
 
-ep_controller.setFrameColour(FFFFFF)
+ep_controller.setFrameColour(string [i.e FFFFFF])
       setFrameColour() 	Sets the colour of the portal frame to the specified hexadecimal RGB colour. Input must be a single string. If no arguments are given, it will reset the colour to its default
 
-ep_controller.getPortalColour()
+ep_controller.getPortalColour():integer
       Returns the colour of the portal as an integer
 
-ep_controller.setPortalColour(FFFFFF)
+ep_controller.setPortalColour(string [i.e FFFFFF])
       setPortalColour() Sets the colour of the portal to the specified hexadecimal RGB colour. Input must be a single string. If no arguments are given, it will reset the colour to its default
 
-ep_controller.getParticleColour()
+ep_controller.getParticleColour():integer
       Returns the colour of the portal as an integer
 
-ep_controller.setParticleColour(FFFFFF)
+ep_controller.setParticleColour(string [i.e FFFFFF])
       setParticleColour() Sets the colour of the particles to the specified hexadecimal RGB colour. Input must be a single string. If no arguments are given, it will reset the colour to its default
 [EP_CONTROLLER_END]
 [EP_DIALING_DEVICE]
-ep_dialing_device.dial(0-0-0-0-0-0-0-0-0)
+ep_dialing_device.dial(string [i.e. 0-0-0-0-0-0-0-0-0])
       Dials the specified glyph identifier. Must be input in exactly the same way as setGlyphIdentifier() for the Portal Controller. If this identifier is in it’s list and has a custom texture set, it won’t use it.
 
-ep_dialing_device.terminate()
+ep_dialing_device.terminate():none
       Terminates any active portal connection.
 
-ep_dialing_device.dialStored(1)
+ep_dialing_device.dialStored(1):none
       Dials the specific glyph identifier stored inside the dialling device. If it has a custom texture set, it will be used.
 
-ep_dialing_device.getStoredName(1)
+ep_dialing_device.getStoredName(1):string
       Returns the name in the specified position of the dialler’s list. Starts from 0.
 
 ep_dialing_device.getStoredGlyph(1)
       Returns the glyph identifier in the specified position of the dialler’s list. Starts from 0.
 
-ep_dialing_device.getStoredCount()
+ep_dialing_device.getStoredCount():integer
       Returns the amount of entries in the dialler’s list.
 [EP_DIALING_DEVICE_END]
 [EP_INTERFACE_NETWORK]
-ep_interface_network.dial()
+ep_interface_network.dial():none
       Dials the next portal in the network.
 
-ep_interface_network.terminate()
+ep_interface_network.terminate():none
       Terminates any active portal connection.
 [EP_INTERFACE_NETWORK_END]
 [EP_TRANSFER_FLUID]
-ep_transfer_fluid.getFluidStored()
+ep_transfer_fluid.getFluidStored():string
       Gets the fluid name of the currently stored fluid.
 
-ep_transfer_fluid.getAmountStored()
+ep_transfer_fluid.getAmountStored():integer
       Gets the amount of the stored fluid.
 
-ep_transfer_fluid.isFull() 	
+ep_transfer_fluid.isFull():boolean
 
-ep_transfer_fluid.isEmpty() 	
+ep_transfer_fluid.isEmpty():boolean
 
-ep_transfer_fluid.isSending() 	
+ep_transfer_fluid.isSending():boolean
 [EP_TRANSFER_FLUID_END]
 [EP_TRANSFER_ITEM]
 ep_transfer_item.getItemStored()
       Gets the Item ID of the currently stored item. (1.6: numeric ID, 1.7: string ID)
 
-ep_transfer_item.getAmountStored()
+ep_transfer_item.getAmountStored():integer
       Gets the stack size of the stored item.
 
-ep_transfer_item.hasStack()
+ep_transfer_item.hasStack():boolean
       Is there at least one item in this inventory?
 
-ep_transfer_item.isSending() 	
+ep_transfer_item.isSending():boolean
 [EP_TRANSFER_ITEM_END]
 [EP_TRANSFER_ENERGY]
-ep_transfer_energy.getEnergyStored()
+ep_transfer_energy.getEnergyStored():integer
       Gets the amount of energy stored.
 
-ep_transfer_energy.isFull() 	
+ep_transfer_energy.isFull():boolean
 
-ep_transfer_energy.isEmpty() 	
+ep_transfer_energy.isEmpty():boolean
 
-ep_transfer_energy.isSending()
+ep_transfer_energy.isSending():boolean
 [EP_TRANSFER_ENERGY_END]
