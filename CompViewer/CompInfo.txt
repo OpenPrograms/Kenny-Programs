@@ -377,7 +377,7 @@ ep_controller.getParticleColour()
 ep_controller.setParticleColour(FFFFFF)
       setParticleColour() Sets the colour of the particles to the specified hexadecimal RGB colour. Input must be a single string. If no arguments are given, it will reset the colour to its default
 [EP_CONTROLLER_END]
-[EP__DIALING_DEVICE]
+[EP_DIALING_DEVICE]
 ep_dialing_device.dial(0-0-0-0-0-0-0-0-0)
       Dials the specified glyph identifier. Must be input in exactly the same way as setGlyphIdentifier() for the Portal Controller. If this identifier is in it’s list and has a custom texture set, it won’t use it.
 
@@ -395,7 +395,7 @@ ep_dialing_device.getStoredGlyph(1)
 
 ep_dialing_device.getStoredCount()
       Returns the amount of entries in the dialler’s list.
-[EP__DIALING_DEVICE_END]
+[EP_DIALING_DEVICE_END]
 [EP_INTERFACE_NETWORK]
 ep_interface_network.dial()
       Dials the next portal in the network.
