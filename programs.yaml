@@ -19,3 +19,6 @@ Open Computers Dig:
 Open Computers OpenIRC:
   /blob/master/OpenComputers/irc.lua
   IRC program included with Open Computers
+BR_Control:
+  /blob/master/BR_Control.lua
+  Control program for Big Reactors
