@@ -78,6 +78,7 @@ function compareVersions(v1,v2)
 			if autoUpdate == true then
 				print("A new version " .. remoteVersion() .. " is available, would you like to download it? Yes/No")
 				doTehUpdate = io.read()
+				doTehUpdate = string.lower(doTehUpdate)
 				if doTehUpdate == "yes" then
 					print("Cleaning up previous install")
 					fs.remove(os.getenv("PWD") .. "default.gss")
