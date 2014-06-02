@@ -13,6 +13,9 @@ Adventure:
 KS:
   /blob/master/ks.lua
   Easy to use term API
+OPEdit:
+  /blob/master/opedit.lua
+  OpenPrinter supported text editor (edit.lua)
 Open Computers Dig:
   /blob/master/OpenComputers/dig.lua
   Dig program included with Open Computers
