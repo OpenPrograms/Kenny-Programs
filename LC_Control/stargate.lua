@@ -218,12 +218,7 @@ local function fuelAvailable()
 end
 
 local function valid(address)
-  local reply, error = sg.isValidAddress(address)
-  if reply == nil then
-    return (error)
-  else
-    return (tostring(reply))
-  end
+  return true
 end
  
 loadAddressData()
