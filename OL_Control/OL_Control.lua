@@ -135,8 +135,8 @@ function compareVersions(v1,v2)
 		end
 
 		if not component.isAvailable("internet") then 
-			if not file_check(os.getenv("PWD") .. "gml.lua") or not file_check(os.getenv("PWD") .. "cv.gss") or not file_check(os.getenv("PWD") .. "default.gss") or not file_check(os.getenv("PWD") .. "gfxbuffer.lua") or not file_check(os.getenv("PWD") .. "colorutils.lua") or not file_check(os.getenv("PWD") .. "ColorInfo.txt") then
-				io.stderr:write("You are missing one or more of the required files 'gml.lua', 'colorutils.lua', 'gfxbuffer.lua', 'ColorInfo.txt', 'default.gss', or 'cv.gss' and do not have internet access to download them automaticly!\n")
+			if not file_check(os.getenv("PWD") .. "gml.lua") or not file_check(os.getenv("PWD") .. "cv.gss") or not file_check(os.getenv("PWD") .. "default.gss") or not file_check(os.getenv("PWD") .. "gfxbuffer.lua") or not file_check(os.getenv("PWD") .. "colorutils.lua") or not file_check(os.getenv("PWD") .. "colorinfo.txt") then
+				io.stderr:write("You are missing one or more of the required files 'gml.lua', 'colorutils.lua', 'gfxbuffer.lua', 'colorinfo.txt', 'default.gss', or 'cv.gss' and do not have internet access to download them automaticly!\n")
 				return
 			end
 		else
@@ -154,9 +154,9 @@ if (compareVersions(newVersion, localVersion()) == 0) then
 		doUpdate("update")
 	end
 	print("Updating Color Info file, One moment please")
-	fs.remove(os.getenv("PWD") .. "ColorInfo.txt")
+	fs.remove(os.getenv("PWD") .. "colorinfo.txt")
 	os.sleep(1)
-	downloadFile("ColorInfo.txt")
+	downloadFile("colorinfo.txt")
 end
 --We've checked for gml, and downloaded it if it was available, so we can load gml now.
 local gml=require("gml")
@@ -171,19 +171,21 @@ local function spChar(letter, cnt)
 	return string.rep(unicode.char(letter), cnt)
 end
 
-local rj = component.openlights
+local openLight = component.openlight
 local gpu = component.gpu
-local ColorFileName = "colorinfo.txt"
+
+local fname = "colorinfo.txt"
+local filename = shell.resolve(fname)
+
 local Tier1 = 1
 local Tier2 = 4
 local Tier3 = 8
 
-local lightmenuList = {}
-
-local compList = {}
-local tmpList = {}
-local sentStr = {}
-local compLen = 1
+local lightListDir = {}
+local colorListDir = {}
+local colorList = {}
+local lightColorID = "0x000000"
+local lightAddy = ""
 
 local w, h = gpu.getResolution()
 
@@ -324,16 +326,11 @@ local function strripos(s, delim)
 end
 
 function loadColorData()
-	local tmpLine = {}
-	local tmpStr = ""
-	sentStr = {}
-	lineLen = w - 8
-
 	do
-		local f = io.open(ColorFileName)
+		local f = io.open(filename)
 			if f then
 				for line in f:lines() do
-					table.insert(tmpLine, line)
+					table.insert(colorList, line)
 				end
 			f:close()
 		end
@@ -346,8 +343,14 @@ if (gpuDepth == Tier3) then
 	guiHeight = 30
 	guiContentsLabelCol = 30
 	guiContentsLabelWidth = 31
-	menuDirWidth = 24
-	menuDirHeight = 25
+	lightListCol = 2
+	lightListRow = 4
+	lightListWidth = 45
+	lightListHeight = 10
+	colorListCol = 2
+	colorListRow = 18
+	colorListWidth = 45
+	colorListHeight = 10
 	functionsCol = 30
 	functionsWidth = 50
 	functionsHeight = 25
@@ -363,8 +366,14 @@ elseif (gpuDepth == Tier2) then
 	guiHeight = 16
 	guiContentsLabelCol = 18
 	guiContentsLabelWidth = 31
-	menuDirWidth = 16
-	menuDirHeight = 11
+	lightListCol = 2
+	lightListRow = 4
+	lightListWidth = 45
+	lightListHeight = 10
+	colorListCol = 2
+	colorListRow = 18
+	colorListWidth = 45
+	colorListHeight = 10
 	functionsCol = 20
 	functionsWidth = 30
 	functionsHeight = 11
@@ -379,8 +388,10 @@ else
 	guiHeight = 16
 	guiContentsLabelCol = 18
 	guiContentsLabelWidth = 31
-	menuDirWidth = 16
-	menuDirHeight = 11
+	lightListCol = 2
+	lightListRow = 3
+	lightListWidth = 16
+	lightListHeight = 10
 	functionsCol = 20
 	functionsWidth = 30
 	functionsHeight = 11
@@ -391,37 +402,72 @@ else
 	infoListboxHeight = 10
 end
 
-
-local gui=gml.create("center", guiRow, guiWidth, guiHeight)
-gui.style=gml.loadStyle("cv.gss")
-
-gui:addLabel("center", 2, 15, "  Lights List  ")
-
-
 local function getLightList()
 	lightList = {}
 	for address, name in component.list() do
-		table.insert(menuList," "..address.." "..name)
+		if (name == "openlight") then
+			table.insert(lightList," "..address)
+		end
   end
 end
 
 getLightList()
+loadColorData()
 
-local lightListDir=gui:addListBox(lightListCol, 4, lightListWidth, lightListHeight, lightList)
+local gui=gml.create("center", guiRow, guiWidth, guiHeight)
+gui.style=gml.loadStyle("cv.gss")
+gui:addLabel(15, 2, 14, "  Light List  ")
+gui:addLabel(15, 16, 14, "  Color List  ")
+
+local function getColorValue()
+end
+
+
+local lightListDir=gui:addListBox(lightListCol, lightListRow, lightListWidth, lightListHeight, lightList)
+local colorListDir=gui:addListBox(colorListCol, colorListRow, colorListWidth, colorListHeight, colorList)
 
 local function updateLightList()
 	getLightList()
 	lightListDir:updateList(lightList)
 end
 
-gui:addButton(-11, -1, 8, 1, "Reload", updateLightList)
+getColorLabel = gui:addLabel(50, 4, 10, "          ")
+setColorLabel = gui:addLabel(65, 4, 10, " Orange   ")
+
+gui:addButton(50, 6, 11, 1, "Get Color", tostring(openLight.getColor(lightList[lightListDir:getSelected()])))
+gui:addButton(65, 6, 11, 1, "Set Color", setColorValue)
+
+getBrightLabel = gui:addLabel(50, 9, 10, tostring(openLight.getBrightness()))
+setBrightLabel = gui:addLabel(65, 9, 10, " Orange   ")
+
+gui:addButton(50, 11, 10, 1, "Get Bright", updateLightList)
+gui:addButton(65, 11, 10, 1, "Set Bright", gui.close)
+
+gui:addLabel(50, 16, 10, "Color List")
+gui:addLabel(65, 16, 10, "Light List")
+
+gui:addButton(50, 18, 8, 1, "Reload", loadColorData)
+gui:addButton(65, 18, 8, 1, "Reload", updateLightList)
+
 gui:addButton(-2, -1, 8, 1, "Close", gui.close)
 
+local function setColorValue()
+	print(lightAddy, lightColorID)
+	openLight.setColor(lightAddy, "0x"..lightColorID)
+	getColorLabel.text = lightColorId
+	getColorLabel:redraw()
+end
+
 local function onLightSelect(lb,prevIndex,selIndex)
-	return selIndex
+	lightAddy = lightListDir:getSelected()
+end
+
+local function onColorSelect(lb,prevIndex,selIndex)
+	lightColorID = string.sub(colorListDir:getSelected(), -6)
 end
 
 lightListDir.onChange=onLightSelect
+colorListDir.onChange=onColorSelect
 
 lightListDir.onDoubleClick=function()
 end
