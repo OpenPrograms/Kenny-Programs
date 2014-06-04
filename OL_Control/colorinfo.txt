@@ -1,0 +1,1108 @@
+100 euro                      #86C67C
+20 pound                      #A46582
+6 ball                        #1B6453
+Coke bottle                   #79A888
+LCD back                      #91B49C
+LCD dark                      #507786
+Nerf green                    #49E20E
+alaska sky                    #1B3F8B
+aliceblue (SVG)               #F0F8FF
+alizarin crimson              #E32636
+almond                        #C48E48
+aluminum                      #A9ACB6
+amethyst                      #9D6B84
+anjou pear                    #BAAF07
+antiquewhite (SVG)            #FAEBD7
+antiquewhite1                 #FFEFDB
+antiquewhite2                 #EEDFCC
+antiquewhite3                 #CDC0B0
+antiquewhite4                 #8B8378
+apple                         #CC4E5C
+apricot                       #FBA16C
+aqua (Safe 16 SVG Hex3)       #00FFFF
+aqua (Safe Hex3)              #66CCCC
+aquaman                       #37BC61
+aquamarine                    #4E78A0
+aquamarine                    #70DB93
+aquamarine (SVG)              #7FFFD4
+aquamarine2                   #76EEC6
+aquamarine4                   #458B74
+aquarium                      #2FAA96
+army men                      #327556
+army uniform                  #353F3E
+ash                           #C6C3B5
+atlantic green                #2A8E82
+aureolineyellow               #FFA824
+avacado                       #A2C257
+avocado                       #98A148
+azure (SVG)                   #F0FFFF
+azure2                        #E0EEEE
+azure3                        #C1CDCD
+azure4                        #838B8B
+bacon                         #C65D57
+bakerschocolate               #5C3317
+banana                        #E3CF57
+banker's lamp                 #0E8C3A
+barney                        #D4318C
+bartlett pear                 #CDAB2D
+battleship                    #D0D2C4
+beach sand                    #EED6AF
+beer                          #E5BC3B
+beige (SVG)                   #F5F5DC
+beige dark                    #A39480
+bermuda sand                  #F6C9CC
+big blue bus                  #3A66A7
+bing cherry                   #A02422
+bisque (SVG)                  #FFE4C4
+bisque2                       #EED5B7
+bisque3                       #CDB79E
+bisque4                       #8B7D6B
+black (Safe 16 SVG Hex3)      #000000
+black beauty plum             #422C2F
+blackberry                    #3A3A38
+blanchedalmond (SVG)          #FFEBCD
+bloodorange (Hex3)            #CC1100
+bloodred (Safe Hex3)          #660000
+blue (Safe 16 SVG Hex3)       #0000FF
+blue angels                   #2B4F81
+blue bird                     #4973AB
+blue bucket                   #499DF5
+blue corn                     #344152
+blue corn chips               #584E56
+blue cow                      #88ACE0
+blue deep                     #380474
+blue dog                      #525C65
+blue fern                     #759B84
+blue grapes                   #3B4990
+blue green algae              #3B8471
+blue ice                      #74BBFB
+blue ice                      #DAF4F0
+blue jeans                    #42526C
+blue lagoon                   #4CB7A5
+blue line                     #33A1DE
+blue mist                     #82CFFD
+blue nile                     #7D7F94
+blue pill                     #5190ED
+blue ridge mtns               #4981CE
+blue safe (Safe Hex3)         #6600FF
+blue shark                    #6996AD
+blue spider                   #26466D
+blue sponge                   #5D92B1
+blue stone                    #50729F
+blue train                    #3A5894
+blue tuna                     #687C97
+blue velvet                   #162252
+blue whale                    #42647F
+blue2 (Hex3)                  #0000EE
+blueberry                     #75A1D0
+blueberry fresh               #5971AD
+bluegrass                     #4C7064
+blueviolet                    #9F5F9F
+blueviolet (SVG)              #8A2BE2
+bone (Safe Hex3)              #FFFFCC
+bordeaux                      #99182C
+bottle green                  #1DA237
+braeburn apple                #BB2A3C
+brass                         #B5A642
+bread                         #FCD59C
+breadfruit                    #859C27
+brick                         #9C661F
+bright red (Safe Hex3)        #FF0033
+brightgold                    #D9D919
+broadwaypink (Safe Hex3)      #FF0066
+broccoli                      #586949
+bronze                        #8C7853
+bronzeii                      #A67D3D
+brown                         #802A2A
+brown                         #A62A2A
+brown (SVG)                   #A52A2A
+brown1                        #8B2500
+brown2                        #EE3B3B
+brown3                        #CD3333
+brown4                        #8B2323
+brownmadder                   #DB2929
+brownochre                    #87421F
+brushed aluminum              #B6C5BE
+bubble gum                    #FF92BB
+bunny eye                     #A5435C
+burgundy                      #9E0508
+burlywood (SVG)               #DEB887
+burlywood1                    #FFD39B
+burlywood2                    #EEC591
+burlywood3                    #CDAA7D
+burlywood4                    #8B7355
+burntsienna                   #551011
+burntsienna                   #8A360F
+burntumber                    #8A3324
+buttermilk                    #FEF1B5
+cactus                        #636F57
+cadetblue                     #5F9F9F
+cadetblue (SVG)               #5F9EA0
+cadetblue1                    #98F5FF
+cadetblue2                    #8EE5EE
+cadetblue3                    #7AC5CD
+cadetblue4                    #53868B
+cadmium yellowlight           #FFB00F
+cadmiumlemon                  #FFE303
+cadmiumorange                 #FF6103
+cadmiumreddeep                #E3170D
+cadmiumredlight               #FF030D
+cadmiumyellow                 #FF9912
+cafe americano                #362819
+cafe au lait                  #B67C3D
+camo1                         #CFDBC5
+camo2                         #A9C9A4
+camo3                         #9DB68C
+cantaloupe                    #9CA998
+cantaloupe pulp               #FA9A50
+canvas                        #9D8851
+cappuccino                    #B28647
+caribbean                     #42C0FB
+carnation                     #DE85B1
+carolina blue                 #539DC2
+carrot                        #ED9121
+cashew                        #DFAE74
+cat eye                       #7AA9DD
+cat eye                       #BEE554
+celery                        #CFD784
+celtics                       #00611C
+cerulean                      #05B8CC
+cerulean blue                 #9BC4E2
+chartreuse (SVG)              #7FFF00
+chartreuse verte              #BCE937
+chartreuse2                   #76EE00
+chartreuse3                   #66CD00
+chartreuse4                   #458B00
+cheddar                       #FFC469
+chemical suit                 #5993E5
+cherry                        #EB5E66
+chili                         #D44942
+chili powder                  #C73F17
+chocolate (SVG)               #D2691E
+chocolate (Safe Hex3)         #993300
+chocolate1                    #FF7F24
+chocolate2                    #EE7621
+chocolate3                    #CD661D
+chrome                        #E8F1D4
+chromeoxidegreen              #668014
+cichlid                       #003EFF
+cinnabargreen                 #61B329
+cinnamon                      #7B3F00
+cinnamon (Hex3)               #AA6600
+circuit board                 #3A6629
+clover                        #3EA055
+cobalt                        #3D59AB
+cobalt (Safe Hex3)            #6666FF
+cobaltgreen                   #3D9140
+cobaltvioletdeep              #91219E
+coconut                       #FFFCCF
+coconut shell                 #BC7642
+coffee                        #AA5303
+cola                          #AF4035
+coldgrey                      #808A87
+conch                         #D0A9AA
+concord grape                 #660198
+cool copper                   #D98719
+cool mint                     #90FEFB
+cooler                        #284942
+copper                        #B87333
+coral (SVG)                   #FF7F50
+coral1                        #FF7256
+coral2                        #EE6A50
+coral3                        #CD5B45
+coral4                        #8B3E2F
+corfu pink                    #ECC8EC
+corn                          #FBEC5D
+cornflower (Safe Hex3)        #3300FF
+cornflowerblue                #42426F
+cornflowerblue (SVG)          #6495ED
+cornsilk (SVG)                #FFF8DC
+cornsilk2                     #EEE8CD
+cornsilk3                     #CDC8B1
+cornsilk4                     #8B8878
+cotton candy                  #F7B3DA
+cranberry                     #B6316C
+cranberry jello               #F54D70
+cream city brick              #E2DDB5
+crema                         #C76E06
+crimson (SVG)                 #DC143C
+cucumber                      #2C5D3F
+curacao                       #5B59BA
+cyan (Safe 16=aqua SVG Hex3)  #00FFFF
+cyan2 (Hex3)                  #00EEEE
+cyan3                         #00CDCD
+dark wheat                    #E8C782
+darkblue (SVG)                #00008B
+darkcherryred (Safe Hex3)     #330000
+darkcyan (SVG)                #008B8B
+darkgoldenrod (SVG)           #B8860B
+darkgoldenrod1                #FFB90F
+darkgoldenrod2                #EEAD0E
+darkgoldenrod3                #CD950C
+darkgoldenrod4                #8B6508
+darkgray (SVG)                #A9A9A9
+darkgreen                     #2F4F2F
+darkgreen (SVG)               #006400
+darkgreencopper               #4A766E
+darkgrey (SVG)                #A9A9A9
+darkkhaki (SVG)               #BDB76B
+darkmagenta (SVG)             #8B008B
+darkolivegreen                #4F4F2F
+darkolivegreen (SVG)          #556B2F
+darkolivegreen1               #CAFF70
+darkolivegreen2               #BCEE68
+darkolivegreen3               #A2CD5A
+darkolivegreen4               #6E8B3D
+darkorange (SVG)              #FF8C00
+darkorange1                   #FF7F00
+darkorange2                   #EE7600
+darkorange3                   #CD6600
+darkorange4                   #8B4500
+darkorange5                   #FF8600
+darkorchid                    #9932CD
+darkorchid (SVG)              #9932CC
+darkorchid1                   #BF3EFF
+darkorchid2                   #B23AEE
+darkorchid3                   #9A32CD
+darkorchid4                   #68228B
+darkpurple                    #871F78
+darkred (SVG)                 #8B0000
+darksalmon (SVG)              #E9967A
+darkseagreen (SVG)            #8FBC8F
+darkseagreen1                 #C1FFC1
+darkseagreen2                 #B4EEB4
+darkseagreen3                 #9BCD9B
+darkseagreen4                 #698B69
+darkslateblue                 #6B238E
+darkslateblue (SVG)           #483D8B
+darkslategray (SVG)           #2F4F4F
+darkslategray1                #97FFFF
+darkslategray2                #8DEEEE
+darkslategray3                #79CDCD
+darkslategray4                #528B8B
+darkslategrey (SVG)           #2F4F4F
+darktan                       #97694F
+darkturquoise                 #7093DB
+darkturquoise (SVG)           #00CED1
+darkviolet (SVG)              #9400D3
+darkwood                      #855E42
+deepochre                     #733D1A
+deeppink (SVG)                #FF1493
+deeppink2                     #EE1289
+deeppink3                     #CD1076
+deeppink4                     #8B0A50
+deeppurple                    #551033
+deepskyblue (SVG)             #00BFFF
+deepskyblue2                  #00B2EE
+deepskyblue3                  #009ACD
+deepskyblue4                  #00688B
+delft                         #22316C
+denim                         #4372AA
+desert sand                   #FEE8D6
+diamond blue                  #0EBFE9
+dimgray (SVG)                 #696969
+dimgrey (SVG)                 #696969
+dodgerblue (SVG)              #1E90FF
+dodgerblue2                   #1C86EE
+dodgerblue3                   #1874CD
+dodgerblue4                   #104E8B
+dog tongue                    #F6A4D5
+dolphin                       #6F7285
+douglas fir                   #3F602B
+dress blue                    #3B3178
+dumpster                      #004F00
+dustyrose                     #856363
+eggplant                      #816687
+eggshell                      #FCE6C9
+electric turquoise            #49E9BD
+emerald                       #5B9C64
+emerald city                  #20BF9F
+emeraldgreen                  #00C957
+emeraldgreen2                 #28AE7B
+england pound                 #688571
+englishred                    #D43D1A
+espresso                      #E7C6A5
+eton blue                     #96C8A2
+feldspar                      #D19275
+fenway grass                  #526F35
+fenway monster                #4A777A
+fire truck green              #CDD704
+firebrick (SVG)               #B22222
+firebrick1                    #FF3030
+firebrick2                    #EE2C2C
+firebrick3                    #CD2626
+firebrick4                    #8B1A1A
+firebrick5                    #8E2323
+fisherman's float             #607C6E
+flatpink (Safe Hex3)          #FFCCCC
+fleshochre                    #FF5721
+flight jacket                 #7F8778
+floralwhite (SVG)             #FFFAF0
+fog                           #CBCAB6
+forestgreen (SVG)             #228B22
+forestgreen2                  #567E3A
+forget me nots                #7EB6FF
+fraser fir                    #4D6B50
+fresh green                   #5EDA9E
+frog                          #84BE6A
+fuchsia (Safe 16 SVG Hex3)    #FF00FF
+fuchsia2 (Hex3)               #FF00AA
+fuji apple                    #D66F62
+gainsboro (SVG)               #DCDCDC
+ganegreen (Hex3)              #777733
+garden hose                   #138F6A
+garden plum                   #71637D
+geraniumlake                  #E31230
+ghostwhite (SVG)              #F8F8FF
+go                            #43D58C
+gold (SVG)                    #FFD700
+gold2                         #EEC900
+gold3                         #CDAD00
+gold4                         #8B7500
+gold5                         #CC7F32
+gold6                         #CD7F32
+gold7 (Hex3)                  #FFAA00
+golden delicious apple        #EDCB62
+goldenrod                     #DBDB70
+goldenrod (SVG)               #DAA520
+goldenrod1                    #FFC125
+goldenrod2                    #EEB422
+goldenrod3                    #CD9B1D
+goldenrod4                    #8B6914
+goldgreen (Hex3)              #AADD00
+goldochre                     #C77826
+grape                         #543948
+grape (Safe Hex3)             #CC00FF
+grapefruit                    #F3E88E
+grass                         #4DBD33
+gray                          #BEBEBE
+gray (16 SVG)                 #808080
+gray1                         #030303
+gray10                        #1A1A1A
+gray11                        #1C1C1C
+gray12                        #1F1F1F
+gray13                        #212121
+gray14                        #242424
+gray15                        #262626
+gray16                        #292929
+gray17                        #2B2B2B
+gray18                        #2E2E2E
+gray19                        #303030
+gray2                         #050505
+gray20 (Safe Hex3)            #333333
+gray21                        #363636
+gray22                        #383838
+gray23                        #3B3B3B
+gray24                        #3D3D3D
+gray25                        #404040
+gray26                        #424242
+gray27                        #454545
+gray28                        #474747
+gray29                        #4A4A4A
+gray3                         #080808
+gray30                        #4D4D4D
+gray31                        #4F4F4F
+gray32                        #525252
+gray33 (Hex3)                 #555555
+gray34                        #575757
+gray35                        #595959
+gray36                        #5C5C5C
+gray37                        #5E5E5E
+gray38                        #616161
+gray39                        #636363
+gray4                         #0A0A0A
+gray40 (Safe Hex3)            #666666
+gray42                        #6B6B6B
+gray43                        #6E6E6E
+gray44                        #707070
+gray45                        #737373
+gray46                        #757575
+gray47                        #787878
+gray48                        #7A7A7A
+gray49                        #7D7D7D
+gray5                         #0D0D0D
+gray50                        #7F7F7F
+gray51                        #828282
+gray52                        #858585
+gray53                        #878787
+gray54                        #8A8A8A
+gray55                        #8C8C8C
+gray56                        #8F8F8F
+gray57                        #919191
+gray58                        #949494
+gray59                        #969696
+gray6                         #0F0F0F
+gray60 (Safe Hex3)            #999999
+gray61                        #9C9C9C
+gray62                        #9E9E9E
+gray63                        #A1A1A1
+gray64                        #A3A3A3
+gray65                        #A6A6A6
+gray66                        #A8A8A8
+gray67                        #ABABAB
+gray68                        #ADADAD
+gray69                        #B0B0B0
+gray7                         #121212
+gray70                        #B3B3B3
+gray71                        #B5B5B5
+gray72                        #B8B8B8
+gray73                        #BABABA
+gray74                        #BDBDBD
+gray75                        #BFBFBF
+gray76                        #C2C2C2
+gray77                        #C4C4C4
+gray78                        #C7C7C7
+gray79                        #C9C9C9
+gray8                         #141414
+gray80 (Safe Hex3)            #CCCCCC
+gray81                        #CFCFCF
+gray82                        #D1D1D1
+gray83                        #D4D4D4
+gray84                        #D6D6D6
+gray85                        #D9D9D9
+gray86                        #DBDBDB
+gray87                        #DEDEDE
+gray88                        #E0E0E0
+gray89                        #E3E3E3
+gray9                         #171717
+gray90                        #E5E5E5
+gray91                        #E8E8E8
+gray92                        #EBEBEB
+gray93                        #EDEDED
+gray94                        #F0F0F0
+gray95                        #F2F2F2
+gray97                        #F7F7F7
+gray98                        #FAFAFA
+gray99                        #FCFCFC
+greek roof                    #3B6AA0
+green (16 SVG)                #008000
+green LED                     #5DFC0A
+green MM                      #4BB74C
+green agate                   #457371
+green algae                   #63AB62
+green apple                   #629632
+green ash                     #668E86
+green bark                    #597368
+green card                    #D0FAEE
+green cheese                  #8FA880
+green gables                  #3E766D
+green goo                     #77896C
+green grape                   #CECC15
+green grass of home           #395D33
+green hornet                  #6A8455
+green lantern                 #3D8B37
+green line                    #329555
+green mist                    #BCED91
+green moth                    #7BBF6A
+green party                   #3E6B4F
+green pepper                  #397D02
+green quartz                  #8AA37B
+green scrubs                  #4F8E83
+green soap                    #8CDD81
+green stamp                   #517B58
+green taxi                    #3F9E4D
+green visor                   #4D7865
+green2 (Hex3)                 #00EE00
+green3                        #00CD00
+green4                        #008B00
+greencopper                   #527F76
+greenishumber                 #FF3D0D
+greenyellow                   #93DB70
+greenyellow (SVG)             #ADFF2F
+grey (16 SVG)                 #808080
+guacamole                     #A6D785
+gummi green                   #24D330
+gummi red                     #FC1501
+gummi yellow                  #FBDB0C
+ham                           #DB9EA6
+harold's crayon               #B62084
+heather blue                  #B7C3D0
+hematite                      #E35152
+holly                         #488214
+honey                         #FEE5AC
+honeydew (SVG)                #F0FFF0
+honeydew2                     #E0EEE0
+honeydew3                     #C1CDC1
+honeydew4                     #838B83
+hotpink (SVG)                 #FF69B4
+hotpink1                      #FF6EB4
+hotpink2                      #EE6AA7
+hotpink3                      #CD6090
+hotpink4                      #8B3A62
+huntergreen                   #215E21
+iceberg lettuce               #CDE472
+indianred                     #B0171F
+indianred (SVG)               #CD5C5C
+indianred1                    #FF6A6A
+indianred2                    #EE6363
+indianred3                    #CD5555
+indianred4                    #8B3A3A
+indiglo                       #05E9FF
+indigo                        #2E0854
+indigo (SVG)                  #4B0082
+indigo dye                    #0D4F8B
+indigo tile                   #72587F
+indigo2                       #218868
+irish flag (Safe Hex3)        #009900
+isle royale greenstone        #426352
+ivory (SVG)                   #FFFFF0
+ivory2                        #EEEEE0
+ivory3                        #CDCDC1
+ivory4                        #8B8B83
+ivoryblack                    #292421
+jack pine                     #414F12
+jolly green                   #9CCB19
+jonathan apple                #B3432B
+kakapo                        #4A7023
+kelly                         #4CBB17
+kermit                        #A2BC13
+key lime pie                  #B3C95A
+khaki                         #9F9F5F
+khaki (SVG)                   #F0E68C
+khaki1                        #FFF68F
+khaki2                        #EEE685
+khaki3                        #CDC673
+khaki4                        #8B864E
+kidney bean                   #B13E0F
+kiwi                          #7F9A65
+kumquat                       #DC8909
+la maison bleue               #60AFFE
+lake erie                     #6183A6
+lake huron                    #5D7B93
+lake michigan                 #50A6C2
+lake ontario                  #4D71A3
+lake superior                 #506987
+lampblack                     #2E473B
+latte                         #9F703A
+lavender (SVG)                #E6E6FA
+lavender (Safe Hex3)          #CC99CC
+lavender field                #754C78
+lavenderblush (SVG)           #FFF0F5
+lavenderblush2                #EEE0E5
+lavenderblush3                #CDC1C5
+lavenderblush4                #8B8386
+lawngreen (SVG)               #7CFC00
+leaf                          #55AE3A
+lemon                         #D6C537
+lemonchiffon (SVG)            #FFFACD
+lemonchiffon2                 #EEE9BF
+lemonchiffon3                 #CDC9A5
+lemonchiffon4                 #8B8970
+liberty                       #A4DCD1
+lichen                        #C0D9AF
+light blue                    #8FD8D8
+light blue                    #C0D9D9
+light blue1                   #BFEFFF
+light blue2                   #B2DFEE
+light blue3                   #9AC0CD
+light blue4                   #68838B
+light copper                  #EDC393
+light cyan2                   #D1EEEE
+light cyan3                   #B4CDCD
+light cyan4                   #7A8B8B
+light goldenrod               #EEDD82
+light goldenrod1              #FFEC8B
+light goldenrod2              #EEDC82
+light goldenrod3              #CDBE70
+light goldenrod4              #8B814C
+light green (SVG)             #90EE90
+light pink1                   #FFAEB9
+light pink2                   #EEA2AD
+light pink3                   #CD8C95
+light pink4                   #8B5F65
+light salmon2                 #EE9572
+light salmon3                 #CD8162
+light salmon4                 #8B5742
+light skyblue1                #B0E2FF
+light skyblue2                #A4D3EE
+light skyblue3                #8DB6CD
+light skyblue4                #607B8B
+light slateblue               #8470FF
+light steelblue               #8F8FBC
+light steelblue1              #CAE1FF
+light steelblue2              #BCD2EE
+light steelblue3              #A2B5CD
+light steelblue4              #6E7B8B
+light teal (Safe Hex3)        #00FFCC
+light wood                    #E9C2A6
+light yellow2                 #EEEED1
+light yellow3                 #CDCDB4
+light yellow4                 #8B8B7A
+lightblue (SVG)               #ADD8E6
+lightcoral (SVG)              #F08080
+lightcyan (SVG)               #E0FFFF
+lightgoldenrodyellow (SVG)    #FAFAD2
+lightgray (SVG)               #D3D3D3
+lightgrey (SVG)               #D3D3D3
+lightpink (SVG)               #FFB6C1
+lightsalmon (SVG)             #FFA07A
+lightseagreen (SVG)           #20B2AA
+lightskyblue (SVG)            #87CEFA
+lightslategray (SVG Hex3)     #778899
+lightslategrey (SVG Hex3)     #778899
+lightsteelblue (SVG)          #B0C4DE
+lightyellow (SVG)             #FFFFE0
+lime (Safe 16 SVG Hex3)       #00FF00
+limegreen (SVG)               #32CD32
+limepulp                      #D4ED91
+limerind                      #324F17
+lindsay eyes                  #65909A
+linen (SVG)                   #FAF0E6
+liz eyes                      #325C74
+lizard                        #5A6351
+madderlakedeep                #E32E30
+magenta (Safe 16=fuchsia SVG H#FF00FF
+magenta2 (Hex3)               #EE00EE
+magenta3                      #CD00CD
+mailbox                       #3063A5
+malachite                     #108070
+malta blue                    #517693
+mandarianorange               #E47833
+manganeseblue                 #03A89E
+maroon (16 SVG)               #800000
+maroon1                       #FF34B3
+maroon2                       #EE30A7
+maroon3                       #CD2990
+maroon4                       #8B1C62
+maroon5                       #691F01
+maroon6                       #8E236B
+maroonb0                      #B03060
+marsorange                    #964514
+marsyellow                    #E3701A
+martini olive                 #8BA446
+masters jacket                #174038
+mediterranean                 #3E766D
+medium aquamarine2            #32CC99
+medium aquamarine3            #32CD99
+medium blue                   #3232CC
+medium blue2                  #3232CD
+medium goldenrod              #EAEAAE
+medium orchid1                #E066FF
+medium orchid2                #D15FEE
+medium orchid3                #B452CD
+medium orchid4                #7A378B
+medium purple1                #AB82FF
+medium purple2                #9F79EE
+medium purple3                #8968CD
+medium purple4                #5D478B
+medium seagreen               #426F42
+medium slateblue2             #7F00FF
+medium turquoise              #70DBDB
+medium wood                   #A68064
+mediumaquamarine (SVG)        #66CDAA
+mediumblue (SVG)              #0000CD
+mediumorchid (SVG)            #BA55D3
+mediumpurple (SVG)            #9370DB
+mediumseagreen (SVG)          #3CB371
+mediumslateblue (SVG)         #7B68EE
+mediumspringgreen (SVG)       #00FA9A
+mediumturquoise (SVG)         #48D1CC
+mediumvioletred (SVG)         #C71585
+melon                         #E3A869
+melonrindgreen                #DFFFA5
+metallic mint                 #37FDFC
+midnightblue                  #2F2F4F
+midnightblue (SVG)            #191970
+midnightblue2 (Safe Hex3)     #000033
+mint blue                     #DBFEF8
+mint candy                    #9CBA7F
+mint green                    #BDFCC9
+mint ice cream                #C5E3BF
+mintcream (SVG)               #F5FFFA
+mistyrose (SVG)               #FFE4E1
+mistyrose2                    #EED5D2
+mistyrose3                    #CDB7B5
+mistyrose4                    #8B7D7B
+moccasin (SVG)                #FFE4B5
+mocha latte                   #C9AF94
+moon                          #DBE6E0
+mouthwash                     #01C5BB
+mtn dew bottle                #577A3A
+mustard (Hex3)                #FFCC11
+naplesyellowdeep              #FFA812
+natural gas                   #5B90F6
+natural turquoise             #45C3B8
+navajowhite (SVG)             #FFDEAD
+navajowhite2                  #EECFA1
+navajowhite3                  #CDB38B
+navajowhite4                  #8B795E
+navy (16 SVG)                 #000080
+navyblue                      #23238E
+nectarine (Safe Hex3)         #FF3300
+neon blue                     #67C8FF
+neon green                    #83F52C
+neonavocado (Safe Hex3)       #00FF66
+neonblue                      #4D4DFF
+neonpink                      #FF6EC7
+neptune                       #6D9BF1
+new $20                       #B7C8B6
+newmidnightblue               #00009C
+newtan                        #EBC79E
+night vision                  #7BCC70
+nikko blue                    #838EDE
+noble fir                     #476A34
+novascotia salmon (Safe Hex3) #FF3333
+nypd blue                     #39B7CD
+obsidian                      #3D5B43
+ochre (Hex3)                  #CC7722
+octopus                       #34925E
+od green                      #46523C
+offwhiteblue (Safe Hex3)      #CCCCFF
+offwhitegreen (Safe Hex3)     #CCFFCC
+old copper                    #73B1B7
+old money                     #337147
+oldgold                       #CFB53B
+oldlace (SVG)                 #FDF5E6
+olive (16 SVG)                #808000
+olive3b                       #3B5E2B
+olivedrab (SVG)               #6B8E23
+olivedrab1                    #C0FF3E
+olivedrab2                    #B3EE3A
+olivedrab4                    #698B22
+ooze                          #3E7A5E
+orange                        #CC3232
+orange                        #FF8000
+orange (SVG)                  #FFA500
+orange (Safe Hex3)            #FF6600
+orange candy                  #D5B77A
+orange crush                  #F87531
+orange2                       #EE9A00
+orange3                       #CD8500
+orange4                       #8B5A00
+orange5                       #FF7D40
+orangered                     #FF007F
+orangered                     #FF2400
+orangered (SVG)               #FF4500
+orangered2                    #EE4000
+orangered3                    #CD3700
+orangered4                    #FF4040
+orchid                        #DB70DB
+orchid (SVG)                  #DA70D6
+orchid1                       #FF83FA
+orchid2                       #EE7AE9
+orchid3                       #CD69C9
+orchid4                       #8B4789
+oregon salmon (Hex3)          #FF7722
+organic tea                   #AC7F24
+pabst blue                    #283A90
+pacific blue                  #35586C
+pacific green                 #36DBCA
+packer gold                   #FCB514
+packer green                  #213D30
+palegoldenrod (SVG)           #EEE8AA
+palegreen (SVG)               #98FB98
+palegreen1                    #9AFF9A
+palegreen3                    #7CCD7C
+palegreen4                    #548B54
+paleturquoise (SVG)           #AFEEEE
+paleturquoise1 (Hex3)         #BBFFFF
+paleturquoise2                #AEEEEE
+paleturquoise3                #96CDCD
+paleturquoise4                #668B8B
+palevioletred (SVG)           #DB7093
+palevioletred1                #FF82AB
+palevioletred2                #EE799F
+palevioletred3                #CD6889
+palevioletred4                #8B475D
+palm                          #608341
+papaya                        #FFFF7E
+papayawhip (SVG)              #FFEFD5
+park bench                    #2E6444
+park ranger                   #484D46
+parrot                        #3579DC
+parrotgreen (Safe Hex3)       #33FF33
+passion fruit                 #55141C
+pastel blue                   #C1F0F6
+pastel green                  #92CCA6
+pea                           #78AB46
+pea                           #79973F
+peach                         #FEF0DB
+peach (Hex3)                  #FF9955
+peachpuff                     #FFADB9
+peachpuff (SVG)               #FFDAB9
+peachpuff2                    #EECBAD
+peachpuff3                    #CDAF95
+peachpuff4                    #8B7765
+peacock                       #33A1C9
+peafowl                       #1D7CF2
+pear                          #D1E231
+pecan                         #E18E2E
+periwinkle (Hex3)             #AAAAFF
+permanent green               #0AC92B
+permanent redviolet           #DB2645
+peru (SVG)                    #CD853F
+picasso blue                  #0276FD
+pickle                        #7B7922
+piglet snout                  #ECC3BF
+pineapple                     #FCDC3B
+pinegreen (Safe Hex3)         #003300
+pink (SVG)                    #FFC0CB
+pink candy                    #DCA2CD
+pink cloud                    #F6A8B6
+pink glass                    #D3BECF
+pink jeep                     #E0427F
+pink shell                    #F6CCDA
+pink1                         #FFB5C5
+pink2                         #EEA9B8
+pink3                         #CD919E
+pink4                         #8B636C
+pistachio shell               #EBCEAC
+plum (SVG)                    #DDA0DD
+plum pudding                  #862A51
+plum1 (Hex3)                  #FFBBFF
+plum2                         #EAADEA
+plum2                         #EEAEEE
+plum3                         #CD96CD
+plum4                         #8B668B
+police strobe                 #0BB5FF
+pollock blue                  #4D6FAC
+pomegranate                   #F64D54
+pond scum                     #687E5A
+pool table                    #31B94D
+popcornyellow (Hex3)          #FFFFAA
+powderblue (SVG)              #B0E0E6
+presidential blue             #302B54
+pumice                        #78A489
+pummelo pulp                  #F5785A
+purple                        #A020F0
+purple (16 SVG)               #800080
+purple candy                  #BDA0CB
+purple fish                   #B272A6
+purple ink                    #9C6B98
+purple rain                   #694489
+purple rose                   #5E2D79
+purple1                       #9B30FF
+purple2                       #912CEE
+purple3                       #7D26CD
+purple4                       #551A8B
+purple6 (Hex3)                #AA00FF
+putting                       #699864
+pyridiumorange                #F0A804
+quartz                        #D9D9F3
+ralphyellow (Safe Hex3)       #CCCC00
+raspberry                     #872657
+raspberry red                 #FA1D2F
+rawsienna                     #C76114
+rawumber                      #734A12
+red (Safe 16 SVG Hex3)        #FF0000
+red coat                      #B81324
+red delicious apple           #9D1309
+red roof                      #C75D4D
+red2 (Hex3)                   #EE0000
+red3                          #CD0000
+richblue                      #5959AB
+robin's egg                   #C3E4ED
+romaine lettuce               #3B5323
+rose (Safe Hex3)              #FF00CC
+rosemadder                    #E33638
+rosybrown (SVG)               #BC8F8F
+rosybrown1                    #FFC1C1
+rosybrown2                    #EEB4B4
+rosybrown3                    #CD9B9B
+rosybrown4                    #8B6969
+royal palm                    #3F6826
+royalblue (SVG)               #4169E1
+royalblue (Safe Hex3)         #3333FF
+royalblue1                    #4876FF
+royalblue2                    #436EEE
+royalblue3                    #3A5FCD
+royalblue4                    #27408B
+ruby red                      #C82536
+saddlebrown (SVG)             #8B4513
+safety cone                   #FF5333
+safety vest                   #C8F526
+salmon (SVG)                  #FA8072
+salmon1                       #FF8C69
+salmon2                       #EE8262
+salmon3                       #CD7054
+salmon4                       #8B4C39
+salmon5                       #6F4242
+sand (Safe Hex3)              #FFCC99
+sandstone                     #A78D84
+sandybrown (SVG)              #F4A460
+sapgreen                      #308014
+scarlet                       #8C1717
+scotland pound                #487153
+sea green                     #068481
+sea urchin                    #683A5E
+seagreen                      #238E68
+seagreen (Hex3)               #00FFAA
+seagreen (SVG)                #2E8B57
+seagreen1                     #54FF9F
+seagreen2                     #4EEE94
+seagreen3                     #43CD80
+seashell (SVG)                #FFF5EE
+seashell2                     #EEE5DE
+seashell3                     #CDC5BF
+seashell4                     #8B8682
+seattle salmon (Safe Hex3)    #FF6666
+seaweed                       #646F5E
+seaweed roll                  #748269
+semisweet chocolate1          #6B4226
+semisweet chocolate2          #E6B426
+sepia                         #5E2612
+seurat blue                   #739AC5
+sgibeet                       #8E388E
+sgibrightgray                 #C5C1AA
+sgichartreuse                 #71C671
+sgilight blue                 #7D9EC0
+sgilight gray (Hex3)          #AAAAAA
+sgiolivedrab                  #8E8E38
+sgisalmon                     #C67171
+sgislate blue                 #7171C6
+sgiteal                       #388E8E
+shamrock                      #40664D
+shamrock shake                #B2D0B4
+sienna                        #8E6B23
+sienna (SVG)                  #A0522D
+sienna1                       #FF8247
+sienna2                       #EE7942
+sienna3                       #CD6839
+sienna4                       #8B4726
+sign blue                     #003F87
+sign brown                    #603311
+sign green                    #006B54
+sign orange                   #DD7500
+sign red                      #AF1E2D
+sign yellow                   #FCD116
+silver                        #E6E8FA
+silver (16 SVG)               #C0C0C0
+skyblue (SVG)                 #87CEEB
+skyblue1                      #87CEFF
+skyblue2                      #7EC0EE
+skyblue3                      #6CA6CD
+skyblue4                      #4A708B
+skyblue5 (Safe Hex3)          #0099CC
+skyblue6                      #3299CC
+slateblue                     #007FFF
+slateblue (SVG)               #6A5ACD
+slateblue1                    #836FFF
+slateblue2                    #7A67EE
+slateblue3                    #6959CD
+slateblue4                    #473C8B
+slategray (SVG)               #708090
+slategray1                    #C6E2FF
+slategray2                    #B9D3EE
+slategray3                    #9FB6CD
+slategray4                    #6C7B8B
+slategrey (SVG)               #708090
+smyrna purple                 #A2627A
+snake                         #596C56
+snow (SVG)                    #FFFAFA
+snow2                         #EEE9E9
+snow3                         #CDC9C9
+snow4                         #8B8989
+soylent green                 #8BA870
+soylent red                   #E04006
+soylent yellow                #F4F776
+spicypink                     #FF1CAE
+spinach                       #435D36
+springgreen (SVG)             #00FF7F
+springgreen (Safe Hex3)       #00FF33
+springgreen2                  #00EE76
+springgreen3                  #00CD66
+springgreen4                  #008B45
+st louis blues                #2C5197
+stained glass                 #2E37FE
+stainless steel               #E0DFDB
+starbucks (Safe Hex3)         #006633
+steelblue                     #236B8E
+steelblue (SVG)               #4682B4
+steelblue1                    #63B8FF
+steelblue2                    #5CACEE
+steelblue3                    #4F94CD
+steelblue4                    #36648B
+strawberry                    #BE2625
+strawberry smoothie           #EAB5C5
+summersky                     #38B0DE
+surf                          #63D1F4
+sweet potato vine             #A2C93A
+swimming pool                 #67E6EC
+tan                           #DB9370
+tan (Hex3)                    #EE8833
+tan (SVG)                     #D2B48C
+tan1                          #FFA54F
+tan2                          #EE9A49
+tan4                          #8B5A2B
+tangerine                     #FF7216
+tank                          #615E3F
+tea leaves                    #5F755E
+teal (16 SVG)                 #008080
+teal LED                      #05EDFF
+terreverte                    #385E0F
+thistle                       #B5509C
+thistle (SVG)                 #D8BFD8
+thistle1                      #FFE1FF
+thistle2                      #EED2EE
+thistle3                      #CDB5CD
+thistle4                      #8B7B8B
+titanium                      #B6AFA9
+titaniumwhite                 #FCFFF0
+tomato (SVG)                  #FF6347
+tomato2                       #EE5C42
+tomato3                       #CD4F39
+tomato4                       #8B3626
+tongue                        #E79EA9
+topaz                         #0198E1
+tree moss                     #659D32
+tropical blue                 #62B1F6
+truegreen                     #00AF33
+truepurple (Safe Hex3)        #990099
+turnip                        #A74CAB
+turquoise                     #0FDDAF
+turquoise                     #ADEAEA
+turquoise (SVG)               #40E0D0
+turquoise1                    #00F5FF
+turquoise2                    #00E5EE
+turquoise3                    #00C5CD
+turquoise4                    #00868B
+turquoiseblue                 #00C78C
+ty nant                       #0147FA
+ultramarine                   #120A8F
+ultramarine violet            #5C246E
+ulysses butterfly             #1464F4
+vandykebrown                  #5E2605
+vanilla mint                  #B4D7BF
+venetianred                   #D41A1F
+verydarkbrown                 #5C4033
+verylight grey                #CDCDCD
+violet                        #4F2F4F
+violet                        #8F5E99
+violet (SVG)                  #EE82EE
+violet flower                 #BF5FFF
+violetred                     #CC3299
+violetred                     #D02090
+violetred1                    #FF3E96
+violetred2                    #EE3A8C
+violetred3                    #CD3278
+violetred4                    #8B2252
+viridianlight                 #6EFF70
+wales                         #4AC948
+warmgrey                      #808069
+wasabi (Safe Hex3)            #66FF66
+wasabi sauce                  #AEBB51
+watermelon pulp               #F2473F
+watermelon rind               #54632C
+wavecrest                     #99CDC9
+wet moss                      #3D5229
+wheat                         #D8D8BF
+wheat (SVG)                   #F5DEB3
+wheat1                        #FFE7BA
+wheat2                        #EED8AE
+wheat3                        #CDBA96
+wheat4                        #8B7E66
+white (Safe 16 SVG Hex3)      #FFFFFF
+whitesmoke (SVG)              #F5F5F5
+wild violet                   #820BBB
+yellow (Safe 16 SVG Hex3)     #FFFF00
+yellow candy                  #EEEB8D
+yellow perch                  #E0D873
+yellow2 (Hex3)                #EEEE00
+yellow3                       #CDCD00
+yellow4                       #8B8B00
+yellowgreen (SVG)             #9ACD32
+yellowgreen2                  #99CC32
+yellowochre                   #E38217
+yolk                          #FFE600
+zincwhite                     #FDF8FF
+                              
