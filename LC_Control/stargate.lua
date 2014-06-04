@@ -218,7 +218,7 @@ local function fuelAvailable()
 end
 
 local function valid(address)
-  return true
+  return "true"
 end
  
 loadAddressData()
