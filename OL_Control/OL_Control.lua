@@ -15,7 +15,7 @@ local colors=require("colors")
 -- B.) if the required files exist to run this program.
 -- C.) And to download them if it can.
 --#~#~#~#~#~#~#~ CHANGE THE FOLLOWING VARIABLE TO FALSE TO DISABLE AUTOUPDATE CHECKING~#~#~#~#~#~#~#
-autoUpdate = false
+autoUpdate = true
 
 --Thanks Gopher!
 function compareVersions(v1,v2)
