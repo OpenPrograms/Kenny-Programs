@@ -468,6 +468,19 @@ local function setLightLevel()
 	getLightLabel:draw()
 end
 
+local function setAllValues()
+	for a = 1, #lightList do
+		lightAddy = text.trim(lightList[a])
+		proxy(lightAddy).setBrightness(tonumber(lightLevel))
+		proxy(lightAddy).setColor(tonumber("0x"..lightColorID))
+	end
+		
+	getColorLabel.text = tostring(lightColorId)
+	getColorLabel:draw()
+	getLightLabel.text = tostring(lightLevel)
+	getLightLabel:draw()
+end
+
 getColorLabel = gui:addLabel(50, 6, 10, "          ")
 setColorLabel = gui:addLabel(65, 6, 10, "          ")
 
@@ -484,6 +497,7 @@ getLightLabel = gui:addLabel(50, -7, 10, "          ")
 gui:addButton(50, -5, 10, 1, "Get Bright", getLightLevel)
 gui:addButton(65, -1, 10, 1, "Set Bright", setLightLevel)
 
+gui:addButton(50, -1, 10, 1, " Set  All ", setAllValues)
 
 gui:addButton(2, -1, 8, 1, "Close", gui.close)
 
