@@ -144,7 +144,7 @@ function compareVersions(v1,v2)
 internet = require("internet")
 if not file_check(os.getenv("PWD") .. "ol-version.txt") then 
 	print("Setting up version cache")
-	downloadFile("compviewer-version.txt","ol-version.txt")
+	downloadFile("ol-version.txt","ol-version.txt")
 end
 --Check if this is a fresh download, or a update 0 is fresh, > 0 is update.
 newVersion = remoteVersion()
