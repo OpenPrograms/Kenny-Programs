@@ -8,13 +8,13 @@ LC Control:
   /blob/master/LC_Control/stargate.lua
   GUI stargate controller
 Adventure:
-  /blob/master/adventure.lua
+  /blob/master/Misc_Programs/adventure.lua
   CC adventure ported to OC
 KS:
-  /blob/master/ks.lua
+  /blob/master/Misc_Programs/ks.lua
   Easy to use term API
 OPEdit:
-  /blob/master/opedit.lua
+  /blob/master/Misc_Programs/opedit.lua
   OpenPrinter supported text editor (edit.lua)
 Open Computers Dig:
   /blob/master/OpenComputers/dig.lua
@@ -22,6 +22,9 @@ Open Computers Dig:
 Open Computers OpenIRC:
   /blob/master/OpenComputers/irc.lua
   IRC program included with Open Computers
+OpenLights Control:
+  /blob/master/OL_Control/OL_Control.lua
+  Control program for OpenLights
 Big Reactors Control:
-  /blob/master/BR_Control.lua
+  /blob/master/BR_Control/BR_Control.lua
   Control program for Big Reactors
