@@ -1026,6 +1026,7 @@ tan2                          #EE9A49
 tan4                          #8B5A2B
 tangerine                     #FF7216
 tank                          #615E3F
+tardis blue                   #003B6F
 tea leaves                    #5F755E
 teal (16 SVG)                 #008080
 teal LED                      #05EDFF
