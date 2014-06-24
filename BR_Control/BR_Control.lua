@@ -141,7 +141,7 @@ while running do
 		warning(30, "                                         ")
 		warning(31, "     WARNING     WARNING     WARNING     ")
 		warning(32, "                                         ")
-		warning(33, "       Rector Temperature Too High       ")
+		warning(33, "       Reactor Temperature Too High       ")
 		warning(34, "                                         ")
 		gpu.setForeground(0xFFFFFF)
 		gpu.setBackground(0x000000)
