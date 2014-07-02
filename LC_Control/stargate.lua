@@ -1,4 +1,4 @@
- local component = require("component")
+local component = require("component")
 local fs = require("filesystem")
 local internet = require("internet")
 local process = require("process")
@@ -168,7 +168,7 @@ local destAddress = {}
 local destName = {}
 local timerID = 0
 local fuelTimer = 0
-local running=shell.running() 
+local running=process.running() 
 local addressListAdd
 local addressListDelete
 
