@@ -53,7 +53,7 @@ function compareVersions(v1,v2)
   end
   wget = loadfile("/bin/wget.lua")
   function downloadFile(remotename, filename)
-    wget("https://raw.github.com/OpenPrograms/Kenny-Programs/master/CompViewer/" .. remotename, shell.resolve(cpath, filename), "-q")
+    wget("-fq", "https://raw.github.com/OpenPrograms/Kenny-Programs/master/CompViewer/" .. remotename, shell.resolve(cpath, filename))
   end
 
   function remoteVersion()
