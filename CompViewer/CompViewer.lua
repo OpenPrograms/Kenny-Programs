@@ -52,9 +52,11 @@ end
       return false
     end
   end
+
   wget = loadfile("/bin/wget.lua")
+
   function downloadFile(remotename, filename)
-    wget("-f", "https://raw.github.com/OpenPrograms/Kenny-Programs/master/CompViewer/" .. remotename, shell.resolve(cpath, filename))
+    wget("-fq", "https://raw.github.com/OpenPrograms/Kenny-Programs/master/CompViewer/" .. remotename, fs.concat(cpath, filename))
   end
 
   function remoteVersion()
