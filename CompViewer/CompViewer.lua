@@ -61,14 +61,14 @@ function compareVersions(v1,v2)
       if line ~= "not found" then
         return text.trim(line)
       else
-        return 0
+        return "0"
       end
     end
   end
 
   function localVersion()
     if not file_check(cpath.."compviewer-version.txt") then
-      return 0
+      return "0"
     else
       local f = io.open(cpath.."compviewer-version.txt", "rb")
       local content = f:read("*all")
