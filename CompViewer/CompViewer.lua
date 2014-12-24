@@ -54,7 +54,7 @@ end
   end
   wget = loadfile("/bin/wget.lua")
   function downloadFile(remotename, filename)
-    wget("-fq", "https://raw.github.com/OpenPrograms/Kenny-Programs/master/CompViewer/" .. remotename, shell.resolve(cpath, filename))
+    wget("-f", "https://raw.github.com/OpenPrograms/Kenny-Programs/master/CompViewer/" .. remotename, shell.resolve(cpath, filename))
   end
 
   function remoteVersion()
@@ -135,6 +135,7 @@ end
       end
       if downloaded == true then
         print("Please run the program again")
+        shell.setWorkingDirectory(oldDirectory)
         os.exit()
       end
     end
