@@ -49,7 +49,6 @@ end
       file:close()
       return true
     else
-      file:close()
       return false
     end
   end
