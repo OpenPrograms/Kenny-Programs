@@ -34,20 +34,22 @@ function compareVersions(v1,v2)
       else
         return -1
       end
-      elseif n2==nil then
-        return 1
-      end
-      if n1~=n2 then
-        return n1-n2
-      end
+    elseif n2==nil then
+      return 1
+    end
+    if n1~=n2 then
+      return n1-n2
     end
   end
+end
 
   function file_check(file_name)
     local file = fs.open(file_name)
     if file ~= nil then
+      file:close()
       return true
     else
+      file:close()
       return false
     end
   end
