@@ -206,11 +206,11 @@ local gui=gml.create("center", "center", 80, 25)
 gui.style=gml.loadStyle("cv.gss")
 
 local function dialing()
-  return tostring(sg.isDialing())
+  return tostring(sg.stargateState()=="Dialling")
 end
 
 local function connected()
-  return tostring(sg.isConnected())
+  return tostring(sg.stargateState()=="Connected")
 end
 
 local function fuelAvailable()
