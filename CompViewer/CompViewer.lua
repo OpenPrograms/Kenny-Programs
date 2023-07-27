@@ -157,9 +157,9 @@ end
 --Check if this is a fresh download, or a update 0 is fresh, > 0 is update.
 newVersion = remoteVersion()
 if (compareVersions(newVersion, localVersion()) == 0) then
-  doUpdate("fresh")
+  --doUpdate("fresh")
   elseif(compareVersions(newVersion, localVersion()) > 0) then
-    doUpdate("update")
+    --doUpdate("update")
   end
   --print("Updating Component Info file, One moment please")
   --fs.remove(cpath .. "CompInfo.txt")
